@@ -359,70 +359,83 @@ export const SlideFunil8Overview: React.FC = () => (
 );
 
 // ============ SLIDE: FUNIL 8 FASE 1 DETALHADO ============
-export const SlideFunil8Fase1: React.FC = () => (
-  <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
-    <SlideHeader section="FASE 1 — AQUISIÇÃO" />
-    <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', gap: 24 }}>
-      {/* Left: Pyramid */}
-      <div style={{ width: '55%', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 14 }}>
-          <h2 style={{ fontSize: 22, fontWeight: 800 }}>Fase 1: Aquisição</h2>
-          <p style={{ fontSize: 11, color: '#F05A28' }}>Funil 8</p>
+export const SlideFunil8Fase1: React.FC = () => {
+  const piramide = defaultContent.funil8Detalhado.piramide;
+  // Bottom to top order: Produto Principal, OB1, OB2, OB3, Upsell
+  const bgColors = ['rgba(240,90,40,0.35)', 'rgba(240,90,40,0.5)', 'rgba(240,90,40,0.65)', 'rgba(240,90,40,0.8)', 'rgba(240,90,40,0.95)'];
+  
+  return (
+    <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
+      <SlideHeader section="FASE 1 — AQUISIÇÃO" />
+      <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', gap: 24 }}>
+        {/* Left: Pyramid stacked bottom-to-top */}
+        <div style={{ width: '55%', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 6 }}>
+            <h2 style={{ fontSize: 22, fontWeight: 800 }}>Fase 1: Aquisição</h2>
+            <p style={{ fontSize: 11 }}><span style={{ color: '#F05A28', fontWeight: 700 }}>Funil 8</span>  <span style={{ color: '#888' }}>Comprar cliente a custo zero através da maximização do valor</span></p>
+          </div>
+          
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center', gap: 0, paddingBottom: 8 }}>
+            {[...piramide].reverse().map((item, i) => {
+              const Icon = piramideIcons[4 - i];
+              const widthPct = 45 + i * 10;
+              return (
+                <React.Fragment key={i}>
+                  {i > 0 && (
+                    <div style={{ textAlign: 'center', padding: '2px 0', color: '#F05A28', fontSize: 14 }}>↑</div>
+                  )}
+                  <div style={{
+                    width: `${widthPct}%`,
+                    padding: '8px 16px',
+                    borderRadius: 8,
+                    background: bgColors[4 - i],
+                    textAlign: 'center',
+                    position: 'relative',
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                      <Icon size={14} color="#fff" />
+                      <span style={{ fontSize: 13, fontWeight: 700 }}>{item.titulo}</span>
+                    </div>
+                    <p style={{ fontSize: 14, fontWeight: 800, color: '#fff' }}>{item.valor}</p>
+                    <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)' }}>{item.descricao}</p>
+                  </div>
+                </React.Fragment>
+              );
+            })}
+          </div>
         </div>
-        <p style={{ fontSize: 11, color: '#888', marginBottom: 14 }}>Comprar cliente a custo zero através da maximização do valor</p>
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
-          {[...defaultContent.funil8Detalhado.piramide].reverse().map((item, i) => {
-            const Icon = piramideIcons[4 - i];
+        {/* Right: Cards */}
+        <div style={{ width: '45%', display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {defaultContent.funil8Detalhado.cards.map((card, i) => {
+            const Icon = funilCardIcons[i];
             return (
-              <div key={i} style={{
-                display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 8,
-                border: '1.5px solid rgba(240,90,40,0.7)',
-                background: i === 0 ? 'rgba(192,74,26,0.4)' : 'rgba(240,90,40,0.6)',
-                flex: 1
-              }}>
-                <Icon size={16} color="#fff" />
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontSize: 13, fontWeight: 700 }}>{item.titulo}</p>
-                  <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)' }}>{item.descricao}</p>
+              <div key={i} style={{ background: card.titulo === 'Resultados Esperados' ? '#1E1E1E' : '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 12, flex: 1, display: 'flex', flexDirection: 'column', boxShadow: card.titulo === 'Resultados Esperados' ? 'inset 0 1px 0 rgba(240,90,40,0.1), 0 0 15px rgba(240,90,40,0.1)' : '0 0 12px rgba(240,90,40,0.15)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                  <Icon size={16} color="#F05A28" />
+                  <p style={{ fontSize: 13, fontWeight: 700 }}>{card.titulo}</p>
                 </div>
-                <span style={{ fontSize: 16, fontWeight: 800 }}>{item.valor}</span>
+                {card.stats ? (
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, flex: 1 }}>
+                    {card.stats.map((s, j) => (
+                      <div key={j} style={{ background: '#1A1A1A', borderRadius: 6, padding: 10, textAlign: 'center' }}>
+                        <p style={{ fontSize: 16, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
+                        <p style={{ fontSize: 9, color: '#888' }}>{s.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p style={{ fontSize: 11, color: '#888' }}>{card.texto}</p>
+                )}
               </div>
             );
           })}
         </div>
       </div>
-      
-      {/* Right: Cards */}
-      <div style={{ width: '45%', display: 'flex', flexDirection: 'column', gap: 10 }}>
-        {defaultContent.funil8Detalhado.cards.map((card, i) => {
-          const Icon = funilCardIcons[i];
-          return (
-            <div key={i} style={{ background: card.titulo === 'Resultados Esperados' ? '#1E1E1E' : '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 12, flex: 1, display: 'flex', flexDirection: 'column', boxShadow: card.titulo === 'Resultados Esperados' ? 'inset 0 1px 0 rgba(240,90,40,0.1), 0 0 15px rgba(240,90,40,0.1)' : '0 0 12px rgba(240,90,40,0.15)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                <Icon size={16} color="#F05A28" />
-                <p style={{ fontSize: 13, fontWeight: 700 }}>{card.titulo}</p>
-              </div>
-              {card.stats ? (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, flex: 1 }}>
-                  {card.stats.map((s, j) => (
-                    <div key={j} style={{ background: '#1A1A1A', borderRadius: 6, padding: 10, textAlign: 'center' }}>
-                      <p style={{ fontSize: 16, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
-                      <p style={{ fontSize: 9, color: '#888' }}>{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p style={{ fontSize: 11, color: '#888' }}>{card.texto}</p>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      <SlideFooter />
     </div>
-    <SlideFooter />
-  </div>
-);
+  );
+};
 
 // ============ SLIDE: FASES 2 e 3 ============
 export const SlideFases23: React.FC = () => (
