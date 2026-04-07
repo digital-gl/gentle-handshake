@@ -10,7 +10,7 @@ import {
   Play, Handshake, User, Building2, Lightbulb, BarChart3, ShoppingCart,
   Plus, Crown, Target, Settings, RefreshCw, CheckCircle, ChevronRight,
   Star, GraduationCap, Video, FolderOpen, CalendarDays, Zap, TrendingUp,
-  Users, Cog, Rocket, Package, BookOpen, AlertCircle
+  Users, Cog, Rocket, Package, BookOpen, AlertCircle, Eye, Heart
 } from 'lucide-react';
 
 const fotos = [crisImg, janaImg, sabrinaImg];
@@ -39,15 +39,15 @@ const bmIcons = [BarChart3, PenLine, Package, PenLine, Play, Monitor, Megaphone,
 
 // Slide Header component
 const SlideHeader: React.FC<{ section: string }> = ({ section }) => (
-  <div className="flex items-center justify-between px-10 pt-5 pb-3">
-    <img src={bmLogo} alt="BM" className="w-8 h-8 rounded-full" />
+  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 40px 12px' }}>
+    <img src={bmLogo} alt="BM" style={{ width: 32, height: 32, borderRadius: '50%' }} />
     <span style={{ color: '#F05A28', fontSize: 11, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' as const }}>{section}</span>
   </div>
 );
 
 // Slide Footer component  
 const SlideFooter: React.FC = () => (
-  <div className="absolute bottom-0 left-0 right-0 px-10 pb-3 pt-2">
+  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '0 40px 10px' }}>
     <div style={{ borderTop: '1px solid rgba(240,90,40,0.3)', paddingTop: 6, textAlign: 'center' }}>
       <span style={{ color: '#888', fontSize: 10 }}>bmcoproduções.com.br/bm</span>
     </div>
@@ -56,7 +56,7 @@ const SlideFooter: React.FC = () => (
 
 // ============ SLIDE: CAPA ============
 export const SlideCapa: React.FC<{ data: ProposalData }> = ({ data }) => (
-  <div className="bm-slide bm-slide-dark bm-texture" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+  <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: 1280, height: 720, position: 'relative', overflow: 'hidden', backgroundImage: 'repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(255,255,255,0.02) 40px,rgba(255,255,255,0.02) 41px)' }}>
     {data.showLogo && <img src={bmLogo} alt="BM Logo" style={{ width: 100, height: 100, borderRadius: '50%', marginBottom: 32 }} />}
     <p style={{ color: '#888', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 8 }}>Infraestrutura Digital</p>
     <h1 style={{ fontSize: 48, fontWeight: 900, letterSpacing: '0.05em', marginBottom: 4 }}>
@@ -76,19 +76,16 @@ export const SlideCapa: React.FC<{ data: ProposalData }> = ({ data }) => (
   </div>
 );
 
-// ============ SLIDE: BOAS-VINDAS (2-column layout matching PDF model) ============
+// ============ SLIDE: BOAS-VINDAS ============
 export const SlideBoasVindas: React.FC<{ data: ProposalData }> = ({ data }) => (
-  <div className="bm-slide" style={{ background: '#FFFFFF', display: 'flex', flexDirection: 'column' }}>
-    {/* Header bar */}
+  <div className="bm-slide" style={{ background: '#FFFFFF', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 40px 12px' }}>
       <img src={bmLogo} alt="BM" style={{ width: 36, height: 36, borderRadius: '50%' }} />
       <span style={{ color: '#F05A28', fontSize: 12, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>PROPOSTA DE PARCERIA</span>
     </div>
     <div style={{ borderBottom: '1px solid rgba(240,90,40,0.3)', margin: '0 40px' }} />
     
-    {/* Content: 2 columns */}
     <div style={{ display: 'flex', flex: 1, padding: '24px 40px 20px' }}>
-      {/* Left Column 60% */}
       <div style={{ width: '60%', paddingRight: 32, display: 'flex', flexDirection: 'column' }}>
         <h2 style={{ fontSize: 32, fontWeight: 800, color: '#1A1A1A', marginBottom: 8, lineHeight: 1.2 }}>
           Seja Bem-vindo à <span style={{ color: '#F05A28' }}>BM Coproduções</span>
@@ -103,7 +100,6 @@ export const SlideBoasVindas: React.FC<{ data: ProposalData }> = ({ data }) => (
           Conte conosco para traduzir a essência do seu conhecimento em uma estrutura de negócio digital escalável, com estratégia, copy, design, tráfego e posicionamento trabalhando em perfeita sintonia.
         </p>
         
-        {/* Quote box */}
         <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '16px 20px', marginTop: 'auto' }}>
           <p style={{ color: '#CCC', fontSize: 13, fontStyle: 'italic', lineHeight: 1.6 }}>
             "{defaultContent.manifesto}"
@@ -111,7 +107,6 @@ export const SlideBoasVindas: React.FC<{ data: ProposalData }> = ({ data }) => (
         </div>
       </div>
       
-      {/* Right Column 40% */}
       <div style={{ width: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {data.fotoEspecialista ? (
           <img src={data.fotoEspecialista} alt="Especialista" style={{ width: 200, height: 200, borderRadius: 12, border: '3px dashed #F05A28', objectFit: 'cover' }} />
@@ -131,42 +126,66 @@ export const SlideBoasVindas: React.FC<{ data: ProposalData }> = ({ data }) => (
   </div>
 );
 
-// ============ SLIDE: SOBRE A BM ============
+// ============ SLIDE: SOBRE A BM (Dark layout with founders) ============
 export const SlideSobreBM: React.FC = () => (
-  <div className="bm-slide" style={{ background: '#FFFFFF', display: 'flex', flexDirection: 'column' }}>
-    <SlideHeader section="SOBRE A BM" />
-    <div style={{ borderBottom: '1px solid rgba(240,90,40,0.3)', margin: '0 40px' }} />
-    
-    <div style={{ flex: 1, padding: '20px 40px', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 12 }}>
-        <h2 style={{ fontSize: 28, fontWeight: 800, color: '#1A1A1A' }}>
-          Infraestrutura <span style={{ color: '#F05A28' }}>Digital</span>
-        </h2>
-        <p style={{ fontSize: 13, color: '#666', marginTop: 4 }}>Não é uma Agência. É uma Estrutura Completa.</p>
+  <div className="bm-slide" style={{ background: '#1A1A1A', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden', padding: 32 }}>
+    {/* Header with orange bar */}
+    <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 16, marginBottom: 14 }}>
+      <h2 style={{ fontSize: 28, fontWeight: 800 }}>Sobre a BM</h2>
+      <p style={{ fontSize: 13, color: '#CCCCCC', marginTop: 2 }}>Infraestrutura Digital</p>
+    </div>
+
+    {/* Card: Não é uma Agência */}
+    <div style={{ background: '#2A2A2A', border: '1px solid rgba(240,90,40,0.4)', borderRadius: 12, padding: '14px 20px', marginBottom: 10, display: 'flex', alignItems: 'flex-start', gap: 14 }}>
+      <div style={{ width: 36, height: 36, borderRadius: 8, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <Building2 size={18} color="#fff" />
       </div>
-      
-      {/* Vision box */}
-      <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '14px 24px', marginBottom: 16 }}>
-        <p style={{ color: '#F05A28', fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', marginBottom: 4 }}>NOSSA VISÃO</p>
-        <p style={{ color: '#fff', fontSize: 18, fontWeight: 800 }}>Não VENDEMOS serviços. CONSTRUÍMOS operações.</p>
+      <div style={{ flex: 1 }}>
+        <p style={{ fontSize: 15, fontWeight: 700, marginBottom: 4 }}>Não é uma Agência. É uma Estrutura Completa.</p>
+        <p style={{ fontSize: 12, color: '#aaa', lineHeight: 1.6 }}>
+          A BM Infraestrutura Digital é uma estrutura estratégica completa para especialistas que desejam{' '}
+          <span style={{ color: '#F05A28', fontWeight: 700 }}>posicionamento forte, autoridade e vendas consistentes</span>.
+          {' '}Unimos estratégia, copy, design, tráfego e posicionamento em um único ecossistema.
+        </p>
       </div>
-      
-      {/* 4 pillar cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, flex: 1 }}>
-        {[
-          { letter: 'E', title: 'Estratégia', text: defaultContent.pilares.estrategia, color: '#F05A28' },
-          { letter: 'S', title: 'Estrutura', text: defaultContent.pilares.estrutura, color: '#666' },
-          { letter: 'E', title: 'Escala', text: defaultContent.pilares.escala, color: '#F05A28' },
-          { letter: 'C', title: 'Cultura', text: defaultContent.pilares.cultura, color: '#F05A28' },
-        ].map((p, i) => (
-          <div key={i} style={{ background: '#FAFAFA', border: '1px solid #E0E0E0', borderRadius: 10, padding: 16, display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-              <div style={{ width: 28, height: 28, borderRadius: 6, background: p.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 800, fontSize: 14 }}>{p.letter}</div>
-              <span style={{ fontSize: 18, fontWeight: 800, color: '#1A1A1A' }}>{p.title}</span>
-            </div>
-            <p style={{ fontSize: 13, color: '#555', lineHeight: 1.6 }}>{p.text}</p>
+    </div>
+
+    {/* Card: Nossa Visão */}
+    <div style={{ background: '#2A2A2A', border: '1px solid rgba(240,90,40,0.4)', borderRadius: 12, padding: '14px 20px', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 14 }}>
+      <Eye size={20} color="#F05A28" style={{ flexShrink: 0 }} />
+      <div>
+        <p style={{ fontSize: 13, fontWeight: 700, marginBottom: 2 }}>Nossa Visão</p>
+        <p style={{ fontSize: 16, fontWeight: 800, color: '#F05A28', letterSpacing: '0.02em' }}>NÃO VENDEMOS SERVIÇOS. CONSTRUÍMOS OPERAÇÕES.</p>
+      </div>
+    </div>
+
+    {/* As Mentes por Trás da BM */}
+    <div style={{ marginBottom: 10 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+        <Users size={16} color="#F05A28" />
+        <span style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>As Mentes por Trás da BM</span>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
+        {defaultContent.fundadoras.map((f, i) => (
+          <div key={i} style={{ background: '#2A2A2A', border: '1px solid rgba(240,90,40,0.3)', borderRadius: 12, padding: 16, textAlign: 'center' }}>
+            <img src={fotos[i]} alt={f.nome} style={{ width: 80, height: 80, borderRadius: '50%', border: '3px solid #F05A28', objectFit: 'cover', margin: '0 auto 10px' }} />
+            <p style={{ fontSize: 15, fontWeight: 700 }}>{f.nome}</p>
+            <p style={{ fontSize: 12, color: '#F05A28', fontWeight: 700, marginTop: 2 }}>{f.cargo1}</p>
+            <p style={{ fontSize: 11, color: '#CCCCCC' }}>{f.cargo2}</p>
           </div>
         ))}
+      </div>
+    </div>
+
+    {/* Card: Nossa Cultura */}
+    <div style={{ background: '#3D2010', borderRadius: 12, padding: '14px 20px', display: 'flex', alignItems: 'flex-start', gap: 14 }}>
+      <Heart size={18} color="#F05A28" style={{ flexShrink: 0, marginTop: 2 }} />
+      <div>
+        <p style={{ fontSize: 13, fontWeight: 700, marginBottom: 2 }}>Nossa Cultura</p>
+        <p style={{ fontSize: 12, color: '#ddd', lineHeight: 1.5 }}>
+          <span style={{ fontWeight: 700 }}>Base Sólida + Movimento Contínuo.</span>{' '}
+          Valorizamos acompanhamento estratégico, humanizado e personalizado, garantindo que cada projeto seja estruturado sobre uma base sólida e um movimento contínuo de crescimento.
+        </p>
       </div>
     </div>
   </div>
@@ -174,7 +193,7 @@ export const SlideSobreBM: React.FC = () => (
 
 // ============ SLIDE: MODELO DE COPRODUÇÃO / DIVISÃO ============
 export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }) => (
-  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+  <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
     <SlideHeader section="DIVISÃO DE RESPONSABILIDADES" />
     <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
       <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 16 }}>
@@ -184,7 +203,7 @@ export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }
       
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: 1 }}>
         {/* Especialista */}
-        <div className="bm-card" style={{ display: 'flex', flexDirection: 'column', padding: 20 }}>
+        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15), 0 2px 8px rgba(0,0,0,0.4)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
             <User size={22} color="#F05A28" />
             <div>
@@ -207,7 +226,7 @@ export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }
         </div>
         
         {/* BM */}
-        <div className="bm-card" style={{ display: 'flex', flexDirection: 'column', padding: 20 }}>
+        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15), 0 2px 8px rgba(0,0,0,0.4)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
             <Building2 size={22} color="#F05A28" />
             <div>
@@ -235,7 +254,7 @@ export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }
 
 // ============ SLIDE: ESTRUTURA COMPLETA ============
 export const SlideEstruturaCompleta: React.FC = () => (
-  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+  <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
     <SlideHeader section="ESTRUTURA COMPLETA" />
     <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
       <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 12 }}>
@@ -247,7 +266,7 @@ export const SlideEstruturaCompleta: React.FC = () => (
         {defaultContent.estruturaCompleta.map((item, i) => {
           const Icon = structureIcons[i];
           return (
-            <div key={i} className="bm-card" style={{ padding: 12, display: 'flex', flexDirection: 'column' }}>
+            <div key={i} style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15), 0 2px 8px rgba(0,0,0,0.4)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
                 <div style={{ width: 24, height: 24, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Icon size={14} color="#fff" />
@@ -276,7 +295,7 @@ export const SlideEstruturaCompleta: React.FC = () => (
 
 // ============ SLIDE: FUNIL 8 OVERVIEW ============
 export const SlideFunil8Overview: React.FC = () => (
-  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+  <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
     <SlideHeader section="METODOLOGIA FUNIL 8" />
     <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
       <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 14 }}>
@@ -288,15 +307,15 @@ export const SlideFunil8Overview: React.FC = () => (
         {(['fase1', 'fase2', 'fase3'] as const).map((key, i) => {
           const fase = defaultContent.funil8Overview[key];
           return (
-            <div key={i} className="bm-card-highlight" style={{ display: 'flex', flexDirection: 'column', padding: 16 }}>
+            <div key={i} style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,1)', borderRadius: 12, padding: 16, display: 'flex', flexDirection: 'column', boxShadow: '0 0 20px rgba(240,90,40,0.3), 0 4px 12px rgba(0,0,0,0.5)' }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 10 }}>
-                <div className="bm-phase-badge">0{i + 1}</div>
+                <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>0{i + 1}</div>
                 <div>
                   <p style={{ fontSize: 16, fontWeight: 700 }}>{fase.titulo}</p>
                   <p style={{ fontSize: 11, color: '#F05A28' }}>{fase.subtitulo}</p>
                 </div>
               </div>
-              <p className="bm-stat-number" style={{ textAlign: 'center', margin: '8px 0' }}>{fase.numero}</p>
+              <p style={{ fontSize: 36, fontWeight: 900, color: '#F05A28', textAlign: 'center', margin: '8px 0', lineHeight: 1 }}>{fase.numero}</p>
               <p style={{ fontSize: 11, color: '#888', textAlign: 'center', marginBottom: 10 }}>{fase.label}</p>
               {fase.bullets.map((b, j) => (
                 <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
@@ -314,7 +333,7 @@ export const SlideFunil8Overview: React.FC = () => (
         })}
       </div>
       
-      <div className="bm-card" style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: 14 }}>
+      <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, display: 'flex', alignItems: 'flex-start', gap: 10, padding: 14, boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
         <Lightbulb size={20} color="#F05A28" />
         <div>
           <p style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>Princípio Fundamental</p>
@@ -328,7 +347,7 @@ export const SlideFunil8Overview: React.FC = () => (
 
 // ============ SLIDE: FUNIL 8 FASE 1 DETALHADO ============
 export const SlideFunil8Fase1: React.FC = () => (
-  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+  <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
     <SlideHeader section="FASE 1 — AQUISIÇÃO" />
     <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', gap: 24 }}>
       {/* Left: Pyramid */}
@@ -366,7 +385,7 @@ export const SlideFunil8Fase1: React.FC = () => (
         {defaultContent.funil8Detalhado.cards.map((card, i) => {
           const Icon = funilCardIcons[i];
           return (
-            <div key={i} className={card.titulo === 'Resultados Esperados' ? 'bm-card-stats' : 'bm-card'} style={{ padding: 12, flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div key={i} style={{ background: card.titulo === 'Resultados Esperados' ? '#1E1E1E' : '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 12, flex: 1, display: 'flex', flexDirection: 'column', boxShadow: card.titulo === 'Resultados Esperados' ? 'inset 0 1px 0 rgba(240,90,40,0.1), 0 0 15px rgba(240,90,40,0.1)' : '0 0 12px rgba(240,90,40,0.15)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
                 <Icon size={16} color="#F05A28" />
                 <p style={{ fontSize: 13, fontWeight: 700 }}>{card.titulo}</p>
@@ -394,7 +413,7 @@ export const SlideFunil8Fase1: React.FC = () => (
 
 // ============ SLIDE: FASES 2 e 3 ============
 export const SlideFases23: React.FC = () => (
-  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+  <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
     <SlideHeader section="FASES 2 E 3" />
     <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
       <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 14 }}>
@@ -410,9 +429,9 @@ export const SlideFases23: React.FC = () => (
           const faseData = defaultContent.fases23[fase.key];
           return (
             <div key={fase.key} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <div className="bm-card" style={{ flex: 1, padding: 14, display: 'flex', flexDirection: 'column' }}>
+              <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, flex: 1, padding: 14, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-                  <div className="bm-phase-badge">{fase.badge}</div>
+                  <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>{fase.badge}</div>
                   <div>
                     <p style={{ fontSize: 16, fontWeight: 700 }}>{fase.titulo}</p>
                     <p style={{ fontSize: 10, color: '#F05A28' }}>{fase.sub}</p>
@@ -431,7 +450,7 @@ export const SlideFases23: React.FC = () => (
                   );
                 })}
               </div>
-              <div className="bm-card-stats" style={{ padding: 10 }}>
+              <div style={{ background: '#1E1E1E', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 10, boxShadow: 'inset 0 1px 0 rgba(240,90,40,0.1), 0 0 15px rgba(240,90,40,0.1)' }}>
                 <p style={{ fontSize: 10, color: '#F05A28', fontWeight: 700, marginBottom: 6 }}>Resultados Esperados</p>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6 }}>
                   {faseData.stats.map((s, i) => (
@@ -453,7 +472,7 @@ export const SlideFases23: React.FC = () => (
 
 // ============ SLIDE: CRONOGRAMA ============
 export const SlideCronograma: React.FC<{ data: ProposalData }> = ({ data }) => (
-  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+  <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
     <SlideHeader section="CRONOGRAMA" />
     <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
       <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 10 }}>
@@ -477,9 +496,9 @@ export const SlideCronograma: React.FC<{ data: ProposalData }> = ({ data }) => (
       {/* 3 cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, flex: 1 }}>
         {/* Fase 1 */}
-        <div className="bm-card" style={{ padding: 12, display: 'flex', flexDirection: 'column' }}>
+        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <div className="bm-phase-badge">01</div>
+            <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>01</div>
             <p style={{ fontSize: 13, fontWeight: 700 }}>Validação e Estruturação</p>
           </div>
           {(defaultContent.cronograma.fase1.items as string[]).map((item, i) => (
@@ -494,9 +513,9 @@ export const SlideCronograma: React.FC<{ data: ProposalData }> = ({ data }) => (
         </div>
         
         {/* Fase 2 */}
-        <div className="bm-card" style={{ padding: 12, display: 'flex', flexDirection: 'column' }}>
+        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <div className="bm-phase-badge">02</div>
+            <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>02</div>
             <p style={{ fontSize: 13, fontWeight: 700 }}>Aquisição e Validação</p>
           </div>
           {(defaultContent.cronograma.fase2.items as Array<{titulo: string; descricao: string}>).map((item, i) => {
@@ -517,9 +536,9 @@ export const SlideCronograma: React.FC<{ data: ProposalData }> = ({ data }) => (
         </div>
         
         {/* Fase 3 */}
-        <div className="bm-card" style={{ padding: 12, display: 'flex', flexDirection: 'column' }}>
+        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <div className="bm-phase-badge">03</div>
+            <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>03</div>
             <p style={{ fontSize: 13, fontWeight: 700 }}>Monetização da Base</p>
           </div>
           {(defaultContent.cronograma.fase3.items as Array<{titulo: string; descricao: string}>).map((item, i) => {
@@ -548,7 +567,7 @@ export const SlideCronograma: React.FC<{ data: ProposalData }> = ({ data }) => (
 export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) => {
   if (data.layoutInvestimento === 'planos') {
     return (
-      <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
         <SlideHeader section="INVESTIMENTO" />
         <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 16 }}>
@@ -579,7 +598,6 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
             
             {/* BM Impulso Plus */}
             <div style={{ position: 'relative', background: '#1E1E1E', border: '1.5px solid rgba(240,90,40,1)', borderRadius: 12, display: 'flex', flexDirection: 'column', overflow: 'visible', boxShadow: '0 0 20px rgba(240,90,40,0.3)' }}>
-              {/* Badge */}
               <div style={{ position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)', background: '#fff', color: '#1A1A1A', fontWeight: 800, fontSize: 12, padding: '4px 20px', borderRadius: 20, letterSpacing: '0.05em' }}>RECOMENDADO</div>
               
               <div style={{ background: '#F05A28', padding: '20px 24px', borderRadius: '10px 10px 0 0' }}>
@@ -603,7 +621,7 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
           </div>
           
           {/* Condições Gerais */}
-          <div className="bm-card" style={{ marginTop: 14, padding: 12 }}>
+          <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, marginTop: 14, padding: 12, boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
             <p style={{ fontSize: 13, fontWeight: 700, color: '#F05A28', fontStyle: 'italic', marginBottom: 4 }}>Condições Gerais</p>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
               <AlertCircle size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
@@ -619,9 +637,9 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
     );
   }
   
-  // Coproducao layout (original)
+  // Coproducao layout
   return (
-    <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
       <SlideHeader section="INVESTIMENTO" />
       <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
         <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 16 }}>
@@ -629,7 +647,7 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
           <p style={{ fontSize: 12, color: '#888' }}>Condições comerciais da coprodução estratégica</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, flex: 1 }}>
-          <div className="bm-card" style={{ padding: 16, display: 'flex', flexDirection: 'column' }}>
+          <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 16, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
               <Handshake size={20} color="#F05A28" />
               <p style={{ fontSize: 16, fontWeight: 700 }}>Coprodução Estratégica</p>
@@ -652,7 +670,7 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
               </div>
             </div>
           </div>
-          <div className="bm-card" style={{ padding: 16, display: 'flex', flexDirection: 'column' }}>
+          <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 16, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
               <Megaphone size={20} color="#F05A28" />
               <p style={{ fontSize: 16, fontWeight: 700 }}>Investimento em Tráfego</p>
@@ -678,7 +696,7 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
 
 // ============ SLIDE: ENCERRAMENTO ============
 export const SlideEncerramento: React.FC<{ data: ProposalData }> = ({ data }) => (
-  <div className="bm-slide bm-slide-dark bm-texture" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+  <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', width: 1280, height: 720, position: 'relative', overflow: 'hidden', backgroundImage: 'repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(255,255,255,0.02) 40px,rgba(255,255,255,0.02) 41px)' }}>
     {data.showLogo && <img src={bmLogo} alt="BM Logo" style={{ width: 100, height: 100, borderRadius: '50%', marginBottom: 24 }} />}
     <h2 style={{ fontSize: 36, fontWeight: 800, marginBottom: 8 }}>
       Vamos <span style={{ color: '#F05A28', fontStyle: 'italic' }}>Construir</span> Juntos!

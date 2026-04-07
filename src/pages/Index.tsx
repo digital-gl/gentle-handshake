@@ -14,6 +14,7 @@ const Index: React.FC = () => {
   const [screen, setScreen] = useState<Screen>('briefing');
   const [proposal, setProposal] = useState<ProposalData>(createDefaultProposal());
   const [isLoading, setIsLoading] = useState(false);
+  const [exportProgress, setExportProgress] = useState<{ current: number; total: number } | null>(null);
   const { toast } = useToast();
 
   const handleGenerate = async (prompt: string) => {
@@ -63,12 +64,17 @@ const Index: React.FC = () => {
   };
 
   const handleExport = async () => {
-    toast({ title: 'Gerando seu PDF profissional...', description: 'Aguarde enquanto capturamos os slides.' });
+    setExportProgress({ current: 0, total: 1 });
     try {
-      await exportToPDF(proposal.nomeEspecialista, proposal.ano);
+      await exportToPDF(proposal.nomeEspecialista, proposal.ano, (current, total) => {
+        setExportProgress({ current, total });
+      });
       toast({ title: '✅ PDF gerado com sucesso!', description: 'O download deve iniciar automaticamente.' });
-    } catch {
+    } catch (err) {
+      console.error('PDF Error:', err);
       toast({ title: 'Erro ao gerar PDF', description: 'Tente novamente.', variant: 'destructive' });
+    } finally {
+      setExportProgress(null);
     }
   };
 
@@ -95,6 +101,7 @@ const Index: React.FC = () => {
           onBack={() => setScreen('wizard')}
           onExport={handleExport}
           onEditSlide={handleEditSlide}
+          exportProgress={exportProgress}
         />
       )}
     </>
