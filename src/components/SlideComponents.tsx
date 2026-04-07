@@ -481,13 +481,13 @@ export const SlideCronograma: React.FC<{ data: ProposalData }> = ({ data }) => (
       
       {/* Timeline bar */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 14 }}>
-        {[defaultContent.cronograma.fase1, defaultContent.cronograma.fase2, defaultContent.cronograma.fase3].map((f, i) => (
+        {data.proximosPassos.map((p, i) => (
           <React.Fragment key={i}>
             <div style={{ flex: 1, borderRadius: 8, padding: '8px 12px', textAlign: 'center', background: i === 0 ? '#F05A28' : i === 1 ? 'rgba(240,90,40,0.8)' : '#C04A1A' }}>
-              <p style={{ fontSize: 12, fontWeight: 700 }}>{f.dias}</p>
-              <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)' }}>{f.titulo}</p>
+              <p style={{ fontSize: 12, fontWeight: 700 }}>{p.dias}</p>
+              <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)' }}>{p.titulo}</p>
             </div>
-            {i < 2 && <ChevronRight size={16} color="#F05A28" />}
+            {i < data.proximosPassos.length - 1 && <ChevronRight size={16} color="#F05A28" />}
           </React.Fragment>
         ))}
       </div>
