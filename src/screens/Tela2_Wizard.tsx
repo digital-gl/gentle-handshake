@@ -30,13 +30,31 @@ interface Tela2Props {
   onBack: () => void;
 }
 
-const SlidePreviewSmall: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div style={{ width: '100%', height: 720 * 0.44, position: 'relative', overflow: 'hidden' }}>
-    <div style={{ transform: 'scale(0.44)', transformOrigin: 'top left', width: 1280, height: 720 }}>
-      {children}
+const SlidePreviewSmall: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(0.5);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const updateScale = () => {
+      const w = el.clientWidth;
+      if (w > 0) setScale(w / 1280);
+    };
+    updateScale();
+    const ro = new ResizeObserver(updateScale);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef} style={{ width: '100%', height: 720 * scale, position: 'relative', overflow: 'hidden' }}>
+      <div style={{ transform: `scale(${scale})`, transformOrigin: 'top left', width: 1280, height: 720 }}>
+        {children}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Tela2_Wizard: React.FC<Tela2Props> = ({ data, onChange, onFinish, onBack }) => {
   const [step, setStep] = useState(0);
