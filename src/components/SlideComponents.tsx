@@ -203,9 +203,11 @@ export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }
       
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: 1 }}>
         {/* Especialista */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15), 0 2px 8px rgba(0,0,0,0.4)' }}>
+        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <User size={22} color="#F05A28" />
+            <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(240,90,40,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <User size={20} color="#F05A28" />
+            </div>
             <div>
               <p style={{ fontSize: 16, fontWeight: 700 }}>Especialista</p>
               <p style={{ fontSize: 11, color: '#F05A28' }}>Sua Expertise</p>
@@ -214,7 +216,9 @@ export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }
           <div style={{ flex: 1 }}>
             {defaultContent.divisaoResponsabilidades.especialista.items.map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '10px 0', borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
-                {React.createElement(espIcons[i], { size: 16, color: '#F05A28' })}
+                <div style={{ width: 28, height: 28, borderRadius: 6, background: 'rgba(240,90,40,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
+                  {React.createElement(espIcons[i], { size: 14, color: '#F05A28' })}
+                </div>
                 <div>
                   <p style={{ fontSize: 13, fontWeight: 700 }}>{item.titulo}</p>
                   <p style={{ fontSize: 11, color: '#888' }}>{item.descricao}</p>
@@ -222,13 +226,17 @@ export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }
               </div>
             ))}
           </div>
-          <p style={{ fontSize: 12, color: '#F05A28', fontWeight: 600, marginTop: 12 }}>Foque apenas no que você faz de melhor</p>
+          <div style={{ background: '#1A1A1A', borderRadius: 8, padding: 12, marginTop: 12, textAlign: 'center' }}>
+            <p style={{ fontSize: 12, fontWeight: 600, color: '#ccc' }}>Foque apenas no que você faz de melhor</p>
+          </div>
         </div>
         
         {/* BM */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15), 0 2px 8px rgba(0,0,0,0.4)' }}>
+        <div style={{ background: '#3D1F0A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <Building2 size={22} color="#F05A28" />
+            <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(240,90,40,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Building2 size={20} color="#F05A28" />
+            </div>
             <div>
               <p style={{ fontSize: 16, fontWeight: 700 }}>BM</p>
               <p style={{ fontSize: 11, color: '#F05A28' }}>Operação Completa</p>
@@ -236,9 +244,14 @@ export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, flex: 1 }}>
             {defaultContent.divisaoResponsabilidades.bm.items.map((item, i) => (
-              <div key={i} style={{ background: '#1A1A1A', borderRadius: 8, padding: '10px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
-                {React.createElement(bmIcons[i], { size: 14, color: '#F05A28' })}
-                <span style={{ fontSize: 12, fontWeight: 500 }}>{item.titulo}</span>
+              <div key={i} style={{ background: 'rgba(240,90,40,0.15)', borderRadius: 8, padding: '10px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 24, height: 24, borderRadius: 6, background: 'rgba(240,90,40,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  {React.createElement(bmIcons[i], { size: 12, color: '#F05A28' })}
+                </div>
+                <div>
+                  <span style={{ fontSize: 12, fontWeight: 600 }}>{item.titulo}</span>
+                  {'descricao' in item && <p style={{ fontSize: 9, color: '#aaa' }}>{(item as any).descricao}</p>}
+                </div>
               </div>
             ))}
           </div>
@@ -346,70 +359,83 @@ export const SlideFunil8Overview: React.FC = () => (
 );
 
 // ============ SLIDE: FUNIL 8 FASE 1 DETALHADO ============
-export const SlideFunil8Fase1: React.FC = () => (
-  <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
-    <SlideHeader section="FASE 1 — AQUISIÇÃO" />
-    <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', gap: 24 }}>
-      {/* Left: Pyramid */}
-      <div style={{ width: '55%', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 14 }}>
-          <h2 style={{ fontSize: 22, fontWeight: 800 }}>Fase 1: Aquisição</h2>
-          <p style={{ fontSize: 11, color: '#F05A28' }}>Funil 8</p>
+export const SlideFunil8Fase1: React.FC = () => {
+  const piramide = defaultContent.funil8Detalhado.piramide;
+  // Bottom to top order: Produto Principal, OB1, OB2, OB3, Upsell
+  const bgColors = ['rgba(240,90,40,0.35)', 'rgba(240,90,40,0.5)', 'rgba(240,90,40,0.65)', 'rgba(240,90,40,0.8)', 'rgba(240,90,40,0.95)'];
+  
+  return (
+    <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
+      <SlideHeader section="FASE 1 — AQUISIÇÃO" />
+      <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', gap: 24 }}>
+        {/* Left: Pyramid stacked bottom-to-top */}
+        <div style={{ width: '55%', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 6 }}>
+            <h2 style={{ fontSize: 22, fontWeight: 800 }}>Fase 1: Aquisição</h2>
+            <p style={{ fontSize: 11 }}><span style={{ color: '#F05A28', fontWeight: 700 }}>Funil 8</span>  <span style={{ color: '#888' }}>Comprar cliente a custo zero através da maximização do valor</span></p>
+          </div>
+          
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center', gap: 0, paddingBottom: 8 }}>
+            {[...piramide].reverse().map((item, i) => {
+              const Icon = piramideIcons[4 - i];
+              const widthPct = 45 + i * 10;
+              return (
+                <React.Fragment key={i}>
+                  {i > 0 && (
+                    <div style={{ textAlign: 'center', padding: '2px 0', color: '#F05A28', fontSize: 14 }}>↑</div>
+                  )}
+                  <div style={{
+                    width: `${widthPct}%`,
+                    padding: '8px 16px',
+                    borderRadius: 8,
+                    background: bgColors[4 - i],
+                    textAlign: 'center',
+                    position: 'relative',
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                      <Icon size={14} color="#fff" />
+                      <span style={{ fontSize: 13, fontWeight: 700 }}>{item.titulo}</span>
+                    </div>
+                    <p style={{ fontSize: 14, fontWeight: 800, color: '#fff' }}>{item.valor}</p>
+                    <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)' }}>{item.descricao}</p>
+                  </div>
+                </React.Fragment>
+              );
+            })}
+          </div>
         </div>
-        <p style={{ fontSize: 11, color: '#888', marginBottom: 14 }}>Comprar cliente a custo zero através da maximização do valor</p>
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
-          {[...defaultContent.funil8Detalhado.piramide].reverse().map((item, i) => {
-            const Icon = piramideIcons[4 - i];
+        {/* Right: Cards */}
+        <div style={{ width: '45%', display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {defaultContent.funil8Detalhado.cards.map((card, i) => {
+            const Icon = funilCardIcons[i];
             return (
-              <div key={i} style={{
-                display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 8,
-                border: '1.5px solid rgba(240,90,40,0.7)',
-                background: i === 0 ? 'rgba(192,74,26,0.4)' : 'rgba(240,90,40,0.6)',
-                flex: 1
-              }}>
-                <Icon size={16} color="#fff" />
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontSize: 13, fontWeight: 700 }}>{item.titulo}</p>
-                  <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)' }}>{item.descricao}</p>
+              <div key={i} style={{ background: card.titulo === 'Resultados Esperados' ? '#1E1E1E' : '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 12, flex: 1, display: 'flex', flexDirection: 'column', boxShadow: card.titulo === 'Resultados Esperados' ? 'inset 0 1px 0 rgba(240,90,40,0.1), 0 0 15px rgba(240,90,40,0.1)' : '0 0 12px rgba(240,90,40,0.15)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                  <Icon size={16} color="#F05A28" />
+                  <p style={{ fontSize: 13, fontWeight: 700 }}>{card.titulo}</p>
                 </div>
-                <span style={{ fontSize: 16, fontWeight: 800 }}>{item.valor}</span>
+                {card.stats ? (
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, flex: 1 }}>
+                    {card.stats.map((s, j) => (
+                      <div key={j} style={{ background: '#1A1A1A', borderRadius: 6, padding: 10, textAlign: 'center' }}>
+                        <p style={{ fontSize: 16, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
+                        <p style={{ fontSize: 9, color: '#888' }}>{s.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p style={{ fontSize: 11, color: '#888' }}>{card.texto}</p>
+                )}
               </div>
             );
           })}
         </div>
       </div>
-      
-      {/* Right: Cards */}
-      <div style={{ width: '45%', display: 'flex', flexDirection: 'column', gap: 10 }}>
-        {defaultContent.funil8Detalhado.cards.map((card, i) => {
-          const Icon = funilCardIcons[i];
-          return (
-            <div key={i} style={{ background: card.titulo === 'Resultados Esperados' ? '#1E1E1E' : '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 12, flex: 1, display: 'flex', flexDirection: 'column', boxShadow: card.titulo === 'Resultados Esperados' ? 'inset 0 1px 0 rgba(240,90,40,0.1), 0 0 15px rgba(240,90,40,0.1)' : '0 0 12px rgba(240,90,40,0.15)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                <Icon size={16} color="#F05A28" />
-                <p style={{ fontSize: 13, fontWeight: 700 }}>{card.titulo}</p>
-              </div>
-              {card.stats ? (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, flex: 1 }}>
-                  {card.stats.map((s, j) => (
-                    <div key={j} style={{ background: '#1A1A1A', borderRadius: 6, padding: 10, textAlign: 'center' }}>
-                      <p style={{ fontSize: 16, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
-                      <p style={{ fontSize: 9, color: '#888' }}>{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p style={{ fontSize: 11, color: '#888' }}>{card.texto}</p>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      <SlideFooter />
     </div>
-    <SlideFooter />
-  </div>
-);
+  );
+};
 
 // ============ SLIDE: FASES 2 e 3 ============
 export const SlideFases23: React.FC = () => (

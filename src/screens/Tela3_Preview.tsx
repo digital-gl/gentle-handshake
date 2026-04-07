@@ -72,7 +72,7 @@ const Tela3_Preview: React.FC<Tela3Props> = ({ data, onBack, onExport, onEditSli
       )}
 
       {/* Hidden render area for PDF export */}
-      <div id="pdf-render-area" style={{ position: 'fixed', left: -9999, top: 0, visibility: 'hidden' }}>
+      <div id="pdf-render-area" style={{ position: 'fixed', top: 0, left: -99999, width: 1280, height: 720, overflow: 'hidden', zIndex: -1 }}>
         {activeSlides.map((slide) => (
           // @ts-ignore
           <slide.Component key={slide.key} data={data} />
