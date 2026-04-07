@@ -326,7 +326,7 @@ const Tela2_Wizard: React.FC<Tela2Props> = ({ data, onChange, onFinish, onBack }
           </div>
         </div>
 
-        <div className="lg:w-[55%] flex items-start justify-center">
+        <div className="lg:flex-1 flex items-start justify-center min-w-0">
           <div className="w-full rounded-xl overflow-hidden shadow-2xl border border-bm-orange/20">
             <SlidePreviewSmall>
               {renderPreview()}
