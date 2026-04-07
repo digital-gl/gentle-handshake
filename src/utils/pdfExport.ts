@@ -26,12 +26,21 @@ export async function exportToPDF(
     onProgress?.(i + 1, total);
     const slide = slides[i] as HTMLElement;
 
+    // Ensure the slide has correct explicit dimensions
+    slide.style.width = '1280px';
+    slide.style.height = '720px';
+    slide.style.overflow = 'hidden';
+
     // Detect if slide has light background
     const bgColor = slide.style.background || slide.style.backgroundColor;
     const isLight = bgColor.includes('#FFFFFF') || bgColor.includes('#fff') || bgColor.includes('white');
 
+    // Scroll the slide into view within the container so html2canvas can see it
+    slide.scrollIntoView({ block: 'start' });
+    await new Promise(resolve => setTimeout(resolve, 200));
+
     const canvas = await html2canvas(slide, {
-      scale: 1.5,
+      scale: 2,
       width: 1280,
       height: 720,
       useCORS: true,

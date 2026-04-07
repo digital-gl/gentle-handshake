@@ -79,46 +79,46 @@ export const SlideCapa: React.FC<{ data: ProposalData }> = ({ data }) => (
 // ============ SLIDE: BOAS-VINDAS ============
 export const SlideBoasVindas: React.FC<{ data: ProposalData }> = ({ data }) => (
   <div className="bm-slide" style={{ background: '#FFFFFF', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 40px 12px' }}>
-      <img src={bmLogo} alt="BM" style={{ width: 36, height: 36, borderRadius: '50%' }} />
-      <span style={{ color: '#F05A28', fontSize: 12, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>PROPOSTA DE PARCERIA</span>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 48px 16px' }}>
+      <img src={bmLogo} alt="BM" style={{ width: 40, height: 40, borderRadius: '50%' }} />
+      <span style={{ color: '#F05A28', fontSize: 13, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>PROPOSTA DE PARCERIA</span>
     </div>
-    <div style={{ borderBottom: '1px solid rgba(240,90,40,0.3)', margin: '0 40px' }} />
+    <div style={{ borderBottom: '1px solid rgba(240,90,40,0.3)', margin: '0 48px' }} />
     
-    <div style={{ display: 'flex', flex: 1, padding: '24px 40px 20px' }}>
-      <div style={{ width: '60%', paddingRight: 32, display: 'flex', flexDirection: 'column' }}>
-        <h2 style={{ fontSize: 32, fontWeight: 800, color: '#1A1A1A', marginBottom: 8, lineHeight: 1.2 }}>
-          Seja Bem-vindo à <span style={{ color: '#F05A28' }}>BM Coproduções</span>
+    <div style={{ display: 'flex', flex: 1, padding: '32px 48px 0' }}>
+      <div style={{ width: 700, paddingRight: 40, display: 'flex', flexDirection: 'column' }}>
+        <h2 style={{ fontSize: 36, fontWeight: 800, color: '#1A1A1A', marginBottom: 8, lineHeight: 1.2 }}>
+          Seja Bem-vindo a <span style={{ color: '#F05A28' }}>BM Coproduções</span>
         </h2>
-        <p style={{ fontSize: 13, color: '#666', marginBottom: 16 }}>É uma honra ter você conosco nessa jornada de transformação digital!</p>
+        <p style={{ fontSize: 14, color: '#666', marginBottom: 20 }}>É uma honra ter você conosco nessa jornada de transformação digital!</p>
         
-        <p style={{ fontSize: 13, color: '#333', lineHeight: 1.7, marginBottom: 16 }}>
-          Estamos <span style={{ color: '#F05A28', fontWeight: 700 }}>muito felizes</span> com essa nova parceria! Mais que apenas oferecer serviços, nosso objetivo é <span style={{ color: '#F05A28', fontWeight: 700 }}>construir uma operação completa</span> ao redor da sua expertise, garantindo que sua presença digital gere autoridade, conexão e resultados consistentes.
+        <p style={{ fontSize: 15, color: '#333', lineHeight: 1.8, marginBottom: 20 }}>
+          Estamos <span style={{ textDecoration: 'underline', color: '#F05A28', fontWeight: 600 }}>muito felizes</span> com essa nova parceria! Mais que apenas oferecer serviços, nosso objetivo e <span style={{ textDecoration: 'underline', color: '#F05A28', fontWeight: 700 }}>construir uma operação completa</span> ao redor da sua expertise, garantindo que sua presença digital gere autoridade, conexão e resultados consistentes.
         </p>
         
-        <p style={{ fontSize: 13, color: '#333', lineHeight: 1.7, marginBottom: 24 }}>
+        <p style={{ fontSize: 15, color: '#333', lineHeight: 1.8, marginBottom: 32 }}>
           Conte conosco para traduzir a essência do seu conhecimento em uma estrutura de negócio digital escalável, com estratégia, copy, design, tráfego e posicionamento trabalhando em perfeita sintonia.
         </p>
         
-        <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '16px 20px', marginTop: 'auto' }}>
-          <p style={{ color: '#CCC', fontSize: 13, fontStyle: 'italic', lineHeight: 1.6 }}>
+        <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '20px 24px', marginTop: 'auto', marginBottom: 32 }}>
+          <p style={{ color: '#CCC', fontSize: 14, fontStyle: 'italic', lineHeight: 1.7 }}>
             "{defaultContent.manifesto}"
           </p>
         </div>
       </div>
       
-      <div style={{ width: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ width: 480, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {data.fotoEspecialista ? (
-          <img src={data.fotoEspecialista} alt="Especialista" style={{ width: 200, height: 200, borderRadius: 12, border: '3px dashed #F05A28', objectFit: 'cover' }} />
+          <img src={data.fotoEspecialista} alt="Especialista" style={{ width: 220, height: 220, borderRadius: 16, border: '3px dashed #F05A28', objectFit: 'cover' }} />
         ) : (
-          <div style={{ width: 200, height: 200, borderRadius: 12, border: '3px dashed #F05A28', background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-            <span style={{ color: '#fff', fontSize: 13, textAlign: 'center', padding: 16 }}>Foto profissional do especialista</span>
+          <div style={{ width: 220, height: 220, borderRadius: 16, border: '3px dashed #F05A28', background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+            <span style={{ color: '#fff', fontSize: 14, textAlign: 'center', padding: 20 }}>Foto profissional do especialista</span>
           </div>
         )}
-        <p style={{ fontSize: 22, fontWeight: 800, color: '#1A1A1A', marginTop: 16, letterSpacing: '0.05em', textTransform: 'uppercase', textAlign: 'center' }}>
+        <p style={{ fontSize: 24, fontWeight: 800, color: '#1A1A1A', marginTop: 20, letterSpacing: '0.05em', textTransform: 'uppercase', textAlign: 'center' }}>
           {data.nomeEspecialista || "[NOME DO ESPECIALISTA]"}
         </p>
-        <p style={{ fontSize: 14, color: '#F05A28', fontWeight: 600, marginTop: 4, textAlign: 'center' }}>
+        <p style={{ fontSize: 15, color: '#F05A28', fontWeight: 600, marginTop: 6, textAlign: 'center' }}>
           {data.areaExpertise || "[ÁREA DE EXPERTISE]"}
         </p>
       </div>
@@ -308,37 +308,41 @@ export const SlideEstruturaCompleta: React.FC = () => (
 
 // ============ SLIDE: FUNIL 8 OVERVIEW ============
 export const SlideFunil8Overview: React.FC = () => (
-  <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
-    <SlideHeader section="METODOLOGIA FUNIL 8" />
-    <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 14 }}>
-        <h2 style={{ fontSize: 24, fontWeight: 800 }}>Metodologia FUNIL 8</h2>
-        <p style={{ fontSize: 12, color: '#888' }}>Estratégia de Vendas em 3 Fases Interdependentes</p>
+  <div className="bm-slide" style={{ background: '#1A1A1A', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
+    <div style={{ padding: '28px 48px 0' }}>
+      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 14, marginBottom: 20 }}>
+        <h2 style={{ fontSize: 28, fontWeight: 800 }}>Metodologia FUNIL 8</h2>
+        <p style={{ fontSize: 14, color: '#888' }}>Estratégia de Vendas em 3 Fases Interdependentes</p>
       </div>
-      
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, flex: 1, marginBottom: 12 }}>
+    </div>
+    
+    <div style={{ flex: 1, padding: '0 48px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, flex: 1, marginBottom: 16 }}>
         {(['fase1', 'fase2', 'fase3'] as const).map((key, i) => {
           const fase = defaultContent.funil8Overview[key];
           return (
-            <div key={i} style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,1)', borderRadius: 12, padding: 16, display: 'flex', flexDirection: 'column', boxShadow: '0 0 20px rgba(240,90,40,0.3), 0 4px 12px rgba(0,0,0,0.5)' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 10 }}>
-                <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>0{i + 1}</div>
+            <div key={i} style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.6)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+                <div style={{ width: 36, height: 36, borderRadius: 20, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 15, flexShrink: 0 }}>0{i + 1}</div>
                 <div>
-                  <p style={{ fontSize: 16, fontWeight: 700 }}>{fase.titulo}</p>
-                  <p style={{ fontSize: 11, color: '#F05A28' }}>{fase.subtitulo}</p>
+                  <p style={{ fontSize: 18, fontWeight: 700 }}>{fase.titulo}</p>
+                  <p style={{ fontSize: 12, color: '#F05A28' }}>{fase.subtitulo}</p>
                 </div>
               </div>
-              <p style={{ fontSize: 36, fontWeight: 900, color: '#F05A28', textAlign: 'center', margin: '8px 0', lineHeight: 1 }}>{fase.numero}</p>
-              <p style={{ fontSize: 11, color: '#888', textAlign: 'center', marginBottom: 10 }}>{fase.label}</p>
+              <p style={{ fontSize: 40, fontWeight: 900, color: '#F05A28', margin: '4px 0', lineHeight: 1 }}>{fase.numero}</p>
+              <p style={{ fontSize: 13, color: '#888', marginBottom: 12 }}>{fase.label}</p>
               {fase.bullets.map((b, j) => (
-                <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-                  <ChevronRight size={10} color="#F05A28" />
-                  <span style={{ fontSize: 11, color: '#aaa' }}>{b}</span>
+                <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                  <ChevronRight size={12} color="#F05A28" />
+                  <span style={{ fontSize: 13, color: '#bbb' }}>{b}</span>
                 </div>
               ))}
-              <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 'auto' }}>
+              <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '10px 12px', marginTop: 'auto', borderTop: '1px solid rgba(240,90,40,0.3)' }}>
                 {fase.info.map((inf, j) => (
-                  <p key={j} style={{ fontSize: 10, color: '#888' }}>{inf}</p>
+                  <div key={j} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: j < fase.info.length - 1 ? 4 : 0 }}>
+                    <span style={{ fontSize: 12, color: '#888' }}>{inf.split(':')[0] || inf}:</span>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>{inf.split(':')[1] || ''}</span>
+                  </div>
                 ))}
               </div>
             </div>
@@ -346,15 +350,14 @@ export const SlideFunil8Overview: React.FC = () => (
         })}
       </div>
       
-      <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, display: 'flex', alignItems: 'flex-start', gap: 10, padding: 14, boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
-        <Lightbulb size={20} color="#F05A28" />
+      <div style={{ background: '#2A2A2A', border: '1px solid rgba(240,90,40,0.4)', borderRadius: 10, display: 'flex', alignItems: 'center', gap: 12, padding: '14px 20px', marginBottom: 20 }}>
+        <Lightbulb size={22} color="#F05A28" />
         <div>
-          <p style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>Princípio Fundamental</p>
-          <p style={{ fontSize: 11, color: '#888' }}>Cada fase tem uma função clara e singular: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção.</p>
+          <p style={{ fontSize: 14, fontWeight: 700 }}>Princípio Fundamental</p>
+          <p style={{ fontSize: 13, color: '#999' }}>Cada fase tem uma <span style={{ color: '#F05A28', fontWeight: 700 }}>função clara e singular</span>: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção. A falha de uma etapa compromete todo o sistema.</p>
         </div>
       </div>
     </div>
-    <SlideFooter />
   </div>
 );
 
