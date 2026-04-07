@@ -203,9 +203,11 @@ export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }
       
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: 1 }}>
         {/* Especialista */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15), 0 2px 8px rgba(0,0,0,0.4)' }}>
+        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <User size={22} color="#F05A28" />
+            <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(240,90,40,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <User size={20} color="#F05A28" />
+            </div>
             <div>
               <p style={{ fontSize: 16, fontWeight: 700 }}>Especialista</p>
               <p style={{ fontSize: 11, color: '#F05A28' }}>Sua Expertise</p>
@@ -214,7 +216,9 @@ export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }
           <div style={{ flex: 1 }}>
             {defaultContent.divisaoResponsabilidades.especialista.items.map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '10px 0', borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
-                {React.createElement(espIcons[i], { size: 16, color: '#F05A28' })}
+                <div style={{ width: 28, height: 28, borderRadius: 6, background: 'rgba(240,90,40,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
+                  {React.createElement(espIcons[i], { size: 14, color: '#F05A28' })}
+                </div>
                 <div>
                   <p style={{ fontSize: 13, fontWeight: 700 }}>{item.titulo}</p>
                   <p style={{ fontSize: 11, color: '#888' }}>{item.descricao}</p>
@@ -222,13 +226,17 @@ export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }
               </div>
             ))}
           </div>
-          <p style={{ fontSize: 12, color: '#F05A28', fontWeight: 600, marginTop: 12 }}>Foque apenas no que você faz de melhor</p>
+          <div style={{ background: '#1A1A1A', borderRadius: 8, padding: 12, marginTop: 12, textAlign: 'center' }}>
+            <p style={{ fontSize: 12, fontWeight: 600, color: '#ccc' }}>Foque apenas no que você faz de melhor</p>
+          </div>
         </div>
         
         {/* BM */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15), 0 2px 8px rgba(0,0,0,0.4)' }}>
+        <div style={{ background: '#3D1F0A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <Building2 size={22} color="#F05A28" />
+            <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(240,90,40,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Building2 size={20} color="#F05A28" />
+            </div>
             <div>
               <p style={{ fontSize: 16, fontWeight: 700 }}>BM</p>
               <p style={{ fontSize: 11, color: '#F05A28' }}>Operação Completa</p>
@@ -236,9 +244,14 @@ export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, flex: 1 }}>
             {defaultContent.divisaoResponsabilidades.bm.items.map((item, i) => (
-              <div key={i} style={{ background: '#1A1A1A', borderRadius: 8, padding: '10px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
-                {React.createElement(bmIcons[i], { size: 14, color: '#F05A28' })}
-                <span style={{ fontSize: 12, fontWeight: 500 }}>{item.titulo}</span>
+              <div key={i} style={{ background: 'rgba(240,90,40,0.15)', borderRadius: 8, padding: '10px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 24, height: 24, borderRadius: 6, background: 'rgba(240,90,40,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  {React.createElement(bmIcons[i], { size: 12, color: '#F05A28' })}
+                </div>
+                <div>
+                  <span style={{ fontSize: 12, fontWeight: 600 }}>{item.titulo}</span>
+                  {'descricao' in item && <p style={{ fontSize: 9, color: '#aaa' }}>{(item as any).descricao}</p>}
+                </div>
               </div>
             ))}
           </div>
