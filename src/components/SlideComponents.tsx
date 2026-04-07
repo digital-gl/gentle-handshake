@@ -620,18 +620,16 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
           </div>
           
           {/* Condições Gerais */}
-          <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, marginTop: 14, padding: 12, boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
-            <p style={{ fontSize: 13, fontWeight: 700, color: '#F05A28', fontStyle: 'italic', marginBottom: 4 }}>Condições Gerais</p>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
+          <div style={{ background: '#2A2A2A', borderRadius: 10, marginTop: 14, padding: '10px 16px' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
               <AlertCircle size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
               <div>
-                <p style={{ fontSize: 12, fontWeight: 700 }}>Detalhes Importantes</p>
+                <p style={{ fontSize: 12, fontWeight: 700, color: '#F05A28' }}>Condições Gerais</p>
                 <p style={{ fontSize: 11, color: '#888' }}>{data.condicoesGerais}</p>
               </div>
             </div>
           </div>
         </div>
-        <SlideFooter />
       </div>
     );
   }
