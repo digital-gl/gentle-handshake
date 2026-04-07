@@ -23,7 +23,13 @@ const Tela1_Briefing: React.FC<Tela1Props> = ({ onGenerate, isLoading }) => {
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
         placeholder="Ex: O especialista se chama Vanessa, é nutricionista especializada em emagrecimento feminino. Vamos oferecer o plano BM Impulso Plus por R$1.800/mês. Não incluir o Funil 8. Incluir os próximos passos dos 90 dias. Ela tem foco em mulheres acima de 40 anos..."
-        className="w-full max-w-2xl h-48 bg-bm-card border border-bm-orange/30 rounded-xl p-4 text-sm text-bm-white placeholder:text-bm-gray-dark focus:outline-none focus:border-bm-orange resize-none"
+className="w-full max-w-2xl h-48 rounded-xl p-4 text-sm resize-none focus:outline-none"
+        style={{
+          backgroundColor: '#2A2A2A',
+          color: '#FFFFFF',
+          border: '1.5px solid rgba(240, 90, 40, 0.7)',
+          boxShadow: '0 0 12px rgba(240, 90, 40, 0.15), 0 2px 8px rgba(0,0,0,0.4)',
+        }}
       />
 
       <button
