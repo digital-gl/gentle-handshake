@@ -29,27 +29,12 @@ export const defaultContent = {
   ],
 
   proximosPassos: [
-    {
-      titulo: "Validação e Estruturação",
-      descricao: "Construímos sua marca pessoal, estruturamos seu método e preparamos toda a infraestrutura digital.",
-      dias: "Dias 1 a 45"
-    },
-    {
-      titulo: "Aquisição e Validação",
-      descricao: "Lançamos as primeiras campanhas, geramos vendas iniciais e validamos criativos e ofertas.",
-      dias: "Dias 45 a 60"
-    },
-    {
-      titulo: "Monetização da Base",
-      descricao: "Iniciamos eventos de monetização, aquecemos a base de compradores e geramos receita recorrente.",
-      dias: "Dias 60 a 90"
-    }
+    { titulo: "Validação e Estruturação", descricao: "Construímos sua marca pessoal, estruturamos seu método e preparamos toda a infraestrutura digital.", dias: "Dias 1 a 45" },
+    { titulo: "Aquisição e Validação", descricao: "Lançamos as primeiras campanhas, geramos vendas iniciais e validamos criativos e ofertas.", dias: "Dias 45 a 60" },
+    { titulo: "Monetização da Base", descricao: "Iniciamos eventos de monetização, aquecemos a base de compradores e geramos receita recorrente.", dias: "Dias 60 a 90" }
   ],
 
-  contato: {
-    whatsapp: "45 99124 0809",
-    website: "bmcoproduções.com.br/bm"
-  },
+  contato: { whatsapp: "45 99124 0809", website: "bmcoproduções.com.br/bm" },
 
   sobreBM: "A BM Infraestrutura Digital é uma estrutura estratégica completa para especialistas que desejam posicionamento forte, autoridade e vendas consistentes. Unimos estratégia, copy, design, tráfego e posicionamento em um único ecossistema.",
 
@@ -60,47 +45,35 @@ export const defaultContent = {
   ],
 
   estruturaCompleta: [
-    { icone: "📢", titulo: "Tráfego Pago", descricao: "Transformamos investimento em fluxo constante de oportunidades", bullets: ["Planejamento de campanhas", "Gestão diária", "Testes A/B contínuos", "Escala por dados"] },
-    { icone: "🖥️", titulo: "Criação de Sites", descricao: "Sites pensados para converter, não só para existir", bullets: ["Landing pages", "Foco em conversão", "Performance", "Integrações"] },
-    { icone: "📱", titulo: "Social Media", descricao: "Conteúdo que atrai, posiciona e gera demanda", bullets: ["Planejamento editorial", "Criação de conteúdo", "Gestão de postagens", "Crescimento orgânico"] },
-    { icone: "🎨", titulo: "Design", descricao: "Visual que transmite valor antes da primeira palavra", bullets: ["Identidade visual", "Peças digitais", "Materiais institucionais", "Padronização de marca"] },
-    { icone: "✏️", titulo: "Copywriting", descricao: "Mensagem certa, estrutura certa, vendas previsíveis", bullets: ["Funis de conversão", "Roteiros de vendas", "Anúncios e criativos", "Otimização"] },
-    { icone: "💬", titulo: "Comunicação", descricao: "Relacionamento que aquece e prepara para a venda", bullets: ["E-mail marketing", "WhatsApp", "Automações", "Nutrição de leads"] },
-    { icone: "🎬", titulo: "Edição + Auto.", descricao: "Transformamos gravações em ativos comerciais", bullets: ["Edição profissional", "Legendas e cortes", "Formatos para ads", "Integração com funis"] },
-    { icone: "🤝", titulo: "Comercial", descricao: "Equipe pronta para converter leads em faturamento", bullets: ["Atendimento", "Roteiros de venda", "Follow-ups", "Fechamento"] }
+    { titulo: "Tráfego Pago", descricao: "Transformamos investimento em fluxo constante de oportunidades", bullets: ["Planejamento de campanhas", "Gestão diária", "Testes A/B contínuos", "Escala por dados"] },
+    { titulo: "Criação de Sites", descricao: "Sites pensados para converter, não só para existir", bullets: ["Landing pages", "Foco em conversão", "Performance", "Integrações"] },
+    { titulo: "Social Media", descricao: "Conteúdo que atrai, posiciona e gera demanda", bullets: ["Planejamento editorial", "Criação de conteúdo", "Gestão de postagens", "Crescimento orgânico"] },
+    { titulo: "Design", descricao: "Visual que transmite valor antes da primeira palavra", bullets: ["Identidade visual", "Peças digitais", "Materiais institucionais", "Padronização de marca"] },
+    { titulo: "Copywriting", descricao: "Mensagem certa, estrutura certa, vendas previsíveis", bullets: ["Funis de conversão", "Roteiros de vendas", "Anúncios e criativos", "Otimização"] },
+    { titulo: "Comunicação", descricao: "Relacionamento que aquece e prepara para a venda", bullets: ["E-mail marketing", "WhatsApp", "Automações", "Nutrição de leads"] },
+    { titulo: "Edição + Auto.", descricao: "Transformamos gravações em ativos comerciais", bullets: ["Edição profissional", "Legendas e cortes", "Formatos para ads", "Integração com funis"] },
+    { titulo: "Comercial", descricao: "Equipe pronta para converter leads em faturamento", bullets: ["Atendimento", "Roteiros de venda", "Follow-ups", "Fechamento"] }
   ],
 
   funil8Overview: {
-    fase1: {
-      titulo: "Aquisição", subtitulo: "Funil 8", numero: "200-300", label: "novos clientes/mês",
-      bullets: ["Comprar cliente a custo zero", "Construir base de clientes", "Sistema auto-financiado"],
-      info: ["Investimento: R$3.000/mês", "Receita: R$5.400-8.000"]
-    },
-    fase2: {
-      titulo: "Monetização", subtitulo: "Turbo Express", numero: "R$28-42k", label: "receita mensal extra",
-      bullets: ["Transformar base em caixa", "Evento quinzenal", "Público já aquecido"],
-      info: ["Ticket: R$497-997", "Conversão: 5-8%"]
-    },
-    fase3: {
-      titulo: "Escala", subtitulo: "Lançamento Pago", numero: "R$210k", label: "em 7 dias",
-      bullets: ["Explosão de faturamento", "Produto high ticket", "Base 1.500+ compradores"],
-      info: ["Ticket: R$2.000-5.000", "Conversão: 7%"]
-    }
+    fase1: { titulo: "Aquisição", subtitulo: "Funil 8", numero: "200-300", label: "novos clientes/mês", bullets: ["Comprar cliente a custo zero", "Construir base de clientes", "Sistema auto-financiado"], info: ["Investimento: R$3.000/mês", "Receita: R$5.400-8.000"] },
+    fase2: { titulo: "Monetização", subtitulo: "Turbo Express", numero: "R$28-42k", label: "receita mensal extra", bullets: ["Transformar base em caixa", "Evento quinzenal", "Público já aquecido"], info: ["Ticket: R$497-997", "Conversão: 5-8%"] },
+    fase3: { titulo: "Escala", subtitulo: "Lançamento Pago", numero: "R$210k", label: "em 7 dias", bullets: ["Explosão de faturamento", "Produto high ticket", "Base 1.500+ compradores"], info: ["Ticket: R$2.000-5.000", "Conversão: 7%"] }
   },
 
   funil8Detalhado: {
     piramide: [
-      { icone: "🛒", titulo: "Produto Principal", valor: "R$17", descricao: "Porta de entrada - Desafio 7 dias" },
-      { icone: "➕", titulo: "Order Bump 1", valor: "R$29", descricao: "Complemento imediato" },
-      { icone: "➕", titulo: "Order Bump 2", valor: "R$35", descricao: "Conveniência extra" },
-      { icone: "➕", titulo: "Order Bump 3", valor: "R$17", descricao: "Extra irresistível" },
-      { icone: "👑", titulo: "Upsell", valor: "R$97", descricao: "Resolve o próximo problema imediato" }
+      { titulo: "Produto Principal", valor: "R$17", descricao: "Porta de entrada - Desafio 7 dias" },
+      { titulo: "Order Bump 1", valor: "R$29", descricao: "Complemento imediato" },
+      { titulo: "Order Bump 2", valor: "R$35", descricao: "Conveniência extra" },
+      { titulo: "Order Bump 3", valor: "R$17", descricao: "Extra irresistível" },
+      { titulo: "Upsell", valor: "R$97", descricao: "Resolve o próximo problema imediato" }
     ],
     cards: [
-      { icone: "🎯", titulo: "Objetivo", texto: "Comprar cliente a custo zero. O foco não é lucro, mas zerar o CAC.", destaque: "custo zero" },
-      { icone: "⚙️", titulo: "Mecânica", texto: "Maximização do valor para atingir ROAS 1.2. Para cada R$1 investido, R$1,20 retorna.", destaque: "ROAS 1.2" },
-      { icone: "🔄", titulo: "Ciclo Contínuo", texto: "Funil \"continua rodando para sempre\", servindo como fundação do negócio.", destaque: "" },
-      { icone: "📊", titulo: "Resultados Esperados", texto: "", destaque: "", stats: [
+      { titulo: "Objetivo", texto: "Comprar cliente a custo zero. O foco não é lucro, mas zerar o CAC.", destaque: "custo zero" },
+      { titulo: "Mecânica", texto: "Maximização do valor para atingir ROAS 1.2. Para cada R$1 investido, R$1,20 retorna.", destaque: "ROAS 1.2" },
+      { titulo: "Ciclo Contínuo", texto: "Funil \"continua rodando para sempre\", servindo como fundação do negócio.", destaque: "" },
+      { titulo: "Resultados Esperados", texto: "", destaque: "", stats: [
         { valor: "R$3.000", label: "Investimento/mês" },
         { valor: "R$5.4-8k", label: "Receita/mês" },
         { valor: "200-300", label: "Novos clientes/mês" }
@@ -111,9 +84,9 @@ export const defaultContent = {
   fases23: {
     fase2: {
       cards: [
-        { icone: "👥", titulo: "Público-Alvo", texto: "Direcionado exclusivamente aos compradores do Funil 8. Elimina custo de vender para público frio.", destaque: "exclusivamente aos compradores do Funil 8" },
-        { icone: "📅", titulo: "Frequência e Formato", texto: "Evento quinzenal em grupo WhatsApp/Telegram. Estrutura: 3 dias (Aquecimento → Revelação → Oferta) + 7 dias de vendas.", destaque: "quinzenal" },
-        { icone: "📦", titulo: "O Produto", texto: "Treinamento de valor intermediário (ticket R$497 a R$997) que resolve problema mais complexo.", destaque: "R$497 a R$997" }
+        { titulo: "Público-Alvo", texto: "Direcionado exclusivamente aos compradores do Funil 8. Elimina custo de vender para público frio.", destaque: "exclusivamente aos compradores do Funil 8" },
+        { titulo: "Frequência e Formato", texto: "Evento quinzenal em grupo WhatsApp/Telegram. Estrutura: 3 dias (Aquecimento → Revelação → Oferta) + 7 dias de vendas.", destaque: "quinzenal" },
+        { titulo: "O Produto", texto: "Treinamento de valor intermediário (ticket R$497 a R$997) que resolve problema mais complexo.", destaque: "R$497 a R$997" }
       ],
       stats: [
         { valor: "400-600", label: "Base necessária" },
@@ -123,9 +96,9 @@ export const defaultContent = {
     },
     fase3: {
       cards: [
-        { icone: "✅", titulo: "Pré-requisito", texto: "Base sólida de pelo menos 1.500 compradores. A base validada é prova de demanda real.", destaque: "pelo menos 1.500 compradores" },
-        { icone: "📢", titulo: "Captação Inteligente", texto: "Ingresso pago de baixo valor (ex: R$62) qualifica o público e financia o tráfego do evento.", destaque: "financia o tráfego do evento" },
-        { icone: "👑", titulo: "A Grande Oferta", texto: "Produto high ticket (R$2.000 a R$5.000): programa de transformação completa com curso, mentorias e comunidade.", destaque: "R$2.000 a R$5.000" }
+        { titulo: "Pré-requisito", texto: "Base sólida de pelo menos 1.500 compradores. A base validada é prova de demanda real.", destaque: "pelo menos 1.500 compradores" },
+        { titulo: "Captação Inteligente", texto: "Ingresso pago de baixo valor (ex: R$62) qualifica o público e financia o tráfego do evento.", destaque: "financia o tráfego do evento" },
+        { titulo: "A Grande Oferta", texto: "Produto high ticket (R$2.000 a R$5.000): programa de transformação completa com curso, mentorias e comunidade.", destaque: "R$2.000 a R$5.000" }
       ],
       stats: [
         { valor: "1.500+", label: "Compradores" },
@@ -137,42 +110,29 @@ export const defaultContent = {
 
   cronograma: {
     fase1: {
-      titulo: "Validação e Estruturação",
-      dias: "Dias 1-45",
-      items: [
-        "Marca pessoal do especialista",
-        "Método estruturado",
-        "Metodologia de ensino",
-        "Curso organizado",
-        "Produtos definidos",
-        "Funil configurado",
-        "Páginas e VSL preparados",
-        "Conteúdo produzido",
-        "Infraestrutura funcionando"
-      ],
+      titulo: "Validação e Estruturação", dias: "Dias 1-45",
+      items: ["Marca pessoal do especialista", "Método estruturado", "Metodologia de ensino", "Curso organizado", "Produtos definidos", "Funil configurado", "Páginas e VSL preparados", "Conteúdo produzido", "Infraestrutura funcionando"],
       rodape: "Projeto pronto para aquisição"
     },
     fase2: {
-      titulo: "Aquisição e Validação",
-      dias: "Dias 45-60",
+      titulo: "Aquisição e Validação", dias: "Dias 45-60",
       items: [
-        { icone: "🛒", titulo: "Primeiras Vendas", descricao: "Geração das primeiras vendas do funil" },
-        { icone: "📢", titulo: "Validação de Criativos", descricao: "Testes e otimização de anúncios" },
-        { icone: "📄", titulo: "Validação de Páginas", descricao: "A/B testing de páginas de vendas" },
-        { icone: "🎬", titulo: "Validação de VSL", descricao: "Teste de vídeos de vendas" },
-        { icone: "🎁", titulo: "Validação da Oferta", descricao: "Confirmação de demanda do mercado" }
+        { titulo: "Primeiras Vendas", descricao: "Geração das primeiras vendas do funil" },
+        { titulo: "Validação de Criativos", descricao: "Testes e otimização de anúncios" },
+        { titulo: "Validação de Páginas", descricao: "A/B testing de páginas de vendas" },
+        { titulo: "Validação de VSL", descricao: "Teste de vídeos de vendas" },
+        { titulo: "Validação da Oferta", descricao: "Confirmação de demanda do mercado" }
       ],
       rodape: "Base de compradores inicial"
     },
     fase3: {
-      titulo: "Monetização da Base",
-      dias: "Dias 60-90",
+      titulo: "Monetização da Base", dias: "Dias 60-90",
       items: [
-        { icone: "⚡", titulo: "Turbo Express", descricao: "Primeiros eventos de monetização" },
-        { icone: "📈", titulo: "Fluxo de Caixa", descricao: "Geração de receita recorrente" },
-        { icone: "👥", titulo: "Relacionamento", descricao: "Aquecimento da base de compradores" },
-        { icone: "⚙️", titulo: "Otimização", descricao: "Ajustes baseados em resultados" },
-        { icone: "🚀", titulo: "Preparação", descricao: "Base para futuros lançamentos" }
+        { titulo: "Turbo Express", descricao: "Primeiros eventos de monetização" },
+        { titulo: "Fluxo de Caixa", descricao: "Geração de receita recorrente" },
+        { titulo: "Relacionamento", descricao: "Aquecimento da base de compradores" },
+        { titulo: "Otimização", descricao: "Ajustes baseados em resultados" },
+        { titulo: "Preparação", descricao: "Base para futuros lançamentos" }
       ],
       rodape: "Negócio monetizado"
     }
@@ -180,52 +140,64 @@ export const defaultContent = {
 
   divisaoResponsabilidades: {
     especialista: {
-      titulo: "Especialista",
-      subtitulo: "Sua Expertise",
+      titulo: "Especialista", subtitulo: "Sua Expertise",
       items: [
-        { icone: "🎓", titulo: "Gravação das Aulas", descricao: "Grave o conteúdo seguindo nossas orientações" },
-        { icone: "🎬", titulo: "Gravação de Conteúdos", descricao: "Grave os conteúdos roteirizados pela BM" },
-        { icone: "📁", titulo: "Envio dos Materiais", descricao: "Envie tudo para o Drive compartilhado" },
-        { icone: "📅", titulo: "Reuniões Estratégicas", descricao: "Participe das reuniões de alinhamento" }
+        { titulo: "Gravação das Aulas", descricao: "Grave o conteúdo seguindo nossas orientações" },
+        { titulo: "Gravação de Conteúdos", descricao: "Grave os conteúdos roteirizados pela BM" },
+        { titulo: "Envio dos Materiais", descricao: "Envie tudo para o Drive compartilhado" },
+        { titulo: "Reuniões Estratégicas", descricao: "Participe das reuniões de alinhamento" }
       ],
       rodape: "Foque apenas no que você faz de melhor"
     },
     bm: {
-      titulo: "BM",
-      subtitulo: "Operação Completa",
+      titulo: "BM", subtitulo: "Operação Completa",
       items: [
-        { icone: "📊", titulo: "Estratégia" },
-        { icone: "✏️", titulo: "Método" },
-        { icone: "📦", titulo: "Produto" },
-        { icone: "✍️", titulo: "Copywriting" },
-        { icone: "🎬", titulo: "Edição" },
-        { icone: "🖥️", titulo: "Infraestrutura" },
-        { icone: "📢", titulo: "Aquisição" },
-        { icone: "🤝", titulo: "Comercial" }
+        { titulo: "Estratégia" }, { titulo: "Método" }, { titulo: "Produto" }, { titulo: "Copywriting" },
+        { titulo: "Edição" }, { titulo: "Infraestrutura" }, { titulo: "Aquisição" }, { titulo: "Comercial" }
       ],
       rodape: "A BM assume a operação completa"
     }
   },
 
   investimento: {
-    coproducao: {
-      valorTotal: "R$24.300",
-      parcelado: "3x R$8.100",
-      desconto: "7% de desconto à vista",
-      economia: "Economia de R$1.701"
-    },
-    trafego: {
-      valor: "R$3.000",
-      items: ["Testes de criativos", "Validação da oferta", "Aquisição de clientes"]
-    },
+    coproducao: { valorTotal: "R$24.300", parcelado: "3x R$8.100", desconto: "7% de desconto à vista", economia: "Economia de R$1.701" },
+    trafego: { valor: "R$3.000", items: ["Testes de criativos", "Validação da oferta", "Aquisição de clientes"] },
     comparativo: [
-      { icone: "👤", titulo: "Gestor de Tráfego" },
-      { icone: "✏️", titulo: "Copywriter" },
-      { icone: "✂️", titulo: "Editor de Vídeo" },
-      { icone: "👔", titulo: "Estrategista" },
-      { icone: "💻", titulo: "Dev. de Funil" },
-      { icone: "🖥️", titulo: "Infraestrutura" }
+      { titulo: "Gestor de Tráfego" }, { titulo: "Copywriter" }, { titulo: "Editor de Vídeo" },
+      { titulo: "Estrategista" }, { titulo: "Dev. de Funil" }, { titulo: "Infraestrutura" }
     ]
+  },
+
+  planosImpulso: {
+    impulso: {
+      nome: "BM Impulso",
+      subtitulo: "Para quem está começando",
+      items: [
+        "Gestão de redes sociais",
+        "Criação de conteúdo estratégico",
+        "Copy e roteiros",
+        "Edição de vídeos",
+        "Posicionamento de marca",
+        "Suporte estratégico mensal"
+      ],
+      valor: "R$ 1.500,00",
+      contrato: "Contrato mínimo de 3 meses"
+    },
+    impulsoPlus: {
+      nome: "BM Impulso Plus",
+      subtitulo: "Experiência completa recomendada",
+      items: [
+        "Tudo do BM Impulso",
+        "Tráfego pago gerenciado",
+        "Funil de vendas completo",
+        "Páginas e VSL",
+        "Atendimento e comercial",
+        "Relatórios e métricas"
+      ],
+      valor: "R$ 1.800,00",
+      contrato: "Contrato mínimo de 3 meses"
+    },
+    condicoesGerais: "Primeiras entregas: Realizadas em um prazo de 72 horas."
   }
 };
 
@@ -264,6 +236,17 @@ export interface ProposalData {
   responsabilidadesBM: string[];
   proximosPassos: { titulo: string; descricao: string; dias: string }[];
   showLogo: boolean;
+  // New fields for investment layout
+  layoutInvestimento: 'planos' | 'coproducao';
+  planoImpulsoNome: string;
+  planoImpulsoSubtitulo: string;
+  planoImpulsoItems: string[];
+  planoImpulsoValor: string;
+  planoImpulsoPlusNome: string;
+  planoImpulsoPlusSubtitulo: string;
+  planoImpulsoPlusItems: string[];
+  planoImpulsoPlusValor: string;
+  condicoesGerais: string;
 }
 
 export const createDefaultProposal = (): ProposalData => ({
@@ -301,6 +284,16 @@ export const createDefaultProposal = (): ProposalData => ({
   responsabilidadesBM: [...defaultContent.responsabilidadesBM],
   proximosPassos: [...defaultContent.proximosPassos],
   showLogo: true,
+  layoutInvestimento: 'planos',
+  planoImpulsoNome: defaultContent.planosImpulso.impulso.nome,
+  planoImpulsoSubtitulo: defaultContent.planosImpulso.impulso.subtitulo,
+  planoImpulsoItems: [...defaultContent.planosImpulso.impulso.items],
+  planoImpulsoValor: defaultContent.planosImpulso.impulso.valor,
+  planoImpulsoPlusNome: defaultContent.planosImpulso.impulsoPlus.nome,
+  planoImpulsoPlusSubtitulo: defaultContent.planosImpulso.impulsoPlus.subtitulo,
+  planoImpulsoPlusItems: [...defaultContent.planosImpulso.impulsoPlus.items],
+  planoImpulsoPlusValor: defaultContent.planosImpulso.impulsoPlus.valor,
+  condicoesGerais: defaultContent.planosImpulso.condicoesGerais,
 });
 
 export function cleanName(raw: string): string {
