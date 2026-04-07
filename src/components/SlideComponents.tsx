@@ -194,74 +194,44 @@ export const SlideSobreBM: React.FC = () => (
 // ============ SLIDE: MODELO DE COPRODUÇÃO / DIVISÃO ============
 export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }) => (
   <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
-    <SlideHeader section="DIVISÃO DE RESPONSABILIDADES" />
-    <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 16 }}>
-        <h2 style={{ fontSize: 24, fontWeight: 800 }}>Divisão de Responsabilidades</h2>
-        <p style={{ fontSize: 12, color: '#888' }}>Clareza total sobre o que cada parte executa</p>
-      </div>
+    <SlideHeader section="MODELO DE Coprodução" />
+    <div style={{ borderTop: '1px solid rgba(240,90,40,0.3)', margin: '0 40px' }} />
+    <div style={{ flex: 1, padding: '20px 40px 40px', display: 'flex', flexDirection: 'column' }}>
+      <h2 style={{ fontSize: 32, fontWeight: 800, marginBottom: 4 }}>
+        Você Foca no Que Sabe. <span style={{ color: '#F05A28', fontStyle: 'italic' }}>A BM Constrói Tudo.</span>
+      </h2>
+      <p style={{ fontSize: 14, color: '#888', marginBottom: 24 }}>Clareza total sobre o que cada parte executa na parceria</p>
       
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: 1 }}>
-        {/* Especialista */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(240,90,40,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <User size={20} color="#F05A28" />
-            </div>
-            <div>
-              <p style={{ fontSize: 16, fontWeight: 700 }}>Especialista</p>
-              <p style={{ fontSize: 11, color: '#F05A28' }}>Sua Expertise</p>
-            </div>
-          </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, flex: 1 }}>
+        {/* Sua Responsabilidade */}
+        <div style={{ background: '#FFFFFF', borderRadius: 12, padding: '28px 32px', display: 'flex', flexDirection: 'column' }}>
+          <p style={{ fontSize: 18, fontWeight: 800, color: '#1A1A1A', marginBottom: 4 }}>Sua Responsabilidade</p>
+          <div style={{ width: 50, height: 3, background: '#F05A28', marginBottom: 20 }} />
           <div style={{ flex: 1 }}>
-            {defaultContent.divisaoResponsabilidades.especialista.items.map((item, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '10px 0', borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
-                <div style={{ width: 28, height: 28, borderRadius: 6, background: 'rgba(240,90,40,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
-                  {React.createElement(espIcons[i], { size: 14, color: '#F05A28' })}
-                </div>
-                <div>
-                  <p style={{ fontSize: 13, fontWeight: 700 }}>{item.titulo}</p>
-                  <p style={{ fontSize: 11, color: '#888' }}>{item.descricao}</p>
-                </div>
+            {data.responsabilidadesEspecialista.map((item, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                <div style={{ width: 6, height: 6, borderRadius: 1, background: '#F05A28', flexShrink: 0 }} />
+                <span style={{ fontSize: 14, color: '#333', fontWeight: 500 }}>{item}</span>
               </div>
             ))}
-          </div>
-          <div style={{ background: '#1A1A1A', borderRadius: 8, padding: 12, marginTop: 12, textAlign: 'center' }}>
-            <p style={{ fontSize: 12, fontWeight: 600, color: '#ccc' }}>Foque apenas no que você faz de melhor</p>
           </div>
         </div>
         
-        {/* BM */}
-        <div style={{ background: '#3D1F0A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(240,90,40,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Building2 size={20} color="#F05A28" />
-            </div>
-            <div>
-              <p style={{ fontSize: 16, fontWeight: 700 }}>BM</p>
-              <p style={{ fontSize: 11, color: '#F05A28' }}>Operação Completa</p>
-            </div>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, flex: 1 }}>
-            {defaultContent.divisaoResponsabilidades.bm.items.map((item, i) => (
-              <div key={i} style={{ background: 'rgba(240,90,40,0.15)', borderRadius: 8, padding: '10px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
-                <div style={{ width: 24, height: 24, borderRadius: 6, background: 'rgba(240,90,40,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  {React.createElement(bmIcons[i], { size: 12, color: '#F05A28' })}
-                </div>
-                <div>
-                  <span style={{ fontSize: 12, fontWeight: 600 }}>{item.titulo}</span>
-                  {'descricao' in item && <p style={{ fontSize: 9, color: '#aaa' }}>{(item as any).descricao}</p>}
-                </div>
+        {/* Nossa Responsabilidade */}
+        <div style={{ background: '#FFFFFF', borderRadius: 12, padding: '28px 32px', display: 'flex', flexDirection: 'column' }}>
+          <p style={{ fontSize: 18, fontWeight: 800, color: '#1A1A1A', marginBottom: 4 }}>Nossa Responsabilidade</p>
+          <div style={{ width: 50, height: 3, background: '#F05A28', marginBottom: 20 }} />
+          <div style={{ flex: 1 }}>
+            {data.responsabilidadesBM.map((item, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                <div style={{ width: 6, height: 6, borderRadius: 1, background: '#F05A28', flexShrink: 0 }} />
+                <span style={{ fontSize: 14, color: '#333', fontWeight: 500 }}>{item}</span>
               </div>
             ))}
-          </div>
-          <div style={{ background: '#F05A28', borderRadius: 8, padding: 12, marginTop: 12, textAlign: 'center' }}>
-            <p style={{ fontSize: 13, fontWeight: 700 }}>A BM assume a operação completa</p>
           </div>
         </div>
       </div>
     </div>
-    <SlideFooter />
   </div>
 );
 
@@ -307,59 +277,75 @@ export const SlideEstruturaCompleta: React.FC = () => (
 );
 
 // ============ SLIDE: FUNIL 8 OVERVIEW ============
-export const SlideFunil8Overview: React.FC = () => (
-  <div className="bm-slide" style={{ background: '#1A1A1A', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
-    <div style={{ padding: '28px 48px 0' }}>
-      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 14, marginBottom: 20 }}>
-        <h2 style={{ fontSize: 28, fontWeight: 800 }}>Metodologia FUNIL 8</h2>
-        <p style={{ fontSize: 14, color: '#888' }}>Estratégia de Vendas em 3 Fases Interdependentes</p>
-      </div>
-    </div>
-    
-    <div style={{ flex: 1, padding: '0 48px', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, flex: 1, marginBottom: 16 }}>
-        {(['fase1', 'fase2', 'fase3'] as const).map((key, i) => {
-          const fase = defaultContent.funil8Overview[key];
-          return (
-            <div key={i} style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.6)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 20, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 15, flexShrink: 0 }}>0{i + 1}</div>
-                <div>
-                  <p style={{ fontSize: 18, fontWeight: 700 }}>{fase.titulo}</p>
-                  <p style={{ fontSize: 12, color: '#F05A28' }}>{fase.subtitulo}</p>
-                </div>
-              </div>
-              <p style={{ fontSize: 40, fontWeight: 900, color: '#F05A28', margin: '4px 0', lineHeight: 1 }}>{fase.numero}</p>
-              <p style={{ fontSize: 13, color: '#888', marginBottom: 12 }}>{fase.label}</p>
-              {fase.bullets.map((b, j) => (
-                <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                  <ChevronRight size={12} color="#F05A28" />
-                  <span style={{ fontSize: 13, color: '#bbb' }}>{b}</span>
-                </div>
-              ))}
-              <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '10px 12px', marginTop: 'auto', borderTop: '1px solid rgba(240,90,40,0.3)' }}>
-                {fase.info.map((inf, j) => (
-                  <div key={j} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: j < fase.info.length - 1 ? 4 : 0 }}>
-                    <span style={{ fontSize: 12, color: '#888' }}>{inf.split(':')[0] || inf}:</span>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>{inf.split(':')[1] || ''}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+export const SlideFunil8Overview: React.FC = () => {
+  const bulletIcons = [
+    [Target, GraduationCap, Settings],
+    [Zap, CalendarDays, Users],
+    [TrendingUp, Crown, Users]
+  ];
+  return (
+    <div className="bm-slide" style={{ background: '#1A1A1A', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
+      <div style={{ padding: '28px 48px 0' }}>
+        <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 14, marginBottom: 20 }}>
+          <h2 style={{ fontSize: 28, fontWeight: 800 }}>Metodologia FUNIL 8</h2>
+          <p style={{ fontSize: 14, color: '#888' }}>Estratégia de Vendas em 3 Fases Interdependentes</p>
+        </div>
       </div>
       
-      <div style={{ background: '#2A2A2A', border: '1px solid rgba(240,90,40,0.4)', borderRadius: 10, display: 'flex', alignItems: 'center', gap: 12, padding: '14px 20px', marginBottom: 20 }}>
-        <Lightbulb size={22} color="#F05A28" />
-        <div>
-          <p style={{ fontSize: 14, fontWeight: 700 }}>Princípio Fundamental</p>
-          <p style={{ fontSize: 13, color: '#999' }}>Cada fase tem uma <span style={{ color: '#F05A28', fontWeight: 700 }}>função clara e singular</span>: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção. A falha de uma etapa compromete todo o sistema.</p>
+      <div style={{ flex: 1, padding: '0 48px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, flex: 1, marginBottom: 16 }}>
+          {(['fase1', 'fase2', 'fase3'] as const).map((key, i) => {
+            const fase = defaultContent.funil8Overview[key];
+            const icons = bulletIcons[i];
+            return (
+              <div key={i} style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: '18px 20px', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                  <div style={{ width: 38, height: 38, borderRadius: 10, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 16, flexShrink: 0 }}>0{i + 1}</div>
+                  <div>
+                    <p style={{ fontSize: 17, fontWeight: 700 }}>{fase.titulo}</p>
+                    <p style={{ fontSize: 12, color: '#F05A28', fontStyle: 'italic' }}>{fase.subtitulo}</p>
+                  </div>
+                </div>
+                <p style={{ fontSize: 36, fontWeight: 900, color: '#F05A28', margin: '0 0 2px', lineHeight: 1 }}>{fase.numero}</p>
+                <p style={{ fontSize: 12, color: '#888', marginBottom: 14 }}>{fase.label}</p>
+                {fase.bullets.map((b, j) => {
+                  const BIcon = icons[j] || ChevronRight;
+                  return (
+                    <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 7 }}>
+                      <BIcon size={13} color="#F05A28" />
+                      <span style={{ fontSize: 13, color: '#bbb' }}>{b}</span>
+                    </div>
+                  );
+                })}
+                <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '10px 14px', marginTop: 'auto' }}>
+                  {fase.info.map((inf, j) => {
+                    const parts = inf.split(':');
+                    return (
+                      <div key={j} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: j < fase.info.length - 1 ? 4 : 0 }}>
+                        <span style={{ fontSize: 12, color: '#888' }}>{parts[0]}:</span>
+                        <span style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>{parts[1]}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        
+        <div style={{ background: '#2A2A2A', border: '1px solid rgba(240,90,40,0.4)', borderRadius: 10, display: 'flex', alignItems: 'center', gap: 14, padding: '14px 20px', marginBottom: 20 }}>
+          <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(240,90,40,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <Lightbulb size={20} color="#F05A28" />
+          </div>
+          <div>
+            <p style={{ fontSize: 14, fontWeight: 700 }}>Princípio Fundamental</p>
+            <p style={{ fontSize: 12, color: '#999', lineHeight: 1.5 }}>Cada fase tem uma <span style={{ color: '#F05A28', fontWeight: 700 }}>função clara e singular</span>: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção. A falha de uma etapa compromete todo o sistema.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // ============ SLIDE: FUNIL 8 FASE 1 DETALHADO ============
 export const SlideFunil8Fase1: React.FC = () => {
@@ -511,81 +497,31 @@ export const SlideCronograma: React.FC<{ data: ProposalData }> = ({ data }) => (
       
       {/* Timeline bar */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 14 }}>
-        {[defaultContent.cronograma.fase1, defaultContent.cronograma.fase2, defaultContent.cronograma.fase3].map((f, i) => (
+        {data.proximosPassos.map((p, i) => (
           <React.Fragment key={i}>
             <div style={{ flex: 1, borderRadius: 8, padding: '8px 12px', textAlign: 'center', background: i === 0 ? '#F05A28' : i === 1 ? 'rgba(240,90,40,0.8)' : '#C04A1A' }}>
-              <p style={{ fontSize: 12, fontWeight: 700 }}>{f.dias}</p>
-              <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)' }}>{f.titulo}</p>
+              <p style={{ fontSize: 12, fontWeight: 700 }}>{p.dias}</p>
+              <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)' }}>{p.titulo}</p>
             </div>
-            {i < 2 && <ChevronRight size={16} color="#F05A28" />}
+            {i < data.proximosPassos.length - 1 && <ChevronRight size={16} color="#F05A28" />}
           </React.Fragment>
         ))}
       </div>
       
       {/* 3 cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, flex: 1 }}>
-        {/* Fase 1 */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>01</div>
-            <p style={{ fontSize: 13, fontWeight: 700 }}>Validação e Estruturação</p>
-          </div>
-          {(defaultContent.cronograma.fase1.items as string[]).map((item, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
-              <CheckCircle size={10} color="#F05A28" />
-              <span style={{ fontSize: 10, color: '#aaa' }}>{item}</span>
+        {data.proximosPassos.map((passo, idx) => (
+          <div key={idx} style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+              <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>0{idx + 1}</div>
+              <p style={{ fontSize: 13, fontWeight: 700 }}>{passo.titulo}</p>
             </div>
-          ))}
-          <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 'auto', textAlign: 'center' }}>
-            <p style={{ fontSize: 10, color: '#F05A28' }}>{defaultContent.cronograma.fase1.rodape}</p>
+            <p style={{ fontSize: 11, color: '#aaa', lineHeight: 1.6, flex: 1 }}>{passo.descricao}</p>
+            <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 10, textAlign: 'center' }}>
+              <p style={{ fontSize: 10, color: '#F05A28' }}>{passo.dias}</p>
+            </div>
           </div>
-        </div>
-        
-        {/* Fase 2 */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>02</div>
-            <p style={{ fontSize: 13, fontWeight: 700 }}>Aquisição e Validação</p>
-          </div>
-          {(defaultContent.cronograma.fase2.items as Array<{titulo: string; descricao: string}>).map((item, i) => {
-            const Icon = cronoFase2Icons[i];
-            return (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
-                <Icon size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
-                <div>
-                  <p style={{ fontSize: 11, fontWeight: 700 }}>{item.titulo}</p>
-                  <p style={{ fontSize: 9, color: '#888' }}>{item.descricao}</p>
-                </div>
-              </div>
-            );
-          })}
-          <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 'auto', textAlign: 'center' }}>
-            <p style={{ fontSize: 10, color: '#F05A28' }}>{defaultContent.cronograma.fase2.rodape}</p>
-          </div>
-        </div>
-        
-        {/* Fase 3 */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>03</div>
-            <p style={{ fontSize: 13, fontWeight: 700 }}>Monetização da Base</p>
-          </div>
-          {(defaultContent.cronograma.fase3.items as Array<{titulo: string; descricao: string}>).map((item, i) => {
-            const Icon = cronoFase3Icons[i];
-            return (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
-                <Icon size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
-                <div>
-                  <p style={{ fontSize: 11, fontWeight: 700 }}>{item.titulo}</p>
-                  <p style={{ fontSize: 9, color: '#888' }}>{item.descricao}</p>
-                </div>
-              </div>
-            );
-          })}
-          <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 'auto', textAlign: 'center' }}>
-            <p style={{ fontSize: 10, color: '#F05A28' }}>{defaultContent.cronograma.fase3.rodape}</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
     <SlideFooter />
@@ -650,18 +586,16 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
           </div>
           
           {/* Condições Gerais */}
-          <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, marginTop: 14, padding: 12, boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
-            <p style={{ fontSize: 13, fontWeight: 700, color: '#F05A28', fontStyle: 'italic', marginBottom: 4 }}>Condições Gerais</p>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
+          <div style={{ background: '#2A2A2A', borderRadius: 10, marginTop: 14, padding: '10px 16px' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
               <AlertCircle size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
               <div>
-                <p style={{ fontSize: 12, fontWeight: 700 }}>Detalhes Importantes</p>
+                <p style={{ fontSize: 12, fontWeight: 700, color: '#F05A28' }}>Condições Gerais</p>
                 <p style={{ fontSize: 11, color: '#888' }}>{data.condicoesGerais}</p>
               </div>
             </div>
           </div>
         </div>
-        <SlideFooter />
       </div>
     );
   }
@@ -730,12 +664,11 @@ export const SlideEncerramento: React.FC<{ data: ProposalData }> = ({ data }) =>
     <h2 style={{ fontSize: 36, fontWeight: 800, marginBottom: 8 }}>
       Vamos <span style={{ color: '#F05A28', fontStyle: 'italic' }}>Construir</span> Juntos!
     </h2>
-    <p style={{ fontSize: 14, color: '#888', maxWidth: 600, marginBottom: 8 }}>
-      A BM está pronta para ser sua parceira criativa no digital. Vamos transformar!
-    </p>
-    <p style={{ fontSize: 13, color: '#aaa', maxWidth: 600, marginBottom: 32 }}>
-      Sua presença visual em uma marca forte, estratégica e inesquecível.
-    </p>
+    {data.mensagemEncerramento && (
+      <p style={{ fontSize: 15, color: '#ccc', maxWidth: 700, marginBottom: 24, lineHeight: 1.7 }}>
+        {data.mensagemEncerramento}
+      </p>
+    )}
     
     <div style={{ marginBottom: 16 }}>
       <p style={{ fontSize: 13 }}><span style={{ color: '#F05A28', fontWeight: 700 }}>WhatsApp:</span> {data.whatsapp}</p>
