@@ -304,7 +304,7 @@ const Tela2_Wizard: React.FC<Tela2Props> = ({ data, onChange, onFinish, onBack }
       </div>
 
       <div className="flex-1 max-w-7xl mx-auto w-full p-4 flex flex-col lg:flex-row gap-4">
-        <div className="lg:w-[45%] space-y-4 overflow-y-auto">
+        <div className="lg:w-[38%] space-y-4 overflow-y-auto" style={{ flexShrink: 0 }}>
           <div className="bg-bm-card rounded-xl p-4 border border-bm-orange/20">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-1 h-5 bg-bm-orange rounded" />
