@@ -494,68 +494,18 @@ export const SlideCronograma: React.FC<{ data: ProposalData }> = ({ data }) => (
       
       {/* 3 cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, flex: 1 }}>
-        {/* Fase 1 */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>01</div>
-            <p style={{ fontSize: 13, fontWeight: 700 }}>Validação e Estruturação</p>
-          </div>
-          {(defaultContent.cronograma.fase1.items as string[]).map((item, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
-              <CheckCircle size={10} color="#F05A28" />
-              <span style={{ fontSize: 10, color: '#aaa' }}>{item}</span>
+        {data.proximosPassos.map((passo, idx) => (
+          <div key={idx} style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+              <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>0{idx + 1}</div>
+              <p style={{ fontSize: 13, fontWeight: 700 }}>{passo.titulo}</p>
             </div>
-          ))}
-          <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 'auto', textAlign: 'center' }}>
-            <p style={{ fontSize: 10, color: '#F05A28' }}>{defaultContent.cronograma.fase1.rodape}</p>
+            <p style={{ fontSize: 11, color: '#aaa', lineHeight: 1.6, flex: 1 }}>{passo.descricao}</p>
+            <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 10, textAlign: 'center' }}>
+              <p style={{ fontSize: 10, color: '#F05A28' }}>{passo.dias}</p>
+            </div>
           </div>
-        </div>
-        
-        {/* Fase 2 */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>02</div>
-            <p style={{ fontSize: 13, fontWeight: 700 }}>Aquisição e Validação</p>
-          </div>
-          {(defaultContent.cronograma.fase2.items as Array<{titulo: string; descricao: string}>).map((item, i) => {
-            const Icon = cronoFase2Icons[i];
-            return (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
-                <Icon size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
-                <div>
-                  <p style={{ fontSize: 11, fontWeight: 700 }}>{item.titulo}</p>
-                  <p style={{ fontSize: 9, color: '#888' }}>{item.descricao}</p>
-                </div>
-              </div>
-            );
-          })}
-          <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 'auto', textAlign: 'center' }}>
-            <p style={{ fontSize: 10, color: '#F05A28' }}>{defaultContent.cronograma.fase2.rodape}</p>
-          </div>
-        </div>
-        
-        {/* Fase 3 */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>03</div>
-            <p style={{ fontSize: 13, fontWeight: 700 }}>Monetização da Base</p>
-          </div>
-          {(defaultContent.cronograma.fase3.items as Array<{titulo: string; descricao: string}>).map((item, i) => {
-            const Icon = cronoFase3Icons[i];
-            return (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
-                <Icon size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
-                <div>
-                  <p style={{ fontSize: 11, fontWeight: 700 }}>{item.titulo}</p>
-                  <p style={{ fontSize: 9, color: '#888' }}>{item.descricao}</p>
-                </div>
-              </div>
-            );
-          })}
-          <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 'auto', textAlign: 'center' }}>
-            <p style={{ fontSize: 10, color: '#F05A28' }}>{defaultContent.cronograma.fase3.rodape}</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
     <SlideFooter />
