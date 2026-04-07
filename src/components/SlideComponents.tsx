@@ -79,46 +79,46 @@ export const SlideCapa: React.FC<{ data: ProposalData }> = ({ data }) => (
 // ============ SLIDE: BOAS-VINDAS ============
 export const SlideBoasVindas: React.FC<{ data: ProposalData }> = ({ data }) => (
   <div className="bm-slide" style={{ background: '#FFFFFF', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 40px 12px' }}>
-      <img src={bmLogo} alt="BM" style={{ width: 36, height: 36, borderRadius: '50%' }} />
-      <span style={{ color: '#F05A28', fontSize: 12, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>PROPOSTA DE PARCERIA</span>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 48px 16px' }}>
+      <img src={bmLogo} alt="BM" style={{ width: 40, height: 40, borderRadius: '50%' }} />
+      <span style={{ color: '#F05A28', fontSize: 13, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>PROPOSTA DE PARCERIA</span>
     </div>
-    <div style={{ borderBottom: '1px solid rgba(240,90,40,0.3)', margin: '0 40px' }} />
+    <div style={{ borderBottom: '1px solid rgba(240,90,40,0.3)', margin: '0 48px' }} />
     
-    <div style={{ display: 'flex', flex: 1, padding: '24px 40px 20px' }}>
-      <div style={{ width: '60%', paddingRight: 32, display: 'flex', flexDirection: 'column' }}>
-        <h2 style={{ fontSize: 32, fontWeight: 800, color: '#1A1A1A', marginBottom: 8, lineHeight: 1.2 }}>
-          Seja Bem-vindo à <span style={{ color: '#F05A28' }}>BM Coproduções</span>
+    <div style={{ display: 'flex', flex: 1, padding: '32px 48px 0' }}>
+      <div style={{ width: 700, paddingRight: 40, display: 'flex', flexDirection: 'column' }}>
+        <h2 style={{ fontSize: 36, fontWeight: 800, color: '#1A1A1A', marginBottom: 8, lineHeight: 1.2 }}>
+          Seja Bem-vindo a <span style={{ color: '#F05A28' }}>BM Coproduções</span>
         </h2>
-        <p style={{ fontSize: 13, color: '#666', marginBottom: 16 }}>É uma honra ter você conosco nessa jornada de transformação digital!</p>
+        <p style={{ fontSize: 14, color: '#666', marginBottom: 20 }}>É uma honra ter você conosco nessa jornada de transformação digital!</p>
         
-        <p style={{ fontSize: 13, color: '#333', lineHeight: 1.7, marginBottom: 16 }}>
-          Estamos <span style={{ color: '#F05A28', fontWeight: 700 }}>muito felizes</span> com essa nova parceria! Mais que apenas oferecer serviços, nosso objetivo é <span style={{ color: '#F05A28', fontWeight: 700 }}>construir uma operação completa</span> ao redor da sua expertise, garantindo que sua presença digital gere autoridade, conexão e resultados consistentes.
+        <p style={{ fontSize: 15, color: '#333', lineHeight: 1.8, marginBottom: 20 }}>
+          Estamos <span style={{ textDecoration: 'underline', color: '#F05A28', fontWeight: 600 }}>muito felizes</span> com essa nova parceria! Mais que apenas oferecer serviços, nosso objetivo e <span style={{ textDecoration: 'underline', color: '#F05A28', fontWeight: 700 }}>construir uma operação completa</span> ao redor da sua expertise, garantindo que sua presença digital gere autoridade, conexão e resultados consistentes.
         </p>
         
-        <p style={{ fontSize: 13, color: '#333', lineHeight: 1.7, marginBottom: 24 }}>
+        <p style={{ fontSize: 15, color: '#333', lineHeight: 1.8, marginBottom: 32 }}>
           Conte conosco para traduzir a essência do seu conhecimento em uma estrutura de negócio digital escalável, com estratégia, copy, design, tráfego e posicionamento trabalhando em perfeita sintonia.
         </p>
         
-        <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '16px 20px', marginTop: 'auto' }}>
-          <p style={{ color: '#CCC', fontSize: 13, fontStyle: 'italic', lineHeight: 1.6 }}>
+        <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '20px 24px', marginTop: 'auto', marginBottom: 32 }}>
+          <p style={{ color: '#CCC', fontSize: 14, fontStyle: 'italic', lineHeight: 1.7 }}>
             "{defaultContent.manifesto}"
           </p>
         </div>
       </div>
       
-      <div style={{ width: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ width: 480, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {data.fotoEspecialista ? (
-          <img src={data.fotoEspecialista} alt="Especialista" style={{ width: 200, height: 200, borderRadius: 12, border: '3px dashed #F05A28', objectFit: 'cover' }} />
+          <img src={data.fotoEspecialista} alt="Especialista" style={{ width: 220, height: 220, borderRadius: 16, border: '3px dashed #F05A28', objectFit: 'cover' }} />
         ) : (
-          <div style={{ width: 200, height: 200, borderRadius: 12, border: '3px dashed #F05A28', background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-            <span style={{ color: '#fff', fontSize: 13, textAlign: 'center', padding: 16 }}>Foto profissional do especialista</span>
+          <div style={{ width: 220, height: 220, borderRadius: 16, border: '3px dashed #F05A28', background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+            <span style={{ color: '#fff', fontSize: 14, textAlign: 'center', padding: 20 }}>Foto profissional do especialista</span>
           </div>
         )}
-        <p style={{ fontSize: 22, fontWeight: 800, color: '#1A1A1A', marginTop: 16, letterSpacing: '0.05em', textTransform: 'uppercase', textAlign: 'center' }}>
+        <p style={{ fontSize: 24, fontWeight: 800, color: '#1A1A1A', marginTop: 20, letterSpacing: '0.05em', textTransform: 'uppercase', textAlign: 'center' }}>
           {data.nomeEspecialista || "[NOME DO ESPECIALISTA]"}
         </p>
-        <p style={{ fontSize: 14, color: '#F05A28', fontWeight: 600, marginTop: 4, textAlign: 'center' }}>
+        <p style={{ fontSize: 15, color: '#F05A28', fontWeight: 600, marginTop: 6, textAlign: 'center' }}>
           {data.areaExpertise || "[ÁREA DE EXPERTISE]"}
         </p>
       </div>
