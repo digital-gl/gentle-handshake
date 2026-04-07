@@ -194,74 +194,44 @@ export const SlideSobreBM: React.FC = () => (
 // ============ SLIDE: MODELO DE COPRODUÇÃO / DIVISÃO ============
 export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }) => (
   <div className="bm-slide" style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
-    <SlideHeader section="DIVISÃO DE RESPONSABILIDADES" />
-    <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 16 }}>
-        <h2 style={{ fontSize: 24, fontWeight: 800 }}>Divisão de Responsabilidades</h2>
-        <p style={{ fontSize: 12, color: '#888' }}>Clareza total sobre o que cada parte executa</p>
-      </div>
+    <SlideHeader section="MODELO DE Coprodução" />
+    <div style={{ borderTop: '1px solid rgba(240,90,40,0.3)', margin: '0 40px' }} />
+    <div style={{ flex: 1, padding: '20px 40px 40px', display: 'flex', flexDirection: 'column' }}>
+      <h2 style={{ fontSize: 32, fontWeight: 800, marginBottom: 4 }}>
+        Você Foca no Que Sabe. <span style={{ color: '#F05A28', fontStyle: 'italic' }}>A BM Constrói Tudo.</span>
+      </h2>
+      <p style={{ fontSize: 14, color: '#888', marginBottom: 24 }}>Clareza total sobre o que cada parte executa na parceria</p>
       
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: 1 }}>
-        {/* Especialista */}
-        <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(240,90,40,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <User size={20} color="#F05A28" />
-            </div>
-            <div>
-              <p style={{ fontSize: 16, fontWeight: 700 }}>Especialista</p>
-              <p style={{ fontSize: 11, color: '#F05A28' }}>Sua Expertise</p>
-            </div>
-          </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, flex: 1 }}>
+        {/* Sua Responsabilidade */}
+        <div style={{ background: '#FFFFFF', borderRadius: 12, padding: '28px 32px', display: 'flex', flexDirection: 'column' }}>
+          <p style={{ fontSize: 18, fontWeight: 800, color: '#1A1A1A', marginBottom: 4 }}>Sua Responsabilidade</p>
+          <div style={{ width: 50, height: 3, background: '#F05A28', marginBottom: 20 }} />
           <div style={{ flex: 1 }}>
-            {defaultContent.divisaoResponsabilidades.especialista.items.map((item, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '10px 0', borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
-                <div style={{ width: 28, height: 28, borderRadius: 6, background: 'rgba(240,90,40,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
-                  {React.createElement(espIcons[i], { size: 14, color: '#F05A28' })}
-                </div>
-                <div>
-                  <p style={{ fontSize: 13, fontWeight: 700 }}>{item.titulo}</p>
-                  <p style={{ fontSize: 11, color: '#888' }}>{item.descricao}</p>
-                </div>
+            {data.responsabilidadesEspecialista.map((item, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                <div style={{ width: 6, height: 6, borderRadius: 1, background: '#F05A28', flexShrink: 0 }} />
+                <span style={{ fontSize: 14, color: '#333', fontWeight: 500 }}>{item}</span>
               </div>
             ))}
-          </div>
-          <div style={{ background: '#1A1A1A', borderRadius: 8, padding: 12, marginTop: 12, textAlign: 'center' }}>
-            <p style={{ fontSize: 12, fontWeight: 600, color: '#ccc' }}>Foque apenas no que você faz de melhor</p>
           </div>
         </div>
         
-        {/* BM */}
-        <div style={{ background: '#3D1F0A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(240,90,40,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Building2 size={20} color="#F05A28" />
-            </div>
-            <div>
-              <p style={{ fontSize: 16, fontWeight: 700 }}>BM</p>
-              <p style={{ fontSize: 11, color: '#F05A28' }}>Operação Completa</p>
-            </div>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, flex: 1 }}>
-            {defaultContent.divisaoResponsabilidades.bm.items.map((item, i) => (
-              <div key={i} style={{ background: 'rgba(240,90,40,0.15)', borderRadius: 8, padding: '10px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
-                <div style={{ width: 24, height: 24, borderRadius: 6, background: 'rgba(240,90,40,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  {React.createElement(bmIcons[i], { size: 12, color: '#F05A28' })}
-                </div>
-                <div>
-                  <span style={{ fontSize: 12, fontWeight: 600 }}>{item.titulo}</span>
-                  {'descricao' in item && <p style={{ fontSize: 9, color: '#aaa' }}>{(item as any).descricao}</p>}
-                </div>
+        {/* Nossa Responsabilidade */}
+        <div style={{ background: '#FFFFFF', borderRadius: 12, padding: '28px 32px', display: 'flex', flexDirection: 'column' }}>
+          <p style={{ fontSize: 18, fontWeight: 800, color: '#1A1A1A', marginBottom: 4 }}>Nossa Responsabilidade</p>
+          <div style={{ width: 50, height: 3, background: '#F05A28', marginBottom: 20 }} />
+          <div style={{ flex: 1 }}>
+            {data.responsabilidadesBM.map((item, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                <div style={{ width: 6, height: 6, borderRadius: 1, background: '#F05A28', flexShrink: 0 }} />
+                <span style={{ fontSize: 14, color: '#333', fontWeight: 500 }}>{item}</span>
               </div>
             ))}
-          </div>
-          <div style={{ background: '#F05A28', borderRadius: 8, padding: 12, marginTop: 12, textAlign: 'center' }}>
-            <p style={{ fontSize: 13, fontWeight: 700 }}>A BM assume a operação completa</p>
           </div>
         </div>
       </div>
     </div>
-    <SlideFooter />
   </div>
 );
 
