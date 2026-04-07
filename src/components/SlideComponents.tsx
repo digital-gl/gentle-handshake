@@ -700,12 +700,11 @@ export const SlideEncerramento: React.FC<{ data: ProposalData }> = ({ data }) =>
     <h2 style={{ fontSize: 36, fontWeight: 800, marginBottom: 8 }}>
       Vamos <span style={{ color: '#F05A28', fontStyle: 'italic' }}>Construir</span> Juntos!
     </h2>
-    <p style={{ fontSize: 14, color: '#888', maxWidth: 600, marginBottom: 8 }}>
-      A BM está pronta para ser sua parceira criativa no digital. Vamos transformar!
-    </p>
-    <p style={{ fontSize: 13, color: '#aaa', maxWidth: 600, marginBottom: 32 }}>
-      Sua presença visual em uma marca forte, estratégica e inesquecível.
-    </p>
+    {data.mensagemEncerramento && (
+      <p style={{ fontSize: 15, color: '#ccc', maxWidth: 700, marginBottom: 24, lineHeight: 1.7 }}>
+        {data.mensagemEncerramento}
+      </p>
+    )}
     
     <div style={{ marginBottom: 16 }}>
       <p style={{ fontSize: 13 }}><span style={{ color: '#F05A28', fontWeight: 700 }}>WhatsApp:</span> {data.whatsapp}</p>
