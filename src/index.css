@@ -2,95 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 10%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 16.5%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 16.5%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 16 87% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 53%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 16 87% 55%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 16 87% 55% / 0.4;
+    --input: 0 0% 25%;
+    --ring: 16 87% 55%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    --bm-dark: #1A1A1A;
+    --bm-darker: #111111;
+    --bm-card: #2A2A2A;
+    --bm-card-light: #333333;
+    --bm-orange: #F05A28;
+    --bm-orange-dark: #C04A1A;
+    --bm-orange-light: #FF7A45;
+    --bm-orange-hover: #FF8C42;
+    --bm-white: #FFFFFF;
+    --bm-gray: #CCCCCC;
+    --bm-gray-dark: #888888;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 80%;
+    --sidebar-primary: 16 87% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 0% 16.5%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 16 87% 55%;
   }
 }
 
@@ -101,5 +64,108 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .bm-gradient-dark {
+    background: linear-gradient(135deg, #111111 0%, #1a1a1a 50%, #222222 100%);
+  }
+
+  .bm-texture {
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 40px,
+      rgba(240, 90, 40, 0.02) 40px,
+      rgba(240, 90, 40, 0.02) 41px
+    );
+  }
+
+  .bm-card {
+    background: var(--bm-card);
+    border: 1px solid rgba(240, 90, 40, 0.4);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .bm-title-bar {
+    border-left: 3px solid var(--bm-orange);
+    padding-left: 12px;
+  }
+
+  .bm-btn-primary {
+    background: var(--bm-orange);
+    color: white;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  .bm-btn-primary:hover {
+    background: var(--bm-orange-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(240, 90, 40, 0.4);
+  }
+
+  .bm-slide {
+    aspect-ratio: 16/9;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bm-slide-dark {
+    background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+    color: white;
+  }
+
+  .bm-slide-light {
+    background: #FFFFFF;
+    color: #1A1A1A;
+  }
+
+  .bm-highlight {
+    color: var(--bm-orange);
+    font-weight: 700;
+  }
+
+  .bm-badge {
+    background: var(--bm-orange);
+    color: white;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  .bm-stat-number {
+    color: var(--bm-orange);
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .bm-progress-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .bm-progress-fill {
+    height: 100%;
+    background: var(--bm-orange);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .toggle-disabled {
+    opacity: 0.4;
+    pointer-events: none;
   }
 }
