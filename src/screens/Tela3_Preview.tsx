@@ -11,6 +11,7 @@ interface Tela3Props {
   onBack: () => void;
   onExport: () => void;
   onEditSlide: (index: number) => void;
+  exportProgress?: { current: number; total: number } | null;
 }
 
 const SLIDES = [
@@ -52,17 +53,38 @@ const SlidePreview: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   );
 };
 
-const Tela3_Preview: React.FC<Tela3Props> = ({ data, onBack, onExport, onEditSlide }) => {
+const Tela3_Preview: React.FC<Tela3Props> = ({ data, onBack, onExport, onEditSlide, exportProgress }) => {
   const activeSlides = SLIDES.filter(s => data[s.key as keyof ProposalData] as boolean);
 
   return (
-    <div className="min-h-screen bg-bm-darker">
+    <div className="min-h-screen" style={{ background: '#111111' }}>
+      {/* Export progress overlay */}
+      {exportProgress && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: '32px 48px', textAlign: 'center', boxShadow: '0 0 20px rgba(240,90,40,0.3)' }}>
+            <p style={{ color: '#F05A28', fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Gerando PDF...</p>
+            <p style={{ color: '#ccc', fontSize: 14 }}>Slide {exportProgress.current} de {exportProgress.total}</p>
+            <div style={{ width: 200, height: 4, background: 'rgba(255,255,255,0.1)', borderRadius: 2, marginTop: 16 }}>
+              <div style={{ width: `${(exportProgress.current / exportProgress.total) * 100}%`, height: '100%', background: '#F05A28', borderRadius: 2, transition: 'width 0.3s' }} />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Hidden render area for PDF export */}
+      <div id="pdf-render-area" style={{ position: 'fixed', left: -9999, top: 0, visibility: 'hidden' }}>
+        {activeSlides.map((slide) => (
+          // @ts-ignore
+          <slide.Component key={slide.key} data={data} />
+        ))}
+      </div>
+
       {/* Fixed buttons */}
       <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <button onClick={onBack} className="bm-btn-secondary text-sm" style={{ padding: '8px 16px' }}>
+        <button onClick={onBack} style={{ background: 'transparent', border: '1.5px solid #F05A28', color: '#F05A28', fontWeight: 700, padding: '8px 16px', borderRadius: 8, fontSize: 14 }}>
           ← Voltar ao Wizard
         </button>
-        <button onClick={onExport} className="bm-btn-primary text-sm" style={{ padding: '8px 16px' }}>
+        <button onClick={onExport} style={{ background: '#F05A28', color: '#fff', fontWeight: 700, padding: '8px 16px', borderRadius: 8, fontSize: 14, border: 'none' }}>
           Exportar PDF
         </button>
       </div>
@@ -74,8 +96,8 @@ const Tela3_Preview: React.FC<Tela3Props> = ({ data, onBack, onExport, onEditSli
             <div key={slide.key} className="relative group">
               <button
                 onClick={() => onEditSlide(originalIndex)}
-                className="absolute -top-3 right-2 z-10 bg-bm-orange text-white rounded-full px-3 py-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity"
-                style={{ fontWeight: 700 }}
+                style={{ position: 'absolute', top: -12, right: 8, zIndex: 10, background: '#F05A28', color: '#fff', borderRadius: 20, padding: '4px 12px', fontSize: 12, fontWeight: 700, border: 'none', opacity: 0, transition: 'opacity 0.2s', cursor: 'pointer' }}
+                className="group-hover:!opacity-100"
               >
                 Editar
               </button>
