@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import type { ProposalData } from '@/utils/defaultContent';
 import { defaultContent } from '@/utils/defaultContent';
 import ProgressBar from '@/components/ProgressBar';
