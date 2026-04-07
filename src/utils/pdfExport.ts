@@ -1,6 +1,54 @@
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
+const SLIDE_WIDTH = 1280;
+const SLIDE_HEIGHT = 720;
+
+function wait(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function waitForImages(element: Element): Promise<void> {
+  const images = Array.from(element.querySelectorAll('img'));
+
+  await Promise.all(
+    images.map(
+      img =>
+        new Promise<void>(resolve => {
+          if (img.complete && img.naturalWidth > 0) {
+            resolve();
+            return;
+          }
+
+          const finish = () => resolve();
+          img.addEventListener('load', finish, { once: true });
+          img.addEventListener('error', finish, { once: true });
+        })
+    )
+  );
+}
+
+function getPageBackground(slide: HTMLElement): [number, number, number] {
+  const inlineBackground = `${slide.style.background} ${slide.style.backgroundColor}`.toLowerCase();
+  const computedBackground = getComputedStyle(slide).backgroundColor.toLowerCase();
+
+  if (
+    inlineBackground.includes('#ffffff') ||
+    inlineBackground.includes('#fff') ||
+    inlineBackground.includes('white') ||
+    computedBackground.includes('255, 255, 255')
+  ) {
+    return [255, 255, 255];
+  }
+
+  const rgbMatch = computedBackground.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+  if (rgbMatch) {
+    return [Number(rgbMatch[1]), Number(rgbMatch[2]), Number(rgbMatch[3])];
+  }
+
+  return [26, 26, 26];
+}
+
 export async function exportToPDF(
   nomeEspecialista: string,
   ano: string,
@@ -17,46 +65,63 @@ export async function exportToPDF(
   }
 
   const total = slides.length;
-  const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+  const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4', compress: true });
 
-  // Wait for fonts and images to load
-  await new Promise(resolve => setTimeout(resolve, 800));
+  await Promise.all([document.fonts?.ready ?? Promise.resolve(), waitForImages(container), wait(300)]);
 
   for (let i = 0; i < total; i++) {
     onProgress?.(i + 1, total);
     const slide = slides[i] as HTMLElement;
 
-    // Ensure the slide has correct explicit dimensions
-    slide.style.width = '1280px';
-    slide.style.height = '720px';
+    const originalStyles = {
+      width: slide.style.width,
+      height: slide.style.height,
+      overflow: slide.style.overflow,
+    };
+
+    slide.style.width = `${SLIDE_WIDTH}px`;
+    slide.style.height = `${SLIDE_HEIGHT}px`;
     slide.style.overflow = 'hidden';
 
-    // Detect if slide has light background
-    const bgColor = slide.style.background || slide.style.backgroundColor;
-    const isLight = bgColor.includes('#FFFFFF') || bgColor.includes('#fff') || bgColor.includes('white');
-
-    // Scroll the slide into view within the container so html2canvas can see it
-    slide.scrollIntoView({ block: 'start' });
-    await new Promise(resolve => setTimeout(resolve, 200));
+    await waitForImages(slide);
+    await wait(120);
 
     const canvas = await html2canvas(slide, {
       scale: 2,
-      width: 1280,
-      height: 720,
+      width: SLIDE_WIDTH,
+      height: SLIDE_HEIGHT,
       useCORS: true,
       allowTaint: true,
-      backgroundColor: isLight ? '#FFFFFF' : '#1A1A1A',
+      backgroundColor: null,
       logging: false,
-      windowWidth: 1280,
-      windowHeight: 720,
+      imageTimeout: 0,
+      windowWidth: SLIDE_WIDTH,
+      windowHeight: SLIDE_HEIGHT,
       x: 0,
       y: 0,
+      scrollX: 0,
+      scrollY: 0,
     });
 
     const imgData = canvas.toDataURL('image/png');
 
     if (i > 0) pdf.addPage();
-    pdf.addImage(imgData, 'PNG', 0, 0, 297, 210);
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const renderWidth = pageWidth;
+    const renderHeight = (canvas.height * renderWidth) / canvas.width;
+    const offsetX = 0;
+    const offsetY = (pageHeight - renderHeight) / 2;
+    const [bgR, bgG, bgB] = getPageBackground(slide);
+
+    pdf.setFillColor(bgR, bgG, bgB);
+    pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+    pdf.addImage(imgData, 'PNG', offsetX, offsetY, renderWidth, renderHeight);
+
+    slide.style.width = originalStyles.width;
+    slide.style.height = originalStyles.height;
+    slide.style.overflow = originalStyles.overflow;
   }
 
   const fileName = `Proposta_BM_${nomeEspecialista.replace(/\s+/g, '_') || 'Especialista'}_${ano}.pdf`;
