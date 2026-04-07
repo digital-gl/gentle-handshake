@@ -5,99 +5,166 @@ import type { ProposalData } from '@/utils/defaultContent';
 import crisImg from '@/assets/cris.png';
 import janaImg from '@/assets/janaina.png';
 import sabrinaImg from '@/assets/sabrina.png';
+import {
+  Megaphone, Monitor, Smartphone, Paintbrush, PenLine, MessageSquare,
+  Play, Handshake, User, Building2, Lightbulb, BarChart3, ShoppingCart,
+  Plus, Crown, Target, Settings, RefreshCw, CheckCircle, ChevronRight,
+  Star, GraduationCap, Video, FolderOpen, CalendarDays, Zap, TrendingUp,
+  Users, Cog, Rocket, Package, BookOpen, AlertCircle
+} from 'lucide-react';
 
 const fotos = [crisImg, janaImg, sabrinaImg];
 
-// SLIDE: CAPA
+// Icon mapping for structure cards
+const structureIcons = [Megaphone, Monitor, Smartphone, Paintbrush, PenLine, MessageSquare, Play, Handshake];
+
+// Icon mapping for funil cards
+const funilCardIcons = [Target, Settings, RefreshCw, BarChart3];
+
+// Icon mapping for piramide
+const piramideIcons = [ShoppingCart, Plus, Plus, Plus, Crown];
+
+// Icon mapping for fases23 cards
+const fase2Icons = [Users, CalendarDays, Package];
+const fase3Icons = [CheckCircle, Megaphone, Crown];
+
+// Icon mapping for cronograma fase2/3 items
+const cronoFase2Icons = [ShoppingCart, Megaphone, BookOpen, Play, Star];
+const cronoFase3Icons = [Zap, TrendingUp, Users, Cog, Rocket];
+
+// Icon mapping for divisao especialista items
+const espIcons = [GraduationCap, Video, FolderOpen, CalendarDays];
+// Icon mapping for divisao BM items
+const bmIcons = [BarChart3, PenLine, Package, PenLine, Play, Monitor, Megaphone, Handshake];
+
+// Slide Header component
+const SlideHeader: React.FC<{ section: string }> = ({ section }) => (
+  <div className="flex items-center justify-between px-10 pt-5 pb-3">
+    <img src={bmLogo} alt="BM" className="w-8 h-8 rounded-full" />
+    <span style={{ color: '#F05A28', fontSize: 11, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' as const }}>{section}</span>
+  </div>
+);
+
+// Slide Footer component  
+const SlideFooter: React.FC = () => (
+  <div className="absolute bottom-0 left-0 right-0 px-10 pb-3 pt-2">
+    <div style={{ borderTop: '1px solid rgba(240,90,40,0.3)', paddingTop: 6, textAlign: 'center' }}>
+      <span style={{ color: '#888', fontSize: 10 }}>bmcoproduções.com.br/bm</span>
+    </div>
+  </div>
+);
+
+// ============ SLIDE: CAPA ============
 export const SlideCapa: React.FC<{ data: ProposalData }> = ({ data }) => (
-  <div className="bm-slide bm-slide-dark bm-texture flex flex-col items-center justify-center p-8 relative">
-    {data.showLogo && <img src={bmLogo} alt="BM Logo" className="w-20 h-20 mb-6 rounded-full" />}
-    <p className="text-bm-gray text-[0.6rem] tracking-[0.3em] uppercase mb-2">Infraestrutura Digital</p>
-    <h1 className="text-2xl md:text-3xl font-extrabold tracking-wider mb-1">
-      <span className="text-bm-orange">PROPOSTA</span> <span className="text-bm-white">EXCLUSIVA</span>
+  <div className="bm-slide bm-slide-dark bm-texture" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+    {data.showLogo && <img src={bmLogo} alt="BM Logo" style={{ width: 100, height: 100, borderRadius: '50%', marginBottom: 32 }} />}
+    <p style={{ color: '#888', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 8 }}>Infraestrutura Digital</p>
+    <h1 style={{ fontSize: 48, fontWeight: 900, letterSpacing: '0.05em', marginBottom: 4 }}>
+      <span style={{ color: '#F05A28' }}>PROPOSTA</span>{' '}
+      <span style={{ color: '#fff' }}>EXCLUSIVA</span>
     </h1>
-    <p className="text-xs text-bm-gray tracking-[0.2em] mb-6">COPRODUÇÃO ESTRATÉGICA</p>
+    <p style={{ fontSize: 16, color: '#888', letterSpacing: '0.2em', marginBottom: 40 }}>COPRODUÇÃO ESTRATÉGICA</p>
     {data.nomeEspecialista && (
-      <div className="bg-bm-orange/20 border border-bm-orange px-6 py-2 rounded-lg">
-        <span className="text-bm-orange font-bold text-sm">{data.nomeEspecialista}</span>
+      <div style={{ border: '1.5px solid #F05A28', borderRadius: 12, padding: '12px 48px', background: 'rgba(240,90,40,0.08)' }}>
+        <span style={{ color: '#F05A28', fontWeight: 700, fontSize: 20, letterSpacing: '0.05em' }}>{data.nomeEspecialista}</span>
       </div>
     )}
-    <div className="absolute bottom-4 flex items-center gap-4 text-[0.5rem] text-bm-gray-dark">
-      <span>Estratégia</span><span>•</span><span>Estrutura</span><span>•</span><span>Escala</span>
+    <div style={{ position: 'absolute', bottom: 24, display: 'flex', gap: 16, fontSize: 11, color: '#888' }}>
+      <span>{data.website}</span>
+      <span>{data.ano}</span>
     </div>
-    <span className="absolute bottom-4 right-6 text-[0.5rem] text-bm-gray-dark">{data.ano}</span>
-    <span className="absolute bottom-4 left-6 text-[0.5rem] text-bm-gray-dark">{data.website}</span>
   </div>
 );
 
-// SLIDE: BOAS-VINDAS
+// ============ SLIDE: BOAS-VINDAS (2-column layout matching PDF model) ============
 export const SlideBoasVindas: React.FC<{ data: ProposalData }> = ({ data }) => (
-  <div className="bm-slide bm-slide-dark bm-texture p-6 flex flex-col">
-    <div className="flex items-center gap-2 mb-4">
-      <div className="w-1 h-6 bg-bm-orange rounded" />
-      <div>
-        <h2 className="text-lg font-extrabold text-bm-white">Perfil do Especialista</h2>
-        <p className="text-[0.55rem] text-bm-gray">Área editável para personalização</p>
-      </div>
+  <div className="bm-slide" style={{ background: '#FFFFFF', display: 'flex', flexDirection: 'column' }}>
+    {/* Header bar */}
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 40px 12px' }}>
+      <img src={bmLogo} alt="BM" style={{ width: 36, height: 36, borderRadius: '50%' }} />
+      <span style={{ color: '#F05A28', fontSize: 12, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>PROPOSTA DE PARCERIA</span>
     </div>
-    <div className="flex gap-4 flex-1">
-      <div className="flex-1 space-y-3">
-        <div>
-          <p className="text-[0.5rem] text-bm-orange uppercase tracking-wider">Nome Completo</p>
-          <p className="text-sm font-bold text-bm-white">{data.nomeEspecialista || "[Nome do Especialista]"}</p>
-        </div>
-        <div>
-          <p className="text-[0.5rem] text-bm-orange uppercase tracking-wider">Área de Expertise</p>
-          <p className="text-sm text-bm-white">{data.areaExpertise || "[Segmento de atuação]"}</p>
-        </div>
-        <div>
-          <p className="text-[0.5rem] text-bm-orange uppercase tracking-wider">Apresentação</p>
-          <p className="text-[0.55rem] text-bm-gray leading-relaxed">{data.textoBoasVindas}</p>
+    <div style={{ borderBottom: '1px solid rgba(240,90,40,0.3)', margin: '0 40px' }} />
+    
+    {/* Content: 2 columns */}
+    <div style={{ display: 'flex', flex: 1, padding: '24px 40px 20px' }}>
+      {/* Left Column 60% */}
+      <div style={{ width: '60%', paddingRight: 32, display: 'flex', flexDirection: 'column' }}>
+        <h2 style={{ fontSize: 32, fontWeight: 800, color: '#1A1A1A', marginBottom: 8, lineHeight: 1.2 }}>
+          Seja Bem-vindo à <span style={{ color: '#F05A28' }}>BM Coproduções</span>
+        </h2>
+        <p style={{ fontSize: 13, color: '#666', marginBottom: 16 }}>É uma honra ter você conosco nessa jornada de transformação digital!</p>
+        
+        <p style={{ fontSize: 13, color: '#333', lineHeight: 1.7, marginBottom: 16 }}>
+          Estamos <span style={{ color: '#F05A28', fontWeight: 700 }}>muito felizes</span> com essa nova parceria! Mais que apenas oferecer serviços, nosso objetivo é <span style={{ color: '#F05A28', fontWeight: 700 }}>construir uma operação completa</span> ao redor da sua expertise, garantindo que sua presença digital gere autoridade, conexão e resultados consistentes.
+        </p>
+        
+        <p style={{ fontSize: 13, color: '#333', lineHeight: 1.7, marginBottom: 24 }}>
+          Conte conosco para traduzir a essência do seu conhecimento em uma estrutura de negócio digital escalável, com estratégia, copy, design, tráfego e posicionamento trabalhando em perfeita sintonia.
+        </p>
+        
+        {/* Quote box */}
+        <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '16px 20px', marginTop: 'auto' }}>
+          <p style={{ color: '#CCC', fontSize: 13, fontStyle: 'italic', lineHeight: 1.6 }}>
+            "{defaultContent.manifesto}"
+          </p>
         </div>
       </div>
-      <div className="w-28 flex-shrink-0 flex items-start justify-center">
+      
+      {/* Right Column 40% */}
+      <div style={{ width: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {data.fotoEspecialista ? (
-          <img src={data.fotoEspecialista} alt="Especialista" className="w-24 h-24 rounded-full border-2 border-bm-orange object-cover" />
+          <img src={data.fotoEspecialista} alt="Especialista" style={{ width: 200, height: 200, borderRadius: 12, border: '3px dashed #F05A28', objectFit: 'cover' }} />
         ) : (
-          <div className="w-24 h-24 rounded-full border-2 border-bm-orange bg-bm-card flex items-center justify-center text-bm-gray-dark text-[0.5rem]">FOTO</div>
+          <div style={{ width: 200, height: 200, borderRadius: 12, border: '3px dashed #F05A28', background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+            <span style={{ color: '#fff', fontSize: 13, textAlign: 'center', padding: 16 }}>Foto profissional do especialista</span>
+          </div>
         )}
+        <p style={{ fontSize: 22, fontWeight: 800, color: '#1A1A1A', marginTop: 16, letterSpacing: '0.05em', textTransform: 'uppercase', textAlign: 'center' }}>
+          {data.nomeEspecialista || "[NOME DO ESPECIALISTA]"}
+        </p>
+        <p style={{ fontSize: 14, color: '#F05A28', fontWeight: 600, marginTop: 4, textAlign: 'center' }}>
+          {data.areaExpertise || "[ÁREA DE EXPERTISE]"}
+        </p>
       </div>
     </div>
   </div>
 );
 
-// SLIDE: SOBRE A BM
+// ============ SLIDE: SOBRE A BM ============
 export const SlideSobreBM: React.FC = () => (
-  <div className="bm-slide bm-slide-dark bm-texture p-5 flex gap-4">
-    <div className="w-[40%] space-y-3">
-      <div className="flex items-center gap-2">
-        <div className="w-1 h-5 bg-bm-orange rounded" />
-        <div>
-          <h2 className="text-base font-extrabold text-bm-white">Sobre a BM</h2>
-          <p className="text-[0.5rem] text-bm-gray">Infraestrutura Digital</p>
-        </div>
+  <div className="bm-slide" style={{ background: '#FFFFFF', display: 'flex', flexDirection: 'column' }}>
+    <SlideHeader section="SOBRE A BM" />
+    <div style={{ borderBottom: '1px solid rgba(240,90,40,0.3)', margin: '0 40px' }} />
+    
+    <div style={{ flex: 1, padding: '20px 40px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 12 }}>
+        <h2 style={{ fontSize: 28, fontWeight: 800, color: '#1A1A1A' }}>
+          Infraestrutura <span style={{ color: '#F05A28' }}>Digital</span>
+        </h2>
+        <p style={{ fontSize: 13, color: '#666', marginTop: 4 }}>Não é uma Agência. É uma Estrutura Completa.</p>
       </div>
-      <span className="bm-badge text-[0.5rem]">BM</span>
-      <p className="text-[0.6rem] font-bold text-bm-white">Não é uma Agência. É uma Estrutura Completa.</p>
-      <p className="text-[0.5rem] text-bm-gray leading-relaxed">{defaultContent.sobreBM}</p>
-      <div className="bg-bm-card rounded-lg p-3 border border-bm-orange/30">
-        <p className="text-[0.5rem] text-bm-orange font-bold">NOSSA VISÃO</p>
-        <p className="text-[0.55rem] text-bm-white font-bold mt-1">NÃO VENDEMOS SERVIÇOS. CONSTRUÍMOS OPERAÇÕES.</p>
+      
+      {/* Vision box */}
+      <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '14px 24px', marginBottom: 16 }}>
+        <p style={{ color: '#F05A28', fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', marginBottom: 4 }}>NOSSA VISÃO</p>
+        <p style={{ color: '#fff', fontSize: 18, fontWeight: 800 }}>Não VENDEMOS serviços. CONSTRUÍMOS operações.</p>
       </div>
-      <div className="bg-bm-card rounded-lg p-3 border border-bm-orange/30">
-        <p className="text-[0.5rem] text-bm-orange font-bold">Nossa Cultura</p>
-        <p className="text-[0.45rem] text-bm-gray mt-1">{defaultContent.pilares.cultura}</p>
-      </div>
-    </div>
-    <div className="w-[60%]">
-      <h3 className="text-sm font-bold text-bm-white mb-3">As Mentes por Trás da BM</h3>
-      <div className="grid grid-cols-3 gap-2">
-        {defaultContent.fundadoras.map((f, i) => (
-          <div key={i} className="bm-card flex flex-col items-center text-center p-3">
-            <img src={fotos[i]} alt={f.nome} className="w-16 h-16 rounded-full border-2 border-bm-orange object-cover mb-2" />
-            <p className="text-[0.6rem] font-bold text-bm-white">{f.nome}</p>
-            <p className="text-[0.45rem] text-bm-orange">{f.cargo1}</p>
-            <p className="text-[0.45rem] text-bm-gray">{f.cargo2}</p>
+      
+      {/* 4 pillar cards */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, flex: 1 }}>
+        {[
+          { letter: 'E', title: 'Estratégia', text: defaultContent.pilares.estrategia, color: '#F05A28' },
+          { letter: 'S', title: 'Estrutura', text: defaultContent.pilares.estrutura, color: '#666' },
+          { letter: 'E', title: 'Escala', text: defaultContent.pilares.escala, color: '#F05A28' },
+          { letter: 'C', title: 'Cultura', text: defaultContent.pilares.cultura, color: '#F05A28' },
+        ].map((p, i) => (
+          <div key={i} style={{ background: '#FAFAFA', border: '1px solid #E0E0E0', borderRadius: 10, padding: 16, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+              <div style={{ width: 28, height: 28, borderRadius: 6, background: p.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 800, fontSize: 14 }}>{p.letter}</div>
+              <span style={{ fontSize: 18, fontWeight: 800, color: '#1A1A1A' }}>{p.title}</span>
+            </div>
+            <p style={{ fontSize: 13, color: '#555', lineHeight: 1.6 }}>{p.text}</p>
           </div>
         ))}
       </div>
@@ -105,426 +172,531 @@ export const SlideSobreBM: React.FC = () => (
   </div>
 );
 
-// SLIDE: MODELO DE COPRODUÇÃO
+// ============ SLIDE: MODELO DE COPRODUÇÃO / DIVISÃO ============
 export const SlideModeloCoproducao: React.FC<{ data: ProposalData }> = ({ data }) => (
-  <div className="bm-slide bm-slide-dark bm-texture p-5">
-    <div className="flex items-center gap-2 mb-4">
-      <div className="w-1 h-5 bg-bm-orange rounded" />
-      <div>
-        <h2 className="text-base font-extrabold text-bm-white">Divisão de Responsabilidades</h2>
-        <p className="text-[0.5rem] text-bm-gray">Clareza total sobre o que cada parte executa</p>
+  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+    <SlideHeader section="DIVISÃO DE RESPONSABILIDADES" />
+    <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 16 }}>
+        <h2 style={{ fontSize: 24, fontWeight: 800 }}>Divisão de Responsabilidades</h2>
+        <p style={{ fontSize: 12, color: '#888' }}>Clareza total sobre o que cada parte executa</p>
       </div>
-    </div>
-    <div className="grid grid-cols-2 gap-3">
-      <div className="bm-card">
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-lg">👤</span>
-          <div>
-            <p className="text-xs font-bold text-bm-white">Especialista</p>
-            <p className="text-[0.45rem] text-bm-orange">Sua Expertise</p>
-          </div>
-        </div>
-        {defaultContent.divisaoResponsabilidades.especialista.items.map((item, i) => (
-          <div key={i} className="flex items-start gap-2 py-1.5 border-b border-bm-card-light/30 last:border-0">
-            <span className="text-xs">{item.icone}</span>
+      
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: 1 }}>
+        {/* Especialista */}
+        <div className="bm-card" style={{ display: 'flex', flexDirection: 'column', padding: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+            <User size={22} color="#F05A28" />
             <div>
-              <p className="text-[0.55rem] font-bold text-bm-white">{item.titulo}</p>
-              <p className="text-[0.45rem] text-bm-gray">{item.descricao}</p>
+              <p style={{ fontSize: 16, fontWeight: 700 }}>Especialista</p>
+              <p style={{ fontSize: 11, color: '#F05A28' }}>Sua Expertise</p>
             </div>
           </div>
-        ))}
-        <p className="text-[0.5rem] text-bm-orange mt-2 font-medium">Foque apenas no que você faz de melhor</p>
-      </div>
-      <div className="bm-card">
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-lg">🏢</span>
-          <div>
-            <p className="text-xs font-bold text-bm-white">BM</p>
-            <p className="text-[0.45rem] text-bm-orange">Operação Completa</p>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-1.5">
-          {defaultContent.divisaoResponsabilidades.bm.items.map((item, i) => (
-            <div key={i} className="bg-bm-dark rounded-lg p-2 flex items-center gap-1.5">
-              <span className="text-[0.6rem]">{item.icone}</span>
-              <p className="text-[0.5rem] font-medium text-bm-white">{item.titulo}</p>
-            </div>
-          ))}
-        </div>
-        <div className="bg-bm-orange rounded-lg p-2 mt-3 text-center">
-          <p className="text-[0.5rem] font-bold text-bm-white">A BM assume a operação completa</p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-// SLIDE: ESTRUTURA COMPLETA
-export const SlideEstruturaCompleta: React.FC = () => (
-  <div className="bm-slide bm-slide-dark bm-texture p-4">
-    <div className="flex items-center gap-2 mb-3">
-      <div className="w-1 h-5 bg-bm-orange rounded" />
-      <div>
-        <h2 className="text-sm font-extrabold text-bm-white">A Estrutura Completa que Assumimos</h2>
-        <p className="text-[0.45rem] text-bm-gray">Operação total. Você não precisa estruturar funil, montar equipe ou gerir processos.</p>
-      </div>
-    </div>
-    <div className="grid grid-cols-4 gap-1.5">
-      {defaultContent.estruturaCompleta.map((item, i) => (
-        <div key={i} className="bm-card p-2">
-          <div className="flex items-center gap-1 mb-1">
-            <span className="bg-bm-orange rounded-md w-5 h-5 flex items-center justify-center text-[0.55rem]">{item.icone}</span>
-            <p className="text-[0.5rem] font-bold text-bm-white">{item.titulo}</p>
-          </div>
-          <p className="text-[0.4rem] text-bm-gray mb-1">{item.descricao}</p>
-          {item.bullets.map((b, j) => (
-            <div key={j} className="flex items-center gap-1">
-              <span className="text-bm-orange text-[0.4rem]">✓</span>
-              <span className="text-[0.4rem] text-bm-gray">{b}</span>
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-    <div className="bg-bm-orange-dark/40 border border-bm-orange/40 rounded-lg p-2 mt-2 text-center">
-      <p className="text-[0.45rem] text-bm-white">A BM constrói, organiza e opera toda a máquina enquanto você foca no que realmente importa.</p>
-    </div>
-  </div>
-);
-
-// SLIDE: FUNIL 8 OVERVIEW
-export const SlideFunil8Overview: React.FC = () => (
-  <div className="bm-slide bm-slide-dark bm-texture p-5">
-    <div className="flex items-center gap-2 mb-3">
-      <div className="w-1 h-5 bg-bm-orange rounded" />
-      <div>
-        <h2 className="text-base font-extrabold text-bm-white">Metodologia FUNIL 8</h2>
-        <p className="text-[0.5rem] text-bm-gray">Estratégia de Vendas em 3 Fases Interdependentes</p>
-      </div>
-    </div>
-    <div className="grid grid-cols-3 gap-3 mb-3">
-      {(['fase1', 'fase2', 'fase3'] as const).map((key, i) => {
-        const fase = defaultContent.funil8Overview[key];
-        return (
-          <div key={i} className="bm-card border-bm-orange/60">
-            <div className="flex items-start gap-2 mb-2">
-              <span className="bg-bm-orange text-bm-white font-bold text-[0.5rem] w-6 h-6 rounded flex items-center justify-center">0{i + 1}</span>
-              <div>
-                <p className="text-xs font-bold text-bm-white">{fase.titulo}</p>
-                <p className="text-[0.45rem] text-bm-orange">{fase.subtitulo}</p>
-              </div>
-            </div>
-            <p className="bm-stat-number text-xl text-center my-2">{fase.numero}</p>
-            <p className="text-[0.45rem] text-bm-gray text-center mb-2">{fase.label}</p>
-            {fase.bullets.map((b, j) => (
-              <div key={j} className="flex items-center gap-1 mb-0.5">
-                <span className="text-bm-orange text-[0.4rem]">●</span>
-                <span className="text-[0.45rem] text-bm-gray">{b}</span>
+          <div style={{ flex: 1 }}>
+            {defaultContent.divisaoResponsabilidades.especialista.items.map((item, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '10px 0', borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
+                {React.createElement(espIcons[i], { size: 16, color: '#F05A28' })}
+                <div>
+                  <p style={{ fontSize: 13, fontWeight: 700 }}>{item.titulo}</p>
+                  <p style={{ fontSize: 11, color: '#888' }}>{item.descricao}</p>
+                </div>
               </div>
             ))}
-            <div className="bg-bm-dark rounded-lg p-1.5 mt-2 space-y-0.5">
-              {fase.info.map((inf, j) => (
-                <p key={j} className="text-[0.4rem] text-bm-gray">{inf}</p>
-              ))}
+          </div>
+          <p style={{ fontSize: 12, color: '#F05A28', fontWeight: 600, marginTop: 12 }}>Foque apenas no que você faz de melhor</p>
+        </div>
+        
+        {/* BM */}
+        <div className="bm-card" style={{ display: 'flex', flexDirection: 'column', padding: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+            <Building2 size={22} color="#F05A28" />
+            <div>
+              <p style={{ fontSize: 16, fontWeight: 700 }}>BM</p>
+              <p style={{ fontSize: 11, color: '#F05A28' }}>Operação Completa</p>
             </div>
           </div>
-        );
-      })}
-    </div>
-    <div className="bg-bm-card rounded-lg p-3 flex items-start gap-2">
-      <span className="text-lg">💡</span>
-      <div>
-        <p className="text-[0.55rem] font-bold text-bm-orange">Princípio Fundamental</p>
-        <p className="text-[0.45rem] text-bm-gray">Cada fase tem uma função clara e singular: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção. A falha de uma etapa compromete todo o sistema.</p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, flex: 1 }}>
+            {defaultContent.divisaoResponsabilidades.bm.items.map((item, i) => (
+              <div key={i} style={{ background: '#1A1A1A', borderRadius: 8, padding: '10px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
+                {React.createElement(bmIcons[i], { size: 14, color: '#F05A28' })}
+                <span style={{ fontSize: 12, fontWeight: 500 }}>{item.titulo}</span>
+              </div>
+            ))}
+          </div>
+          <div style={{ background: '#F05A28', borderRadius: 8, padding: 12, marginTop: 12, textAlign: 'center' }}>
+            <p style={{ fontSize: 13, fontWeight: 700 }}>A BM assume a operação completa</p>
+          </div>
+        </div>
       </div>
     </div>
+    <SlideFooter />
   </div>
 );
 
-// SLIDE: FUNIL 8 FASE 1 DETALHADO
-export const SlideFunil8Fase1: React.FC = () => (
-  <div className="bm-slide bm-slide-dark bm-texture p-5 flex gap-4">
-    <div className="w-[55%]">
-      <div className="flex items-center gap-2 mb-3">
-        <div className="w-1 h-5 bg-bm-orange rounded" />
-        <div>
-          <h2 className="text-sm font-extrabold text-bm-white">Fase 1: Aquisição</h2>
-          <p className="text-[0.45rem] text-bm-orange">Funil 8</p>
-        </div>
+// ============ SLIDE: ESTRUTURA COMPLETA ============
+export const SlideEstruturaCompleta: React.FC = () => (
+  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+    <SlideHeader section="ESTRUTURA COMPLETA" />
+    <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 12 }}>
+        <h2 style={{ fontSize: 22, fontWeight: 800 }}>A Estrutura Completa que Assumimos</h2>
+        <p style={{ fontSize: 11, color: '#888' }}>Operação total. Você não precisa estruturar funil, montar equipe ou gerir processos.</p>
       </div>
-      <p className="text-[0.45rem] text-bm-gray mb-3">Comprar cliente a custo zero através da maximização do valor</p>
-      <div className="space-y-1.5">
-        {[...defaultContent.funil8Detalhado.piramide].reverse().map((item, i) => (
-          <div key={i} className={`flex items-center gap-2 p-1.5 rounded-lg border ${i === 0 ? 'bg-bm-orange-dark/60 border-bm-orange' : 'bg-bm-orange/80 border-bm-orange/60'}`}>
-            <span className="text-xs">{item.icone}</span>
-            <div className="flex-1">
-              <p className="text-[0.5rem] font-bold text-bm-white">{item.titulo}</p>
-              <p className="text-[0.4rem] text-bm-white/80">{item.descricao}</p>
-            </div>
-            <span className="text-[0.6rem] font-bold text-bm-white">{item.valor}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-    <div className="w-[45%] space-y-2">
-      {defaultContent.funil8Detalhado.cards.map((card, i) => (
-        <div key={i} className={`bm-card p-2 ${card.titulo === 'Resultados Esperados' ? 'bg-bm-orange-dark/30' : ''}`}>
-          <div className="flex items-center gap-1.5 mb-1">
-            <span className="text-xs">{card.icone}</span>
-            <p className="text-[0.5rem] font-bold text-bm-white">{card.titulo}</p>
-          </div>
-          {card.stats ? (
-            <div className="grid grid-cols-3 gap-1">
-              {card.stats.map((s, j) => (
-                <div key={j} className="bg-bm-dark rounded p-1.5 text-center">
-                  <p className="text-[0.6rem] font-bold text-bm-orange">{s.valor}</p>
-                  <p className="text-[0.35rem] text-bm-gray">{s.label}</p>
+      
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, flex: 1 }}>
+        {defaultContent.estruturaCompleta.map((item, i) => {
+          const Icon = structureIcons[i];
+          return (
+            <div key={i} className="bm-card" style={{ padding: 12, display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+                <div style={{ width: 24, height: 24, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Icon size={14} color="#fff" />
+                </div>
+                <p style={{ fontSize: 12, fontWeight: 700 }}>{item.titulo}</p>
+              </div>
+              <p style={{ fontSize: 10, color: '#888', marginBottom: 6 }}>{item.descricao}</p>
+              {item.bullets.map((b, j) => (
+                <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 2 }}>
+                  <CheckCircle size={10} color="#F05A28" />
+                  <span style={{ fontSize: 10, color: '#aaa' }}>{b}</span>
                 </div>
               ))}
             </div>
-          ) : (
-            <p className="text-[0.45rem] text-bm-gray">{card.texto}</p>
-          )}
-        </div>
-      ))}
+          );
+        })}
+      </div>
+      
+      <div style={{ background: 'rgba(192,74,26,0.25)', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 8, padding: 10, marginTop: 8, textAlign: 'center' }}>
+        <p style={{ fontSize: 12, color: '#fff' }}>A BM constrói, organiza e opera toda a máquina enquanto você foca no que realmente importa.</p>
+      </div>
     </div>
+    <SlideFooter />
   </div>
 );
 
-// SLIDE: FASES 2 e 3
-export const SlideFases23: React.FC = () => (
-  <div className="bm-slide bm-slide-dark bm-texture p-5">
-    <div className="flex items-center gap-2 mb-3">
-      <div className="w-1 h-5 bg-bm-orange rounded" />
-      <div>
-        <h2 className="text-sm font-extrabold text-bm-white">Fases 2 e 3</h2>
-        <p className="text-[0.45rem] text-bm-gray">Monetização e Escala da Base Construída</p>
+// ============ SLIDE: FUNIL 8 OVERVIEW ============
+export const SlideFunil8Overview: React.FC = () => (
+  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+    <SlideHeader section="METODOLOGIA FUNIL 8" />
+    <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 14 }}>
+        <h2 style={{ fontSize: 24, fontWeight: 800 }}>Metodologia FUNIL 8</h2>
+        <p style={{ fontSize: 12, color: '#888' }}>Estratégia de Vendas em 3 Fases Interdependentes</p>
       </div>
-    </div>
-    <div className="grid grid-cols-2 gap-3">
-      {([
-        { key: 'fase2' as const, badge: '02', titulo: 'Monetização', sub: 'Turbo Express' },
-        { key: 'fase3' as const, badge: '03', titulo: 'Escala', sub: 'Lançamento Pago' }
-      ]).map((fase) => {
-        const data = defaultContent.fases23[fase.key];
-        return (
-          <div key={fase.key} className="space-y-2">
-            <div className="bm-card">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="bg-bm-orange text-bm-white font-bold text-[0.5rem] w-5 h-5 rounded flex items-center justify-center">{fase.badge}</span>
+      
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, flex: 1, marginBottom: 12 }}>
+        {(['fase1', 'fase2', 'fase3'] as const).map((key, i) => {
+          const fase = defaultContent.funil8Overview[key];
+          return (
+            <div key={i} className="bm-card-highlight" style={{ display: 'flex', flexDirection: 'column', padding: 16 }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 10 }}>
+                <div className="bm-phase-badge">0{i + 1}</div>
                 <div>
-                  <p className="text-xs font-bold text-bm-white">{fase.titulo}</p>
-                  <p className="text-[0.4rem] text-bm-orange">{fase.sub}</p>
+                  <p style={{ fontSize: 16, fontWeight: 700 }}>{fase.titulo}</p>
+                  <p style={{ fontSize: 11, color: '#F05A28' }}>{fase.subtitulo}</p>
                 </div>
               </div>
-              {data.cards.map((c, i) => (
-                <div key={i} className="bg-bm-dark rounded-lg p-2 mb-1.5">
-                  <div className="flex items-center gap-1 mb-0.5">
-                    <span className="text-[0.5rem]">{c.icone}</span>
-                    <p className="text-[0.45rem] font-bold text-bm-white">{c.titulo}</p>
-                  </div>
-                  <p className="text-[0.4rem] text-bm-gray">{c.texto}</p>
+              <p className="bm-stat-number" style={{ textAlign: 'center', margin: '8px 0' }}>{fase.numero}</p>
+              <p style={{ fontSize: 11, color: '#888', textAlign: 'center', marginBottom: 10 }}>{fase.label}</p>
+              {fase.bullets.map((b, j) => (
+                <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                  <ChevronRight size={10} color="#F05A28" />
+                  <span style={{ fontSize: 11, color: '#aaa' }}>{b}</span>
                 </div>
               ))}
-            </div>
-            <div className="bg-bm-card-light/50 rounded-lg p-2">
-              <p className="text-[0.4rem] text-bm-orange font-bold mb-1">Resultados Esperados</p>
-              <div className="grid grid-cols-3 gap-1">
-                {data.stats.map((s, i) => (
-                  <div key={i} className="text-center">
-                    <p className="text-[0.55rem] font-bold text-bm-orange">{s.valor}</p>
-                    <p className="text-[0.35rem] text-bm-gray">{s.label}</p>
-                  </div>
+              <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 'auto' }}>
+                {fase.info.map((inf, j) => (
+                  <p key={j} style={{ fontSize: 10, color: '#888' }}>{inf}</p>
                 ))}
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
+      
+      <div className="bm-card" style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: 14 }}>
+        <Lightbulb size={20} color="#F05A28" />
+        <div>
+          <p style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>Princípio Fundamental</p>
+          <p style={{ fontSize: 11, color: '#888' }}>Cada fase tem uma função clara e singular: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção.</p>
+        </div>
+      </div>
     </div>
+    <SlideFooter />
   </div>
 );
 
-// SLIDE: CRONOGRAMA
+// ============ SLIDE: FUNIL 8 FASE 1 DETALHADO ============
+export const SlideFunil8Fase1: React.FC = () => (
+  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+    <SlideHeader section="FASE 1 — AQUISIÇÃO" />
+    <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', gap: 24 }}>
+      {/* Left: Pyramid */}
+      <div style={{ width: '55%', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 14 }}>
+          <h2 style={{ fontSize: 22, fontWeight: 800 }}>Fase 1: Aquisição</h2>
+          <p style={{ fontSize: 11, color: '#F05A28' }}>Funil 8</p>
+        </div>
+        <p style={{ fontSize: 11, color: '#888', marginBottom: 14 }}>Comprar cliente a custo zero através da maximização do valor</p>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
+          {[...defaultContent.funil8Detalhado.piramide].reverse().map((item, i) => {
+            const Icon = piramideIcons[4 - i];
+            return (
+              <div key={i} style={{
+                display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 8,
+                border: '1.5px solid rgba(240,90,40,0.7)',
+                background: i === 0 ? 'rgba(192,74,26,0.4)' : 'rgba(240,90,40,0.6)',
+                flex: 1
+              }}>
+                <Icon size={16} color="#fff" />
+                <div style={{ flex: 1 }}>
+                  <p style={{ fontSize: 13, fontWeight: 700 }}>{item.titulo}</p>
+                  <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)' }}>{item.descricao}</p>
+                </div>
+                <span style={{ fontSize: 16, fontWeight: 800 }}>{item.valor}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      
+      {/* Right: Cards */}
+      <div style={{ width: '45%', display: 'flex', flexDirection: 'column', gap: 10 }}>
+        {defaultContent.funil8Detalhado.cards.map((card, i) => {
+          const Icon = funilCardIcons[i];
+          return (
+            <div key={i} className={card.titulo === 'Resultados Esperados' ? 'bm-card-stats' : 'bm-card'} style={{ padding: 12, flex: 1, display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                <Icon size={16} color="#F05A28" />
+                <p style={{ fontSize: 13, fontWeight: 700 }}>{card.titulo}</p>
+              </div>
+              {card.stats ? (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, flex: 1 }}>
+                  {card.stats.map((s, j) => (
+                    <div key={j} style={{ background: '#1A1A1A', borderRadius: 6, padding: 10, textAlign: 'center' }}>
+                      <p style={{ fontSize: 16, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
+                      <p style={{ fontSize: 9, color: '#888' }}>{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p style={{ fontSize: 11, color: '#888' }}>{card.texto}</p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+    <SlideFooter />
+  </div>
+);
+
+// ============ SLIDE: FASES 2 e 3 ============
+export const SlideFases23: React.FC = () => (
+  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+    <SlideHeader section="FASES 2 E 3" />
+    <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 14 }}>
+        <h2 style={{ fontSize: 22, fontWeight: 800 }}>Fases 2 e 3</h2>
+        <p style={{ fontSize: 11, color: '#888' }}>Monetização e Escala da Base Construída</p>
+      </div>
+      
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, flex: 1 }}>
+        {([
+          { key: 'fase2' as const, badge: '02', titulo: 'Monetização', sub: 'Turbo Express', icons: fase2Icons },
+          { key: 'fase3' as const, badge: '03', titulo: 'Escala', sub: 'Lançamento Pago', icons: fase3Icons }
+        ]).map((fase) => {
+          const faseData = defaultContent.fases23[fase.key];
+          return (
+            <div key={fase.key} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div className="bm-card" style={{ flex: 1, padding: 14, display: 'flex', flexDirection: 'column' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                  <div className="bm-phase-badge">{fase.badge}</div>
+                  <div>
+                    <p style={{ fontSize: 16, fontWeight: 700 }}>{fase.titulo}</p>
+                    <p style={{ fontSize: 10, color: '#F05A28' }}>{fase.sub}</p>
+                  </div>
+                </div>
+                {faseData.cards.map((c, i) => {
+                  const Icon = fase.icons[i];
+                  return (
+                    <div key={i} style={{ background: '#1A1A1A', borderRadius: 8, padding: 10, marginBottom: 6 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                        <Icon size={14} color="#F05A28" />
+                        <p style={{ fontSize: 12, fontWeight: 700 }}>{c.titulo}</p>
+                      </div>
+                      <p style={{ fontSize: 10, color: '#888' }}>{c.texto}</p>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="bm-card-stats" style={{ padding: 10 }}>
+                <p style={{ fontSize: 10, color: '#F05A28', fontWeight: 700, marginBottom: 6 }}>Resultados Esperados</p>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6 }}>
+                  {faseData.stats.map((s, i) => (
+                    <div key={i} style={{ textAlign: 'center' }}>
+                      <p style={{ fontSize: 16, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
+                      <p style={{ fontSize: 9, color: '#888' }}>{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+    <SlideFooter />
+  </div>
+);
+
+// ============ SLIDE: CRONOGRAMA ============
 export const SlideCronograma: React.FC<{ data: ProposalData }> = ({ data }) => (
-  <div className="bm-slide bm-slide-dark bm-texture p-4">
-    <div className="flex items-center gap-2 mb-2">
-      <div className="w-1 h-5 bg-bm-orange rounded" />
-      <div>
-        <h2 className="text-sm font-extrabold text-bm-white">Cronograma e Entregas</h2>
-        <p className="text-[0.45rem] text-bm-gray">Primeiros 90 Dias: Da Estruturação à Monetização</p>
+  <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+    <SlideHeader section="CRONOGRAMA" />
+    <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 10 }}>
+        <h2 style={{ fontSize: 22, fontWeight: 800 }}>Cronograma e Entregas</h2>
+        <p style={{ fontSize: 11, color: '#888' }}>Primeiros 90 Dias: Da Estruturação à Monetização</p>
       </div>
-    </div>
-    <div className="flex items-center gap-1 mb-3">
-      {[defaultContent.cronograma.fase1, defaultContent.cronograma.fase2, defaultContent.cronograma.fase3].map((f, i) => (
-        <React.Fragment key={i}>
-          <div className={`flex-1 rounded-lg p-1.5 text-center ${i === 0 ? 'bg-bm-orange' : i === 1 ? 'bg-bm-orange/80' : 'bg-bm-orange-dark'}`}>
-            <p className="text-[0.45rem] font-bold text-bm-white">{f.dias}</p>
-            <p className="text-[0.35rem] text-bm-white/80">{f.titulo}</p>
-          </div>
-          {i < 2 && <span className="text-bm-orange text-xs">→</span>}
-        </React.Fragment>
-      ))}
-    </div>
-    <div className="grid grid-cols-3 gap-2">
-      {/* Fase 1 */}
-      <div className="bm-card p-2">
-        <div className="flex items-center gap-1 mb-2">
-          <span className="bg-bm-orange text-bm-white font-bold text-[0.4rem] w-4 h-4 rounded flex items-center justify-center">01</span>
-          <p className="text-[0.5rem] font-bold text-bm-white">Validação e Estruturação</p>
-        </div>
-        {(defaultContent.cronograma.fase1.items as string[]).map((item, i) => (
-          <div key={i} className="flex items-center gap-1 mb-0.5">
-            <span className="text-bm-orange text-[0.35rem]">✅</span>
-            <span className="text-[0.4rem] text-bm-gray">{item}</span>
-          </div>
-        ))}
-        <div className="bg-bm-dark rounded p-1.5 mt-2">
-          <p className="text-[0.4rem] text-bm-orange text-center">{defaultContent.cronograma.fase1.rodape}</p>
-        </div>
-      </div>
-      {/* Fase 2 */}
-      <div className="bm-card p-2">
-        <div className="flex items-center gap-1 mb-2">
-          <span className="bg-bm-orange text-bm-white font-bold text-[0.4rem] w-4 h-4 rounded flex items-center justify-center">02</span>
-          <p className="text-[0.5rem] font-bold text-bm-white">Aquisição e Validação</p>
-        </div>
-        {(defaultContent.cronograma.fase2.items as Array<{icone: string; titulo: string; descricao: string}>).map((item, i) => (
-          <div key={i} className="flex items-start gap-1 mb-1">
-            <span className="text-[0.4rem]">{item.icone}</span>
-            <div>
-              <p className="text-[0.4rem] font-bold text-bm-white">{item.titulo}</p>
-              <p className="text-[0.35rem] text-bm-gray">{item.descricao}</p>
+      
+      {/* Timeline bar */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 14 }}>
+        {[defaultContent.cronograma.fase1, defaultContent.cronograma.fase2, defaultContent.cronograma.fase3].map((f, i) => (
+          <React.Fragment key={i}>
+            <div style={{ flex: 1, borderRadius: 8, padding: '8px 12px', textAlign: 'center', background: i === 0 ? '#F05A28' : i === 1 ? 'rgba(240,90,40,0.8)' : '#C04A1A' }}>
+              <p style={{ fontSize: 12, fontWeight: 700 }}>{f.dias}</p>
+              <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)' }}>{f.titulo}</p>
             </div>
-          </div>
+            {i < 2 && <ChevronRight size={16} color="#F05A28" />}
+          </React.Fragment>
         ))}
-        <div className="bg-bm-dark rounded p-1.5 mt-2">
-          <p className="text-[0.4rem] text-bm-orange text-center">{defaultContent.cronograma.fase2.rodape}</p>
-        </div>
       </div>
-      {/* Fase 3 */}
-      <div className="bm-card p-2">
-        <div className="flex items-center gap-1 mb-2">
-          <span className="bg-bm-orange text-bm-white font-bold text-[0.4rem] w-4 h-4 rounded flex items-center justify-center">03</span>
-          <p className="text-[0.5rem] font-bold text-bm-white">Monetização da Base</p>
-        </div>
-        {(defaultContent.cronograma.fase3.items as Array<{icone: string; titulo: string; descricao: string}>).map((item, i) => (
-          <div key={i} className="flex items-start gap-1 mb-1">
-            <span className="text-[0.4rem]">{item.icone}</span>
-            <div>
-              <p className="text-[0.4rem] font-bold text-bm-white">{item.titulo}</p>
-              <p className="text-[0.35rem] text-bm-gray">{item.descricao}</p>
-            </div>
+      
+      {/* 3 cards */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, flex: 1 }}>
+        {/* Fase 1 */}
+        <div className="bm-card" style={{ padding: 12, display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+            <div className="bm-phase-badge">01</div>
+            <p style={{ fontSize: 13, fontWeight: 700 }}>Validação e Estruturação</p>
           </div>
-        ))}
-        <div className="bg-bm-dark rounded p-1.5 mt-2">
-          <p className="text-[0.4rem] text-bm-orange text-center">{defaultContent.cronograma.fase3.rodape}</p>
+          {(defaultContent.cronograma.fase1.items as string[]).map((item, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
+              <CheckCircle size={10} color="#F05A28" />
+              <span style={{ fontSize: 10, color: '#aaa' }}>{item}</span>
+            </div>
+          ))}
+          <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 'auto', textAlign: 'center' }}>
+            <p style={{ fontSize: 10, color: '#F05A28' }}>{defaultContent.cronograma.fase1.rodape}</p>
+          </div>
+        </div>
+        
+        {/* Fase 2 */}
+        <div className="bm-card" style={{ padding: 12, display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+            <div className="bm-phase-badge">02</div>
+            <p style={{ fontSize: 13, fontWeight: 700 }}>Aquisição e Validação</p>
+          </div>
+          {(defaultContent.cronograma.fase2.items as Array<{titulo: string; descricao: string}>).map((item, i) => {
+            const Icon = cronoFase2Icons[i];
+            return (
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
+                <Icon size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
+                <div>
+                  <p style={{ fontSize: 11, fontWeight: 700 }}>{item.titulo}</p>
+                  <p style={{ fontSize: 9, color: '#888' }}>{item.descricao}</p>
+                </div>
+              </div>
+            );
+          })}
+          <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 'auto', textAlign: 'center' }}>
+            <p style={{ fontSize: 10, color: '#F05A28' }}>{defaultContent.cronograma.fase2.rodape}</p>
+          </div>
+        </div>
+        
+        {/* Fase 3 */}
+        <div className="bm-card" style={{ padding: 12, display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+            <div className="bm-phase-badge">03</div>
+            <p style={{ fontSize: 13, fontWeight: 700 }}>Monetização da Base</p>
+          </div>
+          {(defaultContent.cronograma.fase3.items as Array<{titulo: string; descricao: string}>).map((item, i) => {
+            const Icon = cronoFase3Icons[i];
+            return (
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
+                <Icon size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
+                <div>
+                  <p style={{ fontSize: 11, fontWeight: 700 }}>{item.titulo}</p>
+                  <p style={{ fontSize: 9, color: '#888' }}>{item.descricao}</p>
+                </div>
+              </div>
+            );
+          })}
+          <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 'auto', textAlign: 'center' }}>
+            <p style={{ fontSize: 10, color: '#F05A28' }}>{defaultContent.cronograma.fase3.rodape}</p>
+          </div>
         </div>
       </div>
     </div>
+    <SlideFooter />
   </div>
 );
 
-// SLIDE: INVESTIMENTO
-export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) => (
-  <div className="bm-slide bm-slide-dark bm-texture p-5">
-    <div className="flex items-center gap-2 mb-3">
-      <div className="w-1 h-5 bg-bm-orange rounded" />
-      <div>
-        <h2 className="text-base font-extrabold text-bm-white">Investimento</h2>
-        <p className="text-[0.5rem] text-bm-gray">Condições comerciais da coprodução estratégica</p>
-      </div>
-    </div>
-    <div className="grid grid-cols-2 gap-3 mb-3">
-      <div className="bm-card">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-lg">🤝</span>
-          <p className="text-xs font-bold text-bm-white">Coprodução Estratégica</p>
-        </div>
-        <div className="bg-bm-dark rounded-lg p-2 space-y-1">
-          <div className="flex justify-between">
-            <span className="text-[0.45rem] text-bm-gray">Valor Total:</span>
-            <span className="text-sm font-bold text-bm-orange">{data.valorCoproducao}</span>
+// ============ SLIDE: INVESTIMENTO (2 Plans Layout) ============
+export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) => {
+  if (data.layoutInvestimento === 'planos') {
+    return (
+      <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+        <SlideHeader section="INVESTIMENTO" />
+        <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 16 }}>
+            <h2 style={{ fontSize: 24, fontWeight: 800 }}>Investimento</h2>
           </div>
-          <div className="flex justify-between">
-            <span className="text-[0.45rem] text-bm-gray">Parcelado:</span>
-            <span className="text-[0.5rem] text-bm-white">{data.parcelamento}</span>
-          </div>
-        </div>
-        <div className="bg-bm-orange-dark/40 rounded-lg p-2 mt-2 flex items-center gap-2">
-          <span className="text-sm">%</span>
-          <div>
-            <p className="text-[0.45rem] text-bm-white font-bold">{data.descontoVista}</p>
-            <p className="text-[0.4rem] text-bm-gray">{data.economiaVista}</p>
-          </div>
-        </div>
-      </div>
-      <div className="bm-card">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-lg">📢</span>
-          <p className="text-xs font-bold text-bm-white">Investimento em Tráfego</p>
-        </div>
-        <div className="bg-bm-orange-dark/40 rounded-lg p-3 text-center mb-2">
-          <p className="text-[0.4rem] text-bm-gray">Investimento Mínimo Recomendado</p>
-          <p className="text-xl font-bold text-bm-orange">{data.valorTrafego}</p>
-          <p className="text-[0.4rem] text-bm-gray">por mês</p>
-        </div>
-        {defaultContent.investimento.trafego.items.map((item, i) => (
-          <div key={i} className="flex items-center gap-1 mb-0.5">
-            <span className="text-bm-orange text-[0.4rem]">●</span>
-            <span className="text-[0.45rem] text-bm-gray">{item}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-    {data.mostrarComparativoEstrutura && (
-      <div className="bm-card flex gap-3">
-        <div className="flex-1">
-          <div className="flex items-center gap-1 mb-2">
-            <span className="text-sm">🏛️</span>
-            <div>
-              <p className="text-[0.5rem] font-bold text-bm-white">Comparativo de Estrutura</p>
-              <p className="text-[0.4rem] text-bm-gray">Para estruturar de forma independente:</p>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, flex: 1 }}>
+            {/* BM Impulso */}
+            <div style={{ background: '#1E1E1E', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, display: 'flex', flexDirection: 'column', overflow: 'hidden', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
+              <div style={{ background: '#1A1A1A', padding: '20px 24px', borderBottom: '1px solid rgba(240,90,40,0.3)' }}>
+                <p style={{ fontSize: 22, fontWeight: 800, textAlign: 'center' }}>{data.planoImpulsoNome}</p>
+                <p style={{ fontSize: 13, color: '#888', textAlign: 'center', marginTop: 4 }}>{data.planoImpulsoSubtitulo}</p>
+              </div>
+              <div style={{ flex: 1, padding: '16px 24px' }}>
+                {data.planoImpulsoItems.map((item, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                    <CheckCircle size={18} color="#F05A28" />
+                    <span style={{ fontSize: 13, color: '#ccc' }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(240,90,40,0.3)', textAlign: 'center' }}>
+                <p style={{ fontSize: 10, color: '#888', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>INVESTIMENTO MENSAL</p>
+                <p style={{ fontSize: 28, fontWeight: 900, color: '#F05A28', margin: '4px 0' }}>{data.planoImpulsoValor}</p>
+                <p style={{ fontSize: 11, color: '#666' }}>{defaultContent.planosImpulso.impulso.contrato}</p>
+              </div>
+            </div>
+            
+            {/* BM Impulso Plus */}
+            <div style={{ position: 'relative', background: '#1E1E1E', border: '1.5px solid rgba(240,90,40,1)', borderRadius: 12, display: 'flex', flexDirection: 'column', overflow: 'visible', boxShadow: '0 0 20px rgba(240,90,40,0.3)' }}>
+              {/* Badge */}
+              <div style={{ position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)', background: '#fff', color: '#1A1A1A', fontWeight: 800, fontSize: 12, padding: '4px 20px', borderRadius: 20, letterSpacing: '0.05em' }}>RECOMENDADO</div>
+              
+              <div style={{ background: '#F05A28', padding: '20px 24px', borderRadius: '10px 10px 0 0' }}>
+                <p style={{ fontSize: 22, fontWeight: 800, textAlign: 'center' }}>{data.planoImpulsoPlusNome}</p>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', textAlign: 'center', marginTop: 4 }}>{data.planoImpulsoPlusSubtitulo}</p>
+              </div>
+              <div style={{ flex: 1, padding: '16px 24px' }}>
+                {data.planoImpulsoPlusItems.map((item, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                    <CheckCircle size={18} color="#F05A28" />
+                    <span style={{ fontSize: 13, color: '#ccc' }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(240,90,40,0.3)', textAlign: 'center' }}>
+                <p style={{ fontSize: 10, color: '#888', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>INVESTIMENTO MENSAL</p>
+                <p style={{ fontSize: 28, fontWeight: 900, color: '#F05A28', margin: '4px 0' }}>{data.planoImpulsoPlusValor}</p>
+                <p style={{ fontSize: 11, color: '#666' }}>{defaultContent.planosImpulso.impulsoPlus.contrato}</p>
+              </div>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-1">
-            {defaultContent.investimento.comparativo.map((c, i) => (
-              <div key={i} className="bg-bm-dark rounded p-1.5 flex items-center gap-1">
-                <span className="text-[0.4rem]">{c.icone}</span>
-                <span className="text-[0.4rem] text-bm-gray">{c.titulo}</span>
+          
+          {/* Condições Gerais */}
+          <div className="bm-card" style={{ marginTop: 14, padding: 12 }}>
+            <p style={{ fontSize: 13, fontWeight: 700, color: '#F05A28', fontStyle: 'italic', marginBottom: 4 }}>Condições Gerais</p>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
+              <AlertCircle size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
+              <div>
+                <p style={{ fontSize: 12, fontWeight: 700 }}>Detalhes Importantes</p>
+                <p style={{ fontSize: 11, color: '#888' }}>{data.condicoesGerais}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <SlideFooter />
+      </div>
+    );
+  }
+  
+  // Coproducao layout (original)
+  return (
+    <div className="bm-slide bm-slide-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+      <SlideHeader section="INVESTIMENTO" />
+      <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 16 }}>
+          <h2 style={{ fontSize: 24, fontWeight: 800 }}>Investimento</h2>
+          <p style={{ fontSize: 12, color: '#888' }}>Condições comerciais da coprodução estratégica</p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, flex: 1 }}>
+          <div className="bm-card" style={{ padding: 16, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+              <Handshake size={20} color="#F05A28" />
+              <p style={{ fontSize: 16, fontWeight: 700 }}>Coprodução Estratégica</p>
+            </div>
+            <div style={{ background: '#1A1A1A', borderRadius: 8, padding: 12 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                <span style={{ fontSize: 11, color: '#888' }}>Valor Total:</span>
+                <span style={{ fontSize: 18, fontWeight: 900, color: '#F05A28' }}>{data.valorCoproducao}</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: 11, color: '#888' }}>Parcelado:</span>
+                <span style={{ fontSize: 13, color: '#fff' }}>{data.parcelamento}</span>
+              </div>
+            </div>
+            <div style={{ background: 'rgba(192,74,26,0.3)', borderRadius: 8, padding: 12, marginTop: 10, display: 'flex', alignItems: 'center', gap: 10 }}>
+              <Star size={18} color="#F05A28" />
+              <div>
+                <p style={{ fontSize: 12, fontWeight: 700 }}>{data.descontoVista}</p>
+                <p style={{ fontSize: 10, color: '#888' }}>{data.economiaVista}</p>
+              </div>
+            </div>
+          </div>
+          <div className="bm-card" style={{ padding: 16, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+              <Megaphone size={20} color="#F05A28" />
+              <p style={{ fontSize: 16, fontWeight: 700 }}>Investimento em Tráfego</p>
+            </div>
+            <div style={{ background: 'rgba(192,74,26,0.3)', borderRadius: 8, padding: 16, textAlign: 'center', marginBottom: 10 }}>
+              <p style={{ fontSize: 10, color: '#888' }}>Investimento Mínimo Recomendado</p>
+              <p style={{ fontSize: 32, fontWeight: 900, color: '#F05A28' }}>{data.valorTrafego}</p>
+              <p style={{ fontSize: 10, color: '#888' }}>por mês</p>
+            </div>
+            {defaultContent.investimento.trafego.items.map((item, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                <ChevronRight size={10} color="#F05A28" />
+                <span style={{ fontSize: 12, color: '#aaa' }}>{item}</span>
               </div>
             ))}
           </div>
         </div>
-        <div className="bg-bm-orange rounded-lg p-3 flex flex-col justify-center w-[35%]">
-          <p className="text-[0.5rem] font-bold text-bm-white flex items-center gap-1">✅ Na Coprodução BM</p>
-          <p className="text-[0.4rem] text-bm-white/90 mt-1">Toda essa estrutura está <strong>integrada em uma única operação estratégica</strong></p>
-        </div>
       </div>
-    )}
-  </div>
-);
-
-// SLIDE: ENCERRAMENTO
-export const SlideEncerramento: React.FC<{ data: ProposalData }> = ({ data }) => (
-  <div className="bm-slide bm-slide-dark bm-texture flex flex-col items-center justify-center p-8 text-center">
-    {data.showLogo && <img src={bmLogo} alt="BM Logo" className="w-20 h-20 mb-4 rounded-full" />}
-    <p className="text-bm-gray text-[0.5rem] tracking-[0.3em] uppercase mb-2">Infraestrutura Digital</p>
-    <h2 className="text-xl font-extrabold text-bm-white mb-3">Vamos Construir Juntos</h2>
-    <p className="text-[0.55rem] text-bm-gray max-w-md mb-4">{data.mensagemEncerramento}</p>
-    <div className="flex gap-4 mb-4">
-      {[
-        { titulo: "Estratégia Completa", sub: "Operação total planejada" },
-        { titulo: "Equipe Dedicada", sub: "Profissionais especializados" },
-        { titulo: "Parceria Real", sub: "Compromisso de verdade" }
-      ].map((item, i) => (
-        <div key={i} className="text-center">
-          <p className="text-[0.5rem] font-bold text-bm-orange">{item.titulo}</p>
-          <p className="text-[0.4rem] text-bm-gray">{item.sub}</p>
-        </div>
-      ))}
+      <SlideFooter />
     </div>
-    <p className="text-[0.45rem] text-bm-gray">Entre em contato para dar o próximo passo</p>
-    <p className="text-[0.5rem] text-bm-orange mt-1">{data.website}</p>
+  );
+};
+
+// ============ SLIDE: ENCERRAMENTO ============
+export const SlideEncerramento: React.FC<{ data: ProposalData }> = ({ data }) => (
+  <div className="bm-slide bm-slide-dark bm-texture" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+    {data.showLogo && <img src={bmLogo} alt="BM Logo" style={{ width: 100, height: 100, borderRadius: '50%', marginBottom: 24 }} />}
+    <h2 style={{ fontSize: 36, fontWeight: 800, marginBottom: 8 }}>
+      Vamos <span style={{ color: '#F05A28', fontStyle: 'italic' }}>Construir</span> Juntos!
+    </h2>
+    <p style={{ fontSize: 14, color: '#888', maxWidth: 600, marginBottom: 8 }}>
+      A BM está pronta para ser sua parceira criativa no digital. Vamos transformar!
+    </p>
+    <p style={{ fontSize: 13, color: '#aaa', maxWidth: 600, marginBottom: 32 }}>
+      Sua presença visual em uma marca forte, estratégica e inesquecível.
+    </p>
+    
+    <div style={{ marginBottom: 16 }}>
+      <p style={{ fontSize: 13 }}><span style={{ color: '#F05A28', fontWeight: 700 }}>WhatsApp:</span> {data.whatsapp}</p>
+      <p style={{ fontSize: 13, marginTop: 4 }}><span style={{ color: '#F05A28', fontWeight: 700 }}>Website:</span> {data.website}</p>
+    </div>
+    
+    <div style={{ position: 'absolute', bottom: 24 }}>
+      <p style={{ fontSize: 11, color: '#666' }}>BM Coproduções - Infraestrutura Digital</p>
+    </div>
   </div>
 );
