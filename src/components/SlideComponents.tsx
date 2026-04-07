@@ -277,59 +277,75 @@ export const SlideEstruturaCompleta: React.FC = () => (
 );
 
 // ============ SLIDE: FUNIL 8 OVERVIEW ============
-export const SlideFunil8Overview: React.FC = () => (
-  <div className="bm-slide" style={{ background: '#1A1A1A', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
-    <div style={{ padding: '28px 48px 0' }}>
-      <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 14, marginBottom: 20 }}>
-        <h2 style={{ fontSize: 28, fontWeight: 800 }}>Metodologia FUNIL 8</h2>
-        <p style={{ fontSize: 14, color: '#888' }}>Estratégia de Vendas em 3 Fases Interdependentes</p>
-      </div>
-    </div>
-    
-    <div style={{ flex: 1, padding: '0 48px', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, flex: 1, marginBottom: 16 }}>
-        {(['fase1', 'fase2', 'fase3'] as const).map((key, i) => {
-          const fase = defaultContent.funil8Overview[key];
-          return (
-            <div key={i} style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.6)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 20, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 15, flexShrink: 0 }}>0{i + 1}</div>
-                <div>
-                  <p style={{ fontSize: 18, fontWeight: 700 }}>{fase.titulo}</p>
-                  <p style={{ fontSize: 12, color: '#F05A28' }}>{fase.subtitulo}</p>
-                </div>
-              </div>
-              <p style={{ fontSize: 40, fontWeight: 900, color: '#F05A28', margin: '4px 0', lineHeight: 1 }}>{fase.numero}</p>
-              <p style={{ fontSize: 13, color: '#888', marginBottom: 12 }}>{fase.label}</p>
-              {fase.bullets.map((b, j) => (
-                <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                  <ChevronRight size={12} color="#F05A28" />
-                  <span style={{ fontSize: 13, color: '#bbb' }}>{b}</span>
-                </div>
-              ))}
-              <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '10px 12px', marginTop: 'auto', borderTop: '1px solid rgba(240,90,40,0.3)' }}>
-                {fase.info.map((inf, j) => (
-                  <div key={j} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: j < fase.info.length - 1 ? 4 : 0 }}>
-                    <span style={{ fontSize: 12, color: '#888' }}>{inf.split(':')[0] || inf}:</span>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>{inf.split(':')[1] || ''}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+export const SlideFunil8Overview: React.FC = () => {
+  const bulletIcons = [
+    [Target, GraduationCap, Settings],
+    [Zap, CalendarDays, Users],
+    [TrendingUp, Crown, Users]
+  ];
+  return (
+    <div className="bm-slide" style={{ background: '#1A1A1A', color: '#fff', display: 'flex', flexDirection: 'column', width: 1280, height: 720, position: 'relative', overflow: 'hidden' }}>
+      <div style={{ padding: '28px 48px 0' }}>
+        <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 14, marginBottom: 20 }}>
+          <h2 style={{ fontSize: 28, fontWeight: 800 }}>Metodologia FUNIL 8</h2>
+          <p style={{ fontSize: 14, color: '#888' }}>Estratégia de Vendas em 3 Fases Interdependentes</p>
+        </div>
       </div>
       
-      <div style={{ background: '#2A2A2A', border: '1px solid rgba(240,90,40,0.4)', borderRadius: 10, display: 'flex', alignItems: 'center', gap: 12, padding: '14px 20px', marginBottom: 20 }}>
-        <Lightbulb size={22} color="#F05A28" />
-        <div>
-          <p style={{ fontSize: 14, fontWeight: 700 }}>Princípio Fundamental</p>
-          <p style={{ fontSize: 13, color: '#999' }}>Cada fase tem uma <span style={{ color: '#F05A28', fontWeight: 700 }}>função clara e singular</span>: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção. A falha de uma etapa compromete todo o sistema.</p>
+      <div style={{ flex: 1, padding: '0 48px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, flex: 1, marginBottom: 16 }}>
+          {(['fase1', 'fase2', 'fase3'] as const).map((key, i) => {
+            const fase = defaultContent.funil8Overview[key];
+            const icons = bulletIcons[i];
+            return (
+              <div key={i} style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: '18px 20px', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                  <div style={{ width: 38, height: 38, borderRadius: 10, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 16, flexShrink: 0 }}>0{i + 1}</div>
+                  <div>
+                    <p style={{ fontSize: 17, fontWeight: 700 }}>{fase.titulo}</p>
+                    <p style={{ fontSize: 12, color: '#F05A28', fontStyle: 'italic' }}>{fase.subtitulo}</p>
+                  </div>
+                </div>
+                <p style={{ fontSize: 36, fontWeight: 900, color: '#F05A28', margin: '0 0 2px', lineHeight: 1 }}>{fase.numero}</p>
+                <p style={{ fontSize: 12, color: '#888', marginBottom: 14 }}>{fase.label}</p>
+                {fase.bullets.map((b, j) => {
+                  const BIcon = icons[j] || ChevronRight;
+                  return (
+                    <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 7 }}>
+                      <BIcon size={13} color="#F05A28" />
+                      <span style={{ fontSize: 13, color: '#bbb' }}>{b}</span>
+                    </div>
+                  );
+                })}
+                <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '10px 14px', marginTop: 'auto' }}>
+                  {fase.info.map((inf, j) => {
+                    const parts = inf.split(':');
+                    return (
+                      <div key={j} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: j < fase.info.length - 1 ? 4 : 0 }}>
+                        <span style={{ fontSize: 12, color: '#888' }}>{parts[0]}:</span>
+                        <span style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>{parts[1]}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        
+        <div style={{ background: '#2A2A2A', border: '1px solid rgba(240,90,40,0.4)', borderRadius: 10, display: 'flex', alignItems: 'center', gap: 14, padding: '14px 20px', marginBottom: 20 }}>
+          <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(240,90,40,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <Lightbulb size={20} color="#F05A28" />
+          </div>
+          <div>
+            <p style={{ fontSize: 14, fontWeight: 700 }}>Princípio Fundamental</p>
+            <p style={{ fontSize: 12, color: '#999', lineHeight: 1.5 }}>Cada fase tem uma <span style={{ color: '#F05A28', fontWeight: 700 }}>função clara e singular</span>: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção. A falha de uma etapa compromete todo o sistema.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // ============ SLIDE: FUNIL 8 FASE 1 DETALHADO ============
 export const SlideFunil8Fase1: React.FC = () => {
