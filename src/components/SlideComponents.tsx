@@ -580,9 +580,9 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
                 ))}
               </div>
               <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(240,90,40,0.3)', textAlign: 'center' }}>
-                <p style={{ fontSize: 10, color: '#888', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>INVESTIMENTO MENSAL</p>
-                <p style={{ fontSize: 28, fontWeight: 900, color: '#F05A28', margin: '4px 0' }}>{data.planoImpulsoPlusValor}</p>
-                <p style={{ fontSize: 11, color: '#666' }}>{defaultContent.planosImpulso.impulsoPlus.contrato}</p>
+                <p style={{ fontSize: 12, color: '#888', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>INVESTIMENTO MENSAL</p>
+                <p style={{ fontSize: 30, fontWeight: 900, color: '#F05A28', margin: '4px 0' }}>{data.planoImpulsoPlusValor}</p>
+                <p style={{ fontSize: 12, color: '#666' }}>{defaultContent.planosImpulso.impulsoPlus.contrato}</p>
               </div>
             </div>
           </div>
