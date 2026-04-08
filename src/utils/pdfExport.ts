@@ -142,6 +142,8 @@ export async function exportToPDF(
     await waitForImages(slide);
     await wait(120);
 
+    const patches = patchObjectFitImages(slide);
+
     const canvas = await html2canvas(slide, {
       scale: 2,
       width: SLIDE_WIDTH,
@@ -158,6 +160,8 @@ export async function exportToPDF(
       scrollX: 0,
       scrollY: 0,
     });
+
+    restoreObjectFitImages(patches);
 
     const imgData = canvas.toDataURL('image/png');
 
