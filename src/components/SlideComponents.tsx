@@ -460,9 +460,9 @@ export const SlideFases23: React.FC = () => (
                     <div key={i} style={{ background: '#1A1A1A', borderRadius: 8, padding: 10, marginBottom: 6 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
                         <Icon size={14} color="#F05A28" />
-                        <p style={{ fontSize: 12, fontWeight: 700 }}>{c.titulo}</p>
+                       <p style={{ fontSize: 14, fontWeight: 700 }}>{c.titulo}</p>
                       </div>
-                      <p style={{ fontSize: 10, color: '#888' }}>{c.texto}</p>
+                      <p style={{ fontSize: 12, color: '#888' }}>{c.texto}</p>
                     </div>
                   );
                 })}
