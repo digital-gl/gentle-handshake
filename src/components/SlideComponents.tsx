@@ -630,8 +630,8 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
             <div style={{ background: 'rgba(192,74,26,0.3)', borderRadius: 8, padding: 12, marginTop: 10, display: 'flex', alignItems: 'center', gap: 10 }}>
               <Star size={18} color="#F05A28" />
               <div>
-                <p style={{ fontSize: 12, fontWeight: 700 }}>{data.descontoVista}</p>
-                <p style={{ fontSize: 10, color: '#888' }}>{data.economiaVista}</p>
+                <p style={{ fontSize: 14, fontWeight: 700 }}>{data.descontoVista}</p>
+                <p style={{ fontSize: 12, color: '#888' }}>{data.economiaVista}</p>
               </div>
             </div>
           </div>
