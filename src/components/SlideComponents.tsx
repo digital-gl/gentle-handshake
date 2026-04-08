@@ -552,7 +552,7 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
                 {data.planoImpulsoItems.map((item, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
                     <CheckCircle size={18} color="#F05A28" />
-                    <span style={{ fontSize: 13, color: '#ccc' }}>{item}</span>
+                    <span style={{ fontSize: 14, color: '#ccc' }}>{item}</span>
                   </div>
                 ))}
               </div>
