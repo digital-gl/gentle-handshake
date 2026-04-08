@@ -468,7 +468,7 @@ export const SlideFases23: React.FC = () => (
                 })}
               </div>
               <div style={{ background: '#1E1E1E', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 10, boxShadow: 'inset 0 1px 0 rgba(240,90,40,0.1), 0 0 15px rgba(240,90,40,0.1)' }}>
-                <p style={{ fontSize: 10, color: '#F05A28', fontWeight: 700, marginBottom: 6 }}>Resultados Esperados</p>
+                <p style={{ fontSize: 12, color: '#F05A28', fontWeight: 700, marginBottom: 6 }}>Resultados Esperados</p>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6 }}>
                   {faseData.stats.map((s, i) => (
                     <div key={i} style={{ textAlign: 'center' }}>
