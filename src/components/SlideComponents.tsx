@@ -315,7 +315,7 @@ export const SlideFunil8Overview: React.FC = () => {
                   return (
                     <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 7 }}>
                       <BIcon size={13} color="#F05A28" />
-                      <span style={{ fontSize: 13, color: '#bbb' }}>{b}</span>
+                      <span style={{ fontSize: 14, color: '#bbb' }}>{b}</span>
                     </div>
                   );
                 })}
