@@ -609,7 +609,7 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
       <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
         <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 16 }}>
           <h2 style={{ fontSize: 24, fontWeight: 800 }}>Investimento</h2>
-          <p style={{ fontSize: 12, color: '#888' }}>Condições comerciais da coprodução estratégica</p>
+          <p style={{ fontSize: 13, color: '#888' }}>Condições comerciais da coprodução estratégica</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, flex: 1 }}>
           <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 16, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
