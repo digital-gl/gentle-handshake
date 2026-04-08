@@ -340,8 +340,8 @@ export const SlideFunil8Overview: React.FC = () => {
             <Lightbulb size={20} color="#F05A28" />
           </div>
           <div>
-            <p style={{ fontSize: 14, fontWeight: 700 }}>Princípio Fundamental</p>
-            <p style={{ fontSize: 12, color: '#999', lineHeight: 1.5 }}>Cada fase tem uma <span style={{ color: '#F05A28', fontWeight: 700 }}>função clara e singular</span>: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção. A falha de uma etapa compromete todo o sistema.</p>
+            <p style={{ fontSize: 15, fontWeight: 700 }}>Princípio Fundamental</p>
+            <p style={{ fontSize: 13, color: '#999', lineHeight: 1.5 }}>Cada fase tem uma <span style={{ color: '#F05A28', fontWeight: 700 }}>função clara e singular</span>: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção. A falha de uma etapa compromete todo o sistema.</p>
           </div>
         </div>
       </div>
