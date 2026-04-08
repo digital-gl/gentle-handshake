@@ -109,7 +109,9 @@ export const SlideBoasVindas: React.FC<{ data: ProposalData }> = ({ data }) => (
       
       <div style={{ width: 480, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {data.fotoEspecialista ? (
-          <img src={data.fotoEspecialista} alt="Especialista" style={{ width: 220, height: 220, borderRadius: 16, border: '3px dashed #F05A28', objectFit: 'cover' }} />
+          <div style={{ width: 220, height: 220, borderRadius: 16, border: '3px dashed #F05A28', overflow: 'hidden', flexShrink: 0 }}>
+            <img src={data.fotoEspecialista} alt="Especialista" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          </div>
         ) : (
           <div style={{ width: 220, height: 220, borderRadius: 16, border: '3px dashed #F05A28', background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
             <span style={{ color: '#fff', fontSize: 14, textAlign: 'center', padding: 20 }}>Foto profissional do especialista</span>
