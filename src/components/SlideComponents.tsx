@@ -256,13 +256,13 @@ export const SlideEstruturaCompleta: React.FC = () => (
                 <div style={{ width: 24, height: 24, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Icon size={14} color="#fff" />
                 </div>
-                <p style={{ fontSize: 12, fontWeight: 700 }}>{item.titulo}</p>
+              <p style={{ fontSize: 14, fontWeight: 700 }}>{item.titulo}</p>
               </div>
-              <p style={{ fontSize: 10, color: '#888', marginBottom: 6 }}>{item.descricao}</p>
+              <p style={{ fontSize: 12, color: '#888', marginBottom: 6 }}>{item.descricao}</p>
               {item.bullets.map((b, j) => (
                 <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 2 }}>
-                  <CheckCircle size={10} color="#F05A28" />
-                  <span style={{ fontSize: 10, color: '#aaa' }}>{b}</span>
+                  <CheckCircle size={12} color="#F05A28" />
+                  <span style={{ fontSize: 12, color: '#aaa' }}>{b}</span>
                 </div>
               ))}
             </div>
