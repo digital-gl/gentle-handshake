@@ -514,7 +514,7 @@ export const SlideCronograma: React.FC<{ data: ProposalData }> = ({ data }) => (
               <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>0{idx + 1}</div>
               <p style={{ fontSize: 15, fontWeight: 700 }}>{passo.titulo}</p>
             </div>
-            <p style={{ fontSize: 13, color: '#aaa', lineHeight: 1.6, flex: 1 }}>{passo.descricao}</p>
+            <p style={{ fontSize: 15, color: '#aaa', lineHeight: 1.6, flex: 1 }}>{passo.descricao}</p>
             <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 10, textAlign: 'center' }}>
               <p style={{ fontSize: 12, color: '#F05A28' }}>{passo.dias}</p>
             </div>
