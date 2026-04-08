@@ -592,8 +592,8 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
               <AlertCircle size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
               <div>
-                <p style={{ fontSize: 12, fontWeight: 700, color: '#F05A28' }}>Condições Gerais</p>
-                <p style={{ fontSize: 11, color: '#888' }}>{data.condicoesGerais}</p>
+                <p style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>Condições Gerais</p>
+                <p style={{ fontSize: 12, color: '#888' }}>{data.condicoesGerais}</p>
               </div>
             </div>
           </div>
