@@ -404,19 +404,19 @@ export const SlideFunil8Fase1: React.FC = () => {
               <div key={i} style={{ background: card.titulo === 'Resultados Esperados' ? '#1E1E1E' : '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 12, flex: 1, display: 'flex', flexDirection: 'column', boxShadow: card.titulo === 'Resultados Esperados' ? 'inset 0 1px 0 rgba(240,90,40,0.1), 0 0 15px rgba(240,90,40,0.1)' : '0 0 12px rgba(240,90,40,0.15)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
                   <Icon size={16} color="#F05A28" />
-                  <p style={{ fontSize: 13, fontWeight: 700 }}>{card.titulo}</p>
+                  <p style={{ fontSize: 15, fontWeight: 700 }}>{card.titulo}</p>
                 </div>
                 {card.stats ? (
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, flex: 1 }}>
                     {card.stats.map((s, j) => (
                       <div key={j} style={{ background: '#1A1A1A', borderRadius: 6, padding: 10, textAlign: 'center' }}>
-                        <p style={{ fontSize: 16, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
-                        <p style={{ fontSize: 9, color: '#888' }}>{s.label}</p>
+                        <p style={{ fontSize: 18, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
+                        <p style={{ fontSize: 11, color: '#888' }}>{s.label}</p>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p style={{ fontSize: 11, color: '#888' }}>{card.texto}</p>
+                  <p style={{ fontSize: 13, color: '#888' }}>{card.texto}</p>
                 )}
               </div>
             );
