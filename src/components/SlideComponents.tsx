@@ -619,12 +619,12 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
             </div>
             <div style={{ background: '#1A1A1A', borderRadius: 8, padding: 12 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-                <span style={{ fontSize: 11, color: '#888' }}>Valor Total:</span>
-                <span style={{ fontSize: 18, fontWeight: 900, color: '#F05A28' }}>{data.valorCoproducao}</span>
+                <span style={{ fontSize: 13, color: '#888' }}>Valor Total:</span>
+                <span style={{ fontSize: 20, fontWeight: 900, color: '#F05A28' }}>{data.valorCoproducao}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ fontSize: 11, color: '#888' }}>Parcelado:</span>
-                <span style={{ fontSize: 13, color: '#fff' }}>{data.parcelamento}</span>
+                <span style={{ fontSize: 13, color: '#888' }}>Parcelado:</span>
+                <span style={{ fontSize: 14, color: '#fff' }}>{data.parcelamento}</span>
               </div>
             </div>
             <div style={{ background: 'rgba(192,74,26,0.3)', borderRadius: 8, padding: 12, marginTop: 10, display: 'flex', alignItems: 'center', gap: 10 }}>
