@@ -324,8 +324,8 @@ export const SlideFunil8Overview: React.FC = () => {
                     const parts = inf.split(':');
                     return (
                       <div key={j} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: j < fase.info.length - 1 ? 4 : 0 }}>
-                        <span style={{ fontSize: 12, color: '#888' }}>{parts[0]}:</span>
-                        <span style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>{parts[1]}</span>
+                       <span style={{ fontSize: 13, color: '#888' }}>{parts[0]}:</span>
+                         <span style={{ fontSize: 14, fontWeight: 700, color: '#F05A28' }}>{parts[1]}</span>
                       </div>
                     );
                   })}
