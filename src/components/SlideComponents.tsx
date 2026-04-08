@@ -90,14 +90,10 @@ export const SlideBoasVindas: React.FC<{ data: ProposalData }> = ({ data }) => (
         <h2 style={{ fontSize: 36, fontWeight: 800, color: '#1A1A1A', marginBottom: 8, lineHeight: 1.2 }}>
           Seja Bem-vindo a <span style={{ color: '#F05A28' }}>BM Coproduções</span>
         </h2>
-        <p style={{ fontSize: 14, color: '#666', marginBottom: 20 }}>É uma honra ter você conosco nessa jornada de transformação digital!</p>
+        <p style={{ fontSize: 14, color: '#666', marginBottom: 20 }}>{data.saudacaoPersonalizada || 'É uma honra ter você conosco nessa jornada de transformação digital!'}</p>
         
-        <p style={{ fontSize: 15, color: '#333', lineHeight: 1.8, marginBottom: 20 }}>
-          Estamos <span style={{ textDecoration: 'underline', color: '#F05A28', fontWeight: 600 }}>muito felizes</span> com essa nova parceria! Mais que apenas oferecer serviços, nosso objetivo e <span style={{ textDecoration: 'underline', color: '#F05A28', fontWeight: 700 }}>construir uma operação completa</span> ao redor da sua expertise, garantindo que sua presença digital gere autoridade, conexão e resultados consistentes.
-        </p>
-        
-        <p style={{ fontSize: 15, color: '#333', lineHeight: 1.8, marginBottom: 32 }}>
-          Conte conosco para traduzir a essência do seu conhecimento em uma estrutura de negócio digital escalável, com estratégia, copy, design, tráfego e posicionamento trabalhando em perfeita sintonia.
+        <p style={{ fontSize: 15, color: '#333', lineHeight: 1.8, marginBottom: 32, whiteSpace: 'pre-line' }}>
+          {data.textoBoasVindas || 'Estamos muito felizes com essa nova parceria! Mais que apenas oferecer serviços, nosso objetivo é construir uma operação completa ao redor da sua expertise, garantindo que sua presença digital gere autoridade, conexão e resultados consistentes.\n\nConte conosco para traduzir a essência do seu conhecimento em uma estrutura de negócio digital escalável, com estratégia, copy, design, tráfego e posicionamento trabalhando em perfeita sintonia.'}
         </p>
         
         <div style={{ background: '#1A1A1A', borderRadius: 8, padding: '20px 24px', marginTop: 'auto', marginBottom: 32 }}>
