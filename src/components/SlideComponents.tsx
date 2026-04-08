@@ -109,7 +109,9 @@ export const SlideBoasVindas: React.FC<{ data: ProposalData }> = ({ data }) => (
       
       <div style={{ width: 480, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {data.fotoEspecialista ? (
-          <img src={data.fotoEspecialista} alt="Especialista" style={{ width: 220, height: 220, borderRadius: 16, border: '3px dashed #F05A28', objectFit: 'cover' }} />
+          <div style={{ width: 220, height: 220, borderRadius: 16, border: '3px dashed #F05A28', overflow: 'hidden', flexShrink: 0 }}>
+            <img src={data.fotoEspecialista} alt="Especialista" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          </div>
         ) : (
           <div style={{ width: 220, height: 220, borderRadius: 16, border: '3px dashed #F05A28', background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
             <span style={{ color: '#fff', fontSize: 14, textAlign: 'center', padding: 20 }}>Foto profissional do especialista</span>
@@ -254,13 +256,13 @@ export const SlideEstruturaCompleta: React.FC = () => (
                 <div style={{ width: 24, height: 24, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Icon size={14} color="#fff" />
                 </div>
-                <p style={{ fontSize: 12, fontWeight: 700 }}>{item.titulo}</p>
+              <p style={{ fontSize: 14, fontWeight: 700 }}>{item.titulo}</p>
               </div>
-              <p style={{ fontSize: 10, color: '#888', marginBottom: 6 }}>{item.descricao}</p>
+              <p style={{ fontSize: 12, color: '#888', marginBottom: 6 }}>{item.descricao}</p>
               {item.bullets.map((b, j) => (
                 <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 2 }}>
-                  <CheckCircle size={10} color="#F05A28" />
-                  <span style={{ fontSize: 10, color: '#aaa' }}>{b}</span>
+                  <CheckCircle size={12} color="#F05A28" />
+                  <span style={{ fontSize: 12, color: '#aaa' }}>{b}</span>
                 </div>
               ))}
             </div>
@@ -313,7 +315,7 @@ export const SlideFunil8Overview: React.FC = () => {
                   return (
                     <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 7 }}>
                       <BIcon size={13} color="#F05A28" />
-                      <span style={{ fontSize: 13, color: '#bbb' }}>{b}</span>
+                      <span style={{ fontSize: 14, color: '#bbb' }}>{b}</span>
                     </div>
                   );
                 })}
@@ -322,8 +324,8 @@ export const SlideFunil8Overview: React.FC = () => {
                     const parts = inf.split(':');
                     return (
                       <div key={j} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: j < fase.info.length - 1 ? 4 : 0 }}>
-                        <span style={{ fontSize: 12, color: '#888' }}>{parts[0]}:</span>
-                        <span style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>{parts[1]}</span>
+                       <span style={{ fontSize: 13, color: '#888' }}>{parts[0]}:</span>
+                         <span style={{ fontSize: 14, fontWeight: 700, color: '#F05A28' }}>{parts[1]}</span>
                       </div>
                     );
                   })}
@@ -338,8 +340,8 @@ export const SlideFunil8Overview: React.FC = () => {
             <Lightbulb size={20} color="#F05A28" />
           </div>
           <div>
-            <p style={{ fontSize: 14, fontWeight: 700 }}>Princípio Fundamental</p>
-            <p style={{ fontSize: 12, color: '#999', lineHeight: 1.5 }}>Cada fase tem uma <span style={{ color: '#F05A28', fontWeight: 700 }}>função clara e singular</span>: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção. A falha de uma etapa compromete todo o sistema.</p>
+            <p style={{ fontSize: 15, fontWeight: 700 }}>Princípio Fundamental</p>
+            <p style={{ fontSize: 13, color: '#999', lineHeight: 1.5 }}>Cada fase tem uma <span style={{ color: '#F05A28', fontWeight: 700 }}>função clara e singular</span>: adquirir, monetizar ou escalar. Não são opções, são estações de uma linha de produção. A falha de uma etapa compromete todo o sistema.</p>
           </div>
         </div>
       </div>
@@ -402,19 +404,19 @@ export const SlideFunil8Fase1: React.FC = () => {
               <div key={i} style={{ background: card.titulo === 'Resultados Esperados' ? '#1E1E1E' : '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 12, flex: 1, display: 'flex', flexDirection: 'column', boxShadow: card.titulo === 'Resultados Esperados' ? 'inset 0 1px 0 rgba(240,90,40,0.1), 0 0 15px rgba(240,90,40,0.1)' : '0 0 12px rgba(240,90,40,0.15)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
                   <Icon size={16} color="#F05A28" />
-                  <p style={{ fontSize: 13, fontWeight: 700 }}>{card.titulo}</p>
+                  <p style={{ fontSize: 15, fontWeight: 700 }}>{card.titulo}</p>
                 </div>
                 {card.stats ? (
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, flex: 1 }}>
                     {card.stats.map((s, j) => (
                       <div key={j} style={{ background: '#1A1A1A', borderRadius: 6, padding: 10, textAlign: 'center' }}>
-                        <p style={{ fontSize: 16, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
-                        <p style={{ fontSize: 9, color: '#888' }}>{s.label}</p>
+                        <p style={{ fontSize: 18, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
+                        <p style={{ fontSize: 11, color: '#888' }}>{s.label}</p>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p style={{ fontSize: 11, color: '#888' }}>{card.texto}</p>
+                  <p style={{ fontSize: 13, color: '#888' }}>{card.texto}</p>
                 )}
               </div>
             );
@@ -458,20 +460,20 @@ export const SlideFases23: React.FC = () => (
                     <div key={i} style={{ background: '#1A1A1A', borderRadius: 8, padding: 10, marginBottom: 6 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
                         <Icon size={14} color="#F05A28" />
-                        <p style={{ fontSize: 12, fontWeight: 700 }}>{c.titulo}</p>
+                       <p style={{ fontSize: 14, fontWeight: 700 }}>{c.titulo}</p>
                       </div>
-                      <p style={{ fontSize: 10, color: '#888' }}>{c.texto}</p>
+                      <p style={{ fontSize: 12, color: '#888' }}>{c.texto}</p>
                     </div>
                   );
                 })}
               </div>
               <div style={{ background: '#1E1E1E', border: '1.5px solid rgba(240,90,40,0.5)', borderRadius: 12, padding: 10, boxShadow: 'inset 0 1px 0 rgba(240,90,40,0.1), 0 0 15px rgba(240,90,40,0.1)' }}>
-                <p style={{ fontSize: 10, color: '#F05A28', fontWeight: 700, marginBottom: 6 }}>Resultados Esperados</p>
+                <p style={{ fontSize: 12, color: '#F05A28', fontWeight: 700, marginBottom: 6 }}>Resultados Esperados</p>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6 }}>
                   {faseData.stats.map((s, i) => (
                     <div key={i} style={{ textAlign: 'center' }}>
-                      <p style={{ fontSize: 16, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
-                      <p style={{ fontSize: 9, color: '#888' }}>{s.label}</p>
+                       <p style={{ fontSize: 18, fontWeight: 900, color: '#F05A28' }}>{s.valor}</p>
+                       <p style={{ fontSize: 11, color: '#888' }}>{s.label}</p>
                     </div>
                   ))}
                 </div>
@@ -514,11 +516,11 @@ export const SlideCronograma: React.FC<{ data: ProposalData }> = ({ data }) => (
           <div key={idx} style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
               <div style={{ width: 32, height: 32, borderRadius: 6, background: '#F05A28', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 14, flexShrink: 0 }}>0{idx + 1}</div>
-              <p style={{ fontSize: 13, fontWeight: 700 }}>{passo.titulo}</p>
+              <p style={{ fontSize: 15, fontWeight: 700 }}>{passo.titulo}</p>
             </div>
-            <p style={{ fontSize: 11, color: '#aaa', lineHeight: 1.6, flex: 1 }}>{passo.descricao}</p>
+            <p style={{ fontSize: 13, color: '#aaa', lineHeight: 1.6, flex: 1 }}>{passo.descricao}</p>
             <div style={{ background: '#1A1A1A', borderRadius: 6, padding: 8, marginTop: 10, textAlign: 'center' }}>
-              <p style={{ fontSize: 10, color: '#F05A28' }}>{passo.dias}</p>
+              <p style={{ fontSize: 12, color: '#F05A28' }}>{passo.dias}</p>
             </div>
           </div>
         ))}
@@ -550,14 +552,14 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
                 {data.planoImpulsoItems.map((item, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
                     <CheckCircle size={18} color="#F05A28" />
-                    <span style={{ fontSize: 13, color: '#ccc' }}>{item}</span>
+                    <span style={{ fontSize: 14, color: '#ccc' }}>{item}</span>
                   </div>
                 ))}
               </div>
               <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(240,90,40,0.3)', textAlign: 'center' }}>
-                <p style={{ fontSize: 10, color: '#888', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>INVESTIMENTO MENSAL</p>
-                <p style={{ fontSize: 28, fontWeight: 900, color: '#F05A28', margin: '4px 0' }}>{data.planoImpulsoValor}</p>
-                <p style={{ fontSize: 11, color: '#666' }}>{defaultContent.planosImpulso.impulso.contrato}</p>
+                <p style={{ fontSize: 12, color: '#888', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>INVESTIMENTO MENSAL</p>
+                <p style={{ fontSize: 30, fontWeight: 900, color: '#F05A28', margin: '4px 0' }}>{data.planoImpulsoValor}</p>
+                <p style={{ fontSize: 12, color: '#666' }}>{defaultContent.planosImpulso.impulso.contrato}</p>
               </div>
             </div>
             
@@ -573,14 +575,14 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
                 {data.planoImpulsoPlusItems.map((item, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
                     <CheckCircle size={18} color="#F05A28" />
-                    <span style={{ fontSize: 13, color: '#ccc' }}>{item}</span>
+                    <span style={{ fontSize: 14, color: '#ccc' }}>{item}</span>
                   </div>
                 ))}
               </div>
               <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(240,90,40,0.3)', textAlign: 'center' }}>
-                <p style={{ fontSize: 10, color: '#888', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>INVESTIMENTO MENSAL</p>
-                <p style={{ fontSize: 28, fontWeight: 900, color: '#F05A28', margin: '4px 0' }}>{data.planoImpulsoPlusValor}</p>
-                <p style={{ fontSize: 11, color: '#666' }}>{defaultContent.planosImpulso.impulsoPlus.contrato}</p>
+                <p style={{ fontSize: 12, color: '#888', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>INVESTIMENTO MENSAL</p>
+                <p style={{ fontSize: 30, fontWeight: 900, color: '#F05A28', margin: '4px 0' }}>{data.planoImpulsoPlusValor}</p>
+                <p style={{ fontSize: 12, color: '#666' }}>{defaultContent.planosImpulso.impulsoPlus.contrato}</p>
               </div>
             </div>
           </div>
@@ -590,8 +592,8 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
               <AlertCircle size={14} color="#F05A28" style={{ marginTop: 2, flexShrink: 0 }} />
               <div>
-                <p style={{ fontSize: 12, fontWeight: 700, color: '#F05A28' }}>Condições Gerais</p>
-                <p style={{ fontSize: 11, color: '#888' }}>{data.condicoesGerais}</p>
+                <p style={{ fontSize: 13, fontWeight: 700, color: '#F05A28' }}>Condições Gerais</p>
+                <p style={{ fontSize: 12, color: '#888' }}>{data.condicoesGerais}</p>
               </div>
             </div>
           </div>
@@ -607,7 +609,7 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
       <div style={{ flex: 1, padding: '0 40px 40px', display: 'flex', flexDirection: 'column' }}>
         <div style={{ borderLeft: '4px solid #F05A28', paddingLeft: 12, marginBottom: 16 }}>
           <h2 style={{ fontSize: 24, fontWeight: 800 }}>Investimento</h2>
-          <p style={{ fontSize: 12, color: '#888' }}>Condições comerciais da coprodução estratégica</p>
+          <p style={{ fontSize: 13, color: '#888' }}>Condições comerciais da coprodução estratégica</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, flex: 1 }}>
           <div style={{ background: '#2A2A2A', border: '1.5px solid rgba(240,90,40,0.7)', borderRadius: 12, padding: 16, display: 'flex', flexDirection: 'column', boxShadow: '0 0 12px rgba(240,90,40,0.15)' }}>
@@ -617,19 +619,19 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
             </div>
             <div style={{ background: '#1A1A1A', borderRadius: 8, padding: 12 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-                <span style={{ fontSize: 11, color: '#888' }}>Valor Total:</span>
-                <span style={{ fontSize: 18, fontWeight: 900, color: '#F05A28' }}>{data.valorCoproducao}</span>
+                <span style={{ fontSize: 13, color: '#888' }}>Valor Total:</span>
+                <span style={{ fontSize: 20, fontWeight: 900, color: '#F05A28' }}>{data.valorCoproducao}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ fontSize: 11, color: '#888' }}>Parcelado:</span>
-                <span style={{ fontSize: 13, color: '#fff' }}>{data.parcelamento}</span>
+                <span style={{ fontSize: 13, color: '#888' }}>Parcelado:</span>
+                <span style={{ fontSize: 14, color: '#fff' }}>{data.parcelamento}</span>
               </div>
             </div>
             <div style={{ background: 'rgba(192,74,26,0.3)', borderRadius: 8, padding: 12, marginTop: 10, display: 'flex', alignItems: 'center', gap: 10 }}>
               <Star size={18} color="#F05A28" />
               <div>
-                <p style={{ fontSize: 12, fontWeight: 700 }}>{data.descontoVista}</p>
-                <p style={{ fontSize: 10, color: '#888' }}>{data.economiaVista}</p>
+                <p style={{ fontSize: 14, fontWeight: 700 }}>{data.descontoVista}</p>
+                <p style={{ fontSize: 12, color: '#888' }}>{data.economiaVista}</p>
               </div>
             </div>
           </div>
@@ -639,14 +641,14 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
               <p style={{ fontSize: 16, fontWeight: 700 }}>Investimento em Tráfego</p>
             </div>
             <div style={{ background: 'rgba(192,74,26,0.3)', borderRadius: 8, padding: 16, textAlign: 'center', marginBottom: 10 }}>
-              <p style={{ fontSize: 10, color: '#888' }}>Investimento Mínimo Recomendado</p>
-              <p style={{ fontSize: 32, fontWeight: 900, color: '#F05A28' }}>{data.valorTrafego}</p>
-              <p style={{ fontSize: 10, color: '#888' }}>por mês</p>
+              <p style={{ fontSize: 12, color: '#888' }}>Investimento Mínimo Recomendado</p>
+              <p style={{ fontSize: 34, fontWeight: 900, color: '#F05A28' }}>{data.valorTrafego}</p>
+              <p style={{ fontSize: 12, color: '#888' }}>por mês</p>
             </div>
             {defaultContent.investimento.trafego.items.map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
                 <ChevronRight size={10} color="#F05A28" />
-                <span style={{ fontSize: 12, color: '#aaa' }}>{item}</span>
+                <span style={{ fontSize: 13, color: '#aaa' }}>{item}</span>
               </div>
             ))}
           </div>
