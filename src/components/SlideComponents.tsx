@@ -648,7 +648,7 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
             {defaultContent.investimento.trafego.items.map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
                 <ChevronRight size={10} color="#F05A28" />
-                <span style={{ fontSize: 12, color: '#aaa' }}>{item}</span>
+                <span style={{ fontSize: 13, color: '#aaa' }}>{item}</span>
               </div>
             ))}
           </div>
