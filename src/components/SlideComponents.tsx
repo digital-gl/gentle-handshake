@@ -641,9 +641,9 @@ export const SlideInvestimento: React.FC<{ data: ProposalData }> = ({ data }) =>
               <p style={{ fontSize: 16, fontWeight: 700 }}>Investimento em Tráfego</p>
             </div>
             <div style={{ background: 'rgba(192,74,26,0.3)', borderRadius: 8, padding: 16, textAlign: 'center', marginBottom: 10 }}>
-              <p style={{ fontSize: 10, color: '#888' }}>Investimento Mínimo Recomendado</p>
-              <p style={{ fontSize: 32, fontWeight: 900, color: '#F05A28' }}>{data.valorTrafego}</p>
-              <p style={{ fontSize: 10, color: '#888' }}>por mês</p>
+              <p style={{ fontSize: 12, color: '#888' }}>Investimento Mínimo Recomendado</p>
+              <p style={{ fontSize: 34, fontWeight: 900, color: '#F05A28' }}>{data.valorTrafego}</p>
+              <p style={{ fontSize: 12, color: '#888' }}>por mês</p>
             </div>
             {defaultContent.investimento.trafego.items.map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
